@@ -124,6 +124,12 @@ body {
   stroke-width: 0.6;
 }
 
+.dot-ring {
+  fill: none;
+  stroke: transparent;
+  stroke-width: 1.1;
+}
+
 .dot.is-highlighted .dot-half-left {
   fill: rgba(255, 176, 95, 0.95);
   stroke: rgba(255, 199, 142, 0.95);
@@ -144,6 +150,10 @@ body {
 
 .dot.is-right-highlighted:hover .dot-half-right {
   fill: rgba(150, 186, 255, 1);
+}
+
+.dot.is-neighborhood-bridge .dot-ring {
+  stroke: rgba(255, 74, 201, 0.95);
 }
 
 .tooltip {

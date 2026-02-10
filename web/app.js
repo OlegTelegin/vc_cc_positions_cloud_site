@@ -5,6 +5,8 @@ const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
 const DOT_RADIUS = 2.1;
+const NEIGHBOR_K = 5;
+const NEIGHBOR_CLASS_THRESHOLD = 3;
 
 const svg = d3.select("#map");
 const tooltip = document.getElementById("tooltip");
@@ -24,6 +26,7 @@ let currentTransform = d3.zoomIdentity;
 let pointsData = [];
 let highlightRoleNums = new Set();
 let rightHighlightRoleNums = new Set();
+let neighborhoodBridgeRoleNums = new Set();
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -79,6 +82,41 @@ function halfDotPath(cx, cy, radius, side) {
   return `M ${cx} ${cy - radius} A ${radius} ${radius} 0 0 1 ${cx} ${cy + radius} L ${cx} ${cy - radius} Z`;
 }
 
+function computeNeighborhoodBridgeSet(data, classRoleNums, k = NEIGHBOR_K, minClassNeighbors = NEIGHBOR_CLASS_THRESHOLD) {
+  const bridgeSet = new Set();
+  if (!data.length || k <= 0) return bridgeSet;
+
+  for (let i = 0; i < data.length; i += 1) {
+    const point = data[i];
+    if (classRoleNums.has(point.roleNum)) continue;
+
+    const nearest = [];
+
+    for (let j = 0; j < data.length; j += 1) {
+      if (i === j) continue;
+      const other = data[j];
+      const dx = point.x - other.x;
+      const dy = point.y - other.y;
+      const distSq = dx * dx + dy * dy;
+      nearest.push({ distSq, roleNum: other.roleNum });
+    }
+
+    nearest.sort((a, b) => a.distSq - b.distSq);
+
+    let classCount = 0;
+    const maxNeighbors = Math.min(k, nearest.length);
+    for (let n = 0; n < maxNeighbors; n += 1) {
+      if (classRoleNums.has(nearest[n].roleNum)) classCount += 1;
+    }
+
+    if (classCount >= minClassNeighbors) {
+      bridgeSet.add(point.roleNum);
+    }
+  }
+
+  return bridgeSet;
+}
+
 function renderPoints() {
   const dots = pointsLayer
     .selectAll("g.dot")
@@ -87,10 +125,12 @@ function renderPoints() {
       const group = enter.append("g").attr("class", "dot");
       group.append("path").attr("class", "dot-half dot-half-left");
       group.append("path").attr("class", "dot-half dot-half-right");
+      group.append("circle").attr("class", "dot-ring");
       return group;
     })
     .classed("is-highlighted", (d) => highlightRoleNums.has(d.roleNum))
     .classed("is-right-highlighted", (d) => rightHighlightRoleNums.has(d.roleNum))
+    .classed("is-neighborhood-bridge", (d) => neighborhoodBridgeRoleNums.has(d.roleNum))
     .on("mouseenter", showTooltip)
     .on("mousemove", (event, d) => showTooltip(event, d))
     .on("mouseleave", hideTooltip);
@@ -102,6 +142,12 @@ function renderPoints() {
   dots
     .select(".dot-half-right")
     .attr("d", (d) => halfDotPath(xScale(d.x), yScale(d.y), DOT_RADIUS, "right"));
+
+  dots
+    .select(".dot-ring")
+    .attr("cx", (d) => xScale(d.x))
+    .attr("cy", (d) => yScale(d.y))
+    .attr("r", DOT_RADIUS + 1.35);
 }
 
 function updateTransform(event) {
@@ -171,6 +217,8 @@ async function initialize() {
       }))
       .filter((d) => Number.isFinite(d.x) && Number.isFinite(d.y));
 
+    neighborhoodBridgeRoleNums = computeNeighborhoodBridgeSet(pointsData, highlightRoleNums);
+
     if (!pointsData.length) {
       throw new Error("No usable points found in CSV.");
     }
@@ -179,7 +227,7 @@ async function initialize() {
     renderPoints();
     setupZoom();
     setStatus(
-      `Loaded ${pointsData.length} positions (left: ${highlightRoleNums.size}, right: ${rightHighlightRoleNums.size}).`
+      `Loaded ${pointsData.length} positions (left: ${highlightRoleNums.size}, right: ${rightHighlightRoleNums.size}, ringed: ${neighborhoodBridgeRoleNums.size}).`
     );
   } catch (error) {
     console.error(error);
