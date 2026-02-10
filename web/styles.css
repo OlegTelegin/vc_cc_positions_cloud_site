@@ -137,6 +137,15 @@ body {
   fill: rgba(255, 191, 130, 1);
 }
 
+.dot.is-right-highlighted .dot-half-right {
+  fill: rgba(128, 170, 255, 0.95);
+  stroke: rgba(182, 208, 255, 0.95);
+}
+
+.dot.is-right-highlighted:hover .dot-half-right {
+  fill: rgba(150, 186, 255, 1);
+}
+
 .tooltip {
   position: fixed;
   z-index: 10;

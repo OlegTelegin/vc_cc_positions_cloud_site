@@ -1,5 +1,6 @@
 const DATA_PATH = "./data/1000_positions_jobbert_v2_2d_coords_umap.csv";
 const HIGHLIGHT_PATH = "./data/amir_category_role_numbers.csv";
+const RIGHT_HIGHLIGHT_PATH = "./data/global_selected_vars.csv";
 const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
@@ -22,6 +23,7 @@ let zoomBehavior = null;
 let currentTransform = d3.zoomIdentity;
 let pointsData = [];
 let highlightRoleNums = new Set();
+let rightHighlightRoleNums = new Set();
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -88,6 +90,7 @@ function renderPoints() {
       return group;
     })
     .classed("is-highlighted", (d) => highlightRoleNums.has(d.roleNum))
+    .classed("is-right-highlighted", (d) => rightHighlightRoleNums.has(d.roleNum))
     .on("mouseenter", showTooltip)
     .on("mousemove", (event, d) => showTooltip(event, d))
     .on("mouseleave", hideTooltip);
@@ -140,11 +143,21 @@ async function initialize() {
   getMapDimensions();
 
   try {
-    const [raw, highlightsRaw] = await Promise.all([d3.csv(DATA_PATH), d3.csv(HIGHLIGHT_PATH)]);
+    const [raw, highlightsRaw, rightHighlightsRaw] = await Promise.all([
+      d3.csv(DATA_PATH),
+      d3.csv(HIGHLIGHT_PATH),
+      d3.csv(RIGHT_HIGHLIGHT_PATH),
+    ]);
 
     highlightRoleNums = new Set(
       highlightsRaw
         .map((row) => Number(row.role_k1000_v3_num))
+        .filter((value) => Number.isFinite(value))
+    );
+
+    rightHighlightRoleNums = new Set(
+      rightHighlightsRaw
+        .map((row) => Number(row.cat))
         .filter((value) => Number.isFinite(value))
     );
 
@@ -165,7 +178,9 @@ async function initialize() {
     buildScales(pointsData);
     renderPoints();
     setupZoom();
-    setStatus(`Loaded ${pointsData.length} positions (${highlightRoleNums.size} highlighted role IDs).`);
+    setStatus(
+      `Loaded ${pointsData.length} positions (left: ${highlightRoleNums.size}, right: ${rightHighlightRoleNums.size}).`
+    );
   } catch (error) {
     console.error(error);
     setStatus("Failed to load data. Check CSV path and file permissions.", true);
