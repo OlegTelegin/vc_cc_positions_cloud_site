@@ -1,0 +1,145 @@
+:root {
+  --bg-primary: #0a192f;
+  --bg-secondary: #112240;
+  --text-primary: #ccd6f6;
+  --text-muted: #8892b0;
+  --accent: #64ffda;
+  --accent-soft: rgba(100, 255, 218, 0.35);
+  --border: rgba(136, 146, 176, 0.3);
+  --shadow: rgba(2, 12, 27, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: "Calibre", "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.page {
+  height: 100vh;
+  width: 100vw;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.page-header p {
+  margin: 0.2rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.map-shell {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(17, 34, 64, 0.9) 0%, rgba(10, 25, 47, 0.95) 100%);
+  box-shadow: 0 18px 40px -26px var(--shadow);
+  overflow: hidden;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  display: block;
+  cursor: grab;
+}
+
+#map.is-dragging {
+  cursor: grabbing;
+}
+
+.status {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 5;
+  padding: 0.4rem 0.55rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  background: rgba(10, 25, 47, 0.88);
+  border: 1px solid var(--border);
+}
+
+.status.error {
+  color: #ffb4b4;
+  border-color: rgba(255, 120, 120, 0.55);
+}
+
+.zoom-controls {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  z-index: 6;
+}
+
+.zoom-controls button {
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: rgba(17, 34, 64, 0.88);
+  color: var(--accent);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 120ms ease, border-color 120ms ease, transform 120ms ease;
+}
+
+.zoom-controls button:hover {
+  background: rgba(100, 255, 218, 0.08);
+  border-color: var(--accent-soft);
+}
+
+.zoom-controls button:active {
+  transform: translateY(1px);
+}
+
+.dot {
+  fill: var(--accent-soft);
+  stroke: rgba(100, 255, 218, 0.7);
+  stroke-width: 0.6;
+}
+
+.dot:hover {
+  fill: rgba(100, 255, 218, 0.75);
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 10;
+  max-width: 300px;
+  padding: 0.38rem 0.5rem;
+  font-size: 0.84rem;
+  line-height: 1.2;
+  color: var(--text-primary);
+  background: rgba(2, 12, 27, 0.95);
+  border: 1px solid var(--accent-soft);
+  border-radius: 7px;
+  box-shadow: 0 10px 24px -14px var(--shadow);
+  pointer-events: none;
+  white-space: nowrap;
+}

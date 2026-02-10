@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Position Titles Map</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page-header">
+        <h1>Position Titles Map</h1>
+        <p>Interactive 2D view of 1,000 position titles</p>
+      </header>
+
+      <section class="map-shell" aria-label="Position titles map">
+        <div id="status" class="status">Loading position data...</div>
+        <svg id="map" role="img" aria-label="2D position title map"></svg>
+
+        <div class="zoom-controls" aria-label="Zoom controls">
+          <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+          <button id="zoom-out" type="button" aria-label="Zoom out">-</button>
+        </div>
+      </section>
+
+      <div id="tooltip" class="tooltip" hidden></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
