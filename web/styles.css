@@ -118,14 +118,23 @@ body {
   transform: translateY(1px);
 }
 
-.dot {
+.dot-half {
   fill: var(--accent-soft);
   stroke: rgba(100, 255, 218, 0.7);
   stroke-width: 0.6;
 }
 
-.dot:hover {
+.dot.is-highlighted .dot-half-left {
+  fill: rgba(255, 176, 95, 0.95);
+  stroke: rgba(255, 199, 142, 0.95);
+}
+
+.dot:hover .dot-half-right {
   fill: rgba(100, 255, 218, 0.75);
+}
+
+.dot.is-highlighted:hover .dot-half-left {
+  fill: rgba(255, 191, 130, 1);
 }
 
 .tooltip {

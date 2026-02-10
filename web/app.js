@@ -1,4 +1,5 @@
 const DATA_PATH = "./data/1000_positions_jobbert_v2_2d_coords_umap.csv";
+const HIGHLIGHT_PATH = "./data/amir_category_role_numbers.csv";
 const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
@@ -20,6 +21,7 @@ let yScale = null;
 let zoomBehavior = null;
 let currentTransform = d3.zoomIdentity;
 let pointsData = [];
+let highlightRoleNums = new Set();
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -68,18 +70,35 @@ function hideTooltip() {
   tooltip.hidden = true;
 }
 
+function halfDotPath(cx, cy, radius, side) {
+  if (side === "left") {
+    return `M ${cx} ${cy - radius} A ${radius} ${radius} 0 0 0 ${cx} ${cy + radius} L ${cx} ${cy - radius} Z`;
+  }
+  return `M ${cx} ${cy - radius} A ${radius} ${radius} 0 0 1 ${cx} ${cy + radius} L ${cx} ${cy - radius} Z`;
+}
+
 function renderPoints() {
-  pointsLayer
-    .selectAll("circle")
+  const dots = pointsLayer
+    .selectAll("g.dot")
     .data(pointsData, (d) => d.id)
-    .join("circle")
-    .attr("class", "dot")
-    .attr("r", DOT_RADIUS)
-    .attr("cx", (d) => xScale(d.x))
-    .attr("cy", (d) => yScale(d.y))
+    .join((enter) => {
+      const group = enter.append("g").attr("class", "dot");
+      group.append("path").attr("class", "dot-half dot-half-left");
+      group.append("path").attr("class", "dot-half dot-half-right");
+      return group;
+    })
+    .classed("is-highlighted", (d) => highlightRoleNums.has(d.roleNum))
     .on("mouseenter", showTooltip)
     .on("mousemove", (event, d) => showTooltip(event, d))
     .on("mouseleave", hideTooltip);
+
+  dots
+    .select(".dot-half-left")
+    .attr("d", (d) => halfDotPath(xScale(d.x), yScale(d.y), DOT_RADIUS, "left"));
+
+  dots
+    .select(".dot-half-right")
+    .attr("d", (d) => halfDotPath(xScale(d.x), yScale(d.y), DOT_RADIUS, "right"));
 }
 
 function updateTransform(event) {
@@ -121,11 +140,19 @@ async function initialize() {
   getMapDimensions();
 
   try {
-    const raw = await d3.csv(DATA_PATH);
+    const [raw, highlightsRaw] = await Promise.all([d3.csv(DATA_PATH), d3.csv(HIGHLIGHT_PATH)]);
+
+    highlightRoleNums = new Set(
+      highlightsRaw
+        .map((row) => Number(row.role_k1000_v3_num))
+        .filter((value) => Number.isFinite(value))
+    );
+
     pointsData = raw
       .map((row, idx) => ({
         id: idx,
         title: row.role_k1000_v3?.trim() || "(untitled position)",
+        roleNum: Number(row.role_k1000_v3_num),
         x: Number(row.x_2d),
         y: Number(row.y_2d),
       }))
@@ -138,7 +165,7 @@ async function initialize() {
     buildScales(pointsData);
     renderPoints();
     setupZoom();
-    setStatus(`Loaded ${pointsData.length} positions.`);
+    setStatus(`Loaded ${pointsData.length} positions (${highlightRoleNums.size} highlighted role IDs).`);
   } catch (error) {
     console.error(error);
     setStatus("Failed to load data. Check CSV path and file permissions.", true);
