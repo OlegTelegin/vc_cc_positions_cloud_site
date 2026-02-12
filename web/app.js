@@ -5,7 +5,7 @@ const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
 const DOT_RADIUS = 2.1;
-const NEIGHBOR_K = 5;
+const NEIGHBOR_K = 4;
 const NEIGHBOR_CLASS_THRESHOLD = 3;
 
 const svg = d3.select("#map");
