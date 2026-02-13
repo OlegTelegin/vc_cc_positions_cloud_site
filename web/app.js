@@ -7,12 +7,19 @@ const MARGIN = 28;
 const DOT_RADIUS = 2.1;
 const NEIGHBOR_K = 4;
 const NEIGHBOR_CLASS_THRESHOLD = 3;
+const BRIDGE_GROUPS = {
+  amir: "Amir's classification from S&M words",
+  r2: "Picking a subset to maximise R2 with actual expenses",
+};
 
 const svg = d3.select("#map");
 const tooltip = document.getElementById("tooltip");
 const statusEl = document.getElementById("status");
 const zoomInBtn = document.getElementById("zoom-in");
 const zoomOutBtn = document.getElementById("zoom-out");
+const bridgeGroupSelect = document.getElementById("bridge-group-select");
+const bridgeListTitleEl = document.getElementById("bridge-list-title");
+const bridgePositionListEl = document.getElementById("bridge-position-list");
 
 const scene = svg.append("g").attr("class", "scene");
 const pointsLayer = scene.append("g").attr("class", "points-layer");
@@ -27,6 +34,11 @@ let pointsData = [];
 let highlightRoleNums = new Set();
 let rightHighlightRoleNums = new Set();
 let neighborhoodBridgeRoleNums = new Set();
+let bridgeSetByGroup = {
+  amir: new Set(),
+  r2: new Set(),
+};
+let selectedBridgeGroup = "amir";
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -117,6 +129,45 @@ function computeNeighborhoodBridgeSet(data, classRoleNums, k = NEIGHBOR_K, minCl
   return bridgeSet;
 }
 
+function updateBridgePositionList() {
+  if (!bridgePositionListEl || !bridgeListTitleEl) return;
+
+  const groupLabel = BRIDGE_GROUPS[selectedBridgeGroup] || selectedBridgeGroup;
+  const ringedPoints = pointsData
+    .filter((d) => neighborhoodBridgeRoleNums.has(d.roleNum))
+    .sort((a, b) => a.title.localeCompare(b.title));
+
+  bridgeListTitleEl.textContent = `${groupLabel}: positions highlighted in red (${ringedPoints.length})`;
+
+  bridgePositionListEl.innerHTML = "";
+
+  if (!ringedPoints.length) {
+    const emptyItem = document.createElement("li");
+    emptyItem.textContent = "No positions match this rule.";
+    bridgePositionListEl.appendChild(emptyItem);
+    return;
+  }
+
+  ringedPoints.forEach((point) => {
+    const item = document.createElement("li");
+    item.textContent = `${point.title} (${point.roleNum})`;
+    bridgePositionListEl.appendChild(item);
+  });
+}
+
+function updateStatusCounts() {
+  setStatus(
+    `Loaded ${pointsData.length} positions (left: ${highlightRoleNums.size}, right: ${rightHighlightRoleNums.size}, ringed: ${neighborhoodBridgeRoleNums.size}).`
+  );
+}
+
+function applySelectedBridgeGroup() {
+  neighborhoodBridgeRoleNums = bridgeSetByGroup[selectedBridgeGroup] || new Set();
+  renderPoints();
+  updateBridgePositionList();
+  updateStatusCounts();
+}
+
 function renderPoints() {
   const dots = pointsLayer
     .selectAll("g.dot")
@@ -184,6 +235,15 @@ function resizeMap() {
   svg.call(zoomBehavior.transform, currentTransform);
 }
 
+function setupBridgeControls() {
+  if (!bridgeGroupSelect) return;
+  bridgeGroupSelect.value = selectedBridgeGroup;
+  bridgeGroupSelect.addEventListener("change", () => {
+    selectedBridgeGroup = bridgeGroupSelect.value;
+    applySelectedBridgeGroup();
+  });
+}
+
 async function initialize() {
   setStatus("Loading position data...");
   getMapDimensions();
@@ -217,24 +277,25 @@ async function initialize() {
       }))
       .filter((d) => Number.isFinite(d.x) && Number.isFinite(d.y));
 
-    neighborhoodBridgeRoleNums = computeNeighborhoodBridgeSet(pointsData, highlightRoleNums);
-
     if (!pointsData.length) {
       throw new Error("No usable points found in CSV.");
     }
 
+    bridgeSetByGroup = {
+      amir: computeNeighborhoodBridgeSet(pointsData, highlightRoleNums),
+      r2: computeNeighborhoodBridgeSet(pointsData, rightHighlightRoleNums),
+    };
+
     buildScales(pointsData);
-    renderPoints();
+    applySelectedBridgeGroup();
     setupZoom();
-    setStatus(
-      `Loaded ${pointsData.length} positions (left: ${highlightRoleNums.size}, right: ${rightHighlightRoleNums.size}, ringed: ${neighborhoodBridgeRoleNums.size}).`
-    );
   } catch (error) {
     console.error(error);
     setStatus("Failed to load data. Check CSV path and file permissions.", true);
   }
 }
 
+setupBridgeControls();
 window.addEventListener("resize", resizeMap);
 window.addEventListener("blur", hideTooltip);
 

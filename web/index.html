@@ -13,14 +13,33 @@
         <p>Interactive 2D view of 1,000 position titles</p>
       </header>
 
-      <section class="map-shell" aria-label="Position titles map">
-        <div id="status" class="status">Loading position data...</div>
-        <svg id="map" role="img" aria-label="2D position title map"></svg>
+      <section class="content-shell" aria-label="Map and controls">
+        <section class="map-shell" aria-label="Position titles map">
+          <div id="status" class="status">Loading position data...</div>
+          <svg id="map" role="img" aria-label="2D position title map"></svg>
 
-        <div class="zoom-controls" aria-label="Zoom controls">
-          <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
-          <button id="zoom-out" type="button" aria-label="Zoom out">-</button>
-        </div>
+          <div class="zoom-controls" aria-label="Zoom controls">
+            <button id="zoom-in" type="button" aria-label="Zoom in">+</button>
+            <button id="zoom-out" type="button" aria-label="Zoom out">-</button>
+          </div>
+        </section>
+
+        <aside class="side-panel" aria-label="Neighborhood bridge controls">
+          <section class="panel-top">
+            <label class="panel-label" for="bridge-group-select">
+              Which positions are not picked but are among the picked?
+            </label>
+            <select id="bridge-group-select" class="panel-select">
+              <option value="amir">Amir's classification from S&amp;M words</option>
+              <option value="r2">Picking a subset to maximise R2 with actual expenses</option>
+            </select>
+          </section>
+
+          <section class="panel-bottom">
+            <p id="bridge-list-title" class="panel-subtitle">Positions highlighted in red (0)</p>
+            <ul id="bridge-position-list" class="position-list"></ul>
+          </section>
+        </aside>
       </section>
 
       <div id="tooltip" class="tooltip" hidden></div>
