@@ -41,8 +41,8 @@ body {
 }
 
 .top-controls {
-  min-width: 440px;
-  width: min(700px, 68vw);
+  min-width: 620px;
+  width: min(980px, 78vw);
 }
 
 .top-controls-title {
@@ -58,6 +58,7 @@ body {
 
 .top-controls-row .panel-select {
   flex: 1;
+  min-width: 300px;
 }
 
 .header-row {
