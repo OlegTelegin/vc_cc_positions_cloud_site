@@ -1,6 +1,7 @@
 const DATA_PATH = "./data/1000_positions_jobbert_v2_2d_coords_umap.csv";
 const CLASSIFICATION_SOURCES_PATH = "./data/classification_sources.csv";
 const RANKINGS_PATH = "./data/classification_r2_rankings.csv";
+const REGRESSION_STRUCTURE_PATH = "./data/regression_structure.csv";
 const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
@@ -34,7 +35,8 @@ let rightRoleNums = new Set();
 let neighborhoodBridgeRoleNums = new Set();
 let classificationOptions = [];
 let roleSetByFileName = {};
-let rankingByFileName = {};
+let rankingByRegressionFile = {};
+let regressionStructureRows = [];
 let selectedLeftFile = "";
 let selectedRightFile = "";
 let selectedBridgeGroup = "left";
@@ -181,116 +183,204 @@ function formatCoefficient(value) {
   return `${value.toFixed(1)}`;
 }
 
+function normalizeWithWhat(value) {
+  if (!value) return "";
+  if (value.includes("employment")) return "employment";
+  if (value.includes("salary")) return "salaries";
+  if (value.includes("total_compensation")) return "total_compensation";
+  return value;
+}
+
+function getRegressionBySlot(sampleRestrict, whatFirms, predict, withWhat) {
+  return regressionStructureRows.find(
+    (row) =>
+      row.sample_restrict === sampleRestrict &&
+      row.what_firms === whatFirms &&
+      row.predict === predict &&
+      normalizeWithWhat(row.with_what) === withWhat
+  );
+}
+
 function renderComparisonChart() {
   if (!comparisonChartEl) return;
   const chart = d3.select(comparisonChartEl);
   const bounds = comparisonChartEl.getBoundingClientRect();
-  const width = Math.max(260, Math.floor(bounds.width));
-  const height = Math.max(180, Math.floor(bounds.height));
+  const width = Math.max(420, Math.floor(bounds.width));
+  const height = Math.max(340, Math.floor(bounds.height));
   chart.attr("viewBox", `0 0 ${width} ${height}`);
   chart.selectAll("*").remove();
 
-  const selectedFiles = [selectedLeftFile, selectedRightFile];
-  const chartData = selectedFiles.map((fileName) => {
-    const ranking = rankingByFileName[fileName] || { r2: 0, rank: NaN, coefficient: NaN };
-    return {
-      fileName,
-      label: getDisplayTitleByFileName(fileName),
-      r2: Number.isFinite(ranking.r2) ? ranking.r2 : 0,
-      rank: ranking.rank,
-      coefficient: ranking.coefficient,
-    };
-  });
-
-  const margins = { top: 30, right: 16, bottom: 58, left: 52 };
+  const margins = { top: 10, right: 10, bottom: 10, left: 10 };
   const innerWidth = Math.max(1, width - margins.left - margins.right);
   const innerHeight = Math.max(1, height - margins.top - margins.bottom);
-  const x = d3
-    .scaleBand()
-    .domain(chartData.map((d) => d.fileName))
-    .range([margins.left, margins.left + innerWidth])
-    .padding(0.24);
-  const y = d3.scaleLinear().domain([0, 1]).range([margins.top + innerHeight, margins.top]);
 
-  chart
-    .append("line")
-    .attr("x1", margins.left)
-    .attr("x2", margins.left + innerWidth)
-    .attr("y1", y(0))
-    .attr("y2", y(0))
-    .attr("stroke", "rgba(136, 146, 176, 0.6)")
-    .attr("stroke-width", 1);
+  const sampleColumns = [
+    { key: "restricted", title: "Sample, where Revelio size is close to CIQ size" },
+    { key: "full", title: "Full Sample" },
+  ];
+  const rowSlots = [
+    { whatFirms: "all", predict: "spending", title: "All Firms - Predict spending" },
+    { whatFirms: "all", predict: "spending_per_employee", title: "All Firms - Predict spending per employee" },
+    { whatFirms: "smallest", predict: "spending", title: "Smallest firms (1st quartile) - Predict spending" },
+    { whatFirms: "smallest", predict: "spending_per_employee", title: "Smallest firms (1st quartile) - Predict spending per employee" },
+  ];
+  const withWhatOrder = ["employment", "salaries", "total_compensation"];
+  const withWhatLabel = {
+    employment: "Employment",
+    salaries: "Salaries",
+    total_compensation: "Total Compensation",
+  };
 
-  const bars = chart
-    .selectAll(".comparison-bar")
-    .data(chartData)
-    .join("rect")
-    .attr("class", "comparison-bar")
-    .attr("x", (d) => x(d.fileName))
-    .attr("y", (d) => y(d.r2))
-    .attr("width", x.bandwidth())
-    .attr("height", (d) => y(0) - y(d.r2))
-    .attr("rx", 6)
-    .attr("fill", (d, i) => (i === 0 ? "rgba(255, 176, 95, 0.95)" : "rgba(128, 170, 255, 0.95)"));
+  const colGap = 10;
+  const colWidth = (innerWidth - colGap) / 2;
+  const rowGap = 8;
+  const rowHeight = (innerHeight - 26 - rowGap * 3) / 4;
+  const sectionTop = margins.top + 22;
 
-  chart
-    .selectAll(".comparison-rank-label")
-    .data(chartData)
-    .join("text")
-    .attr("class", "comparison-rank-label")
-    .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
-    .attr("y", (d) => y(d.r2) + 22)
-    .attr("text-anchor", "middle")
-    .attr("font-size", "16")
-    .attr("font-weight", "700")
-    .attr("fill", "#081a2f")
-    .text((d) => getRankLabel(d.rank));
+  sampleColumns.forEach((sampleCol, colIdx) => {
+    const colX = margins.left + colIdx * (colWidth + colGap);
 
-  chart
-    .selectAll(".comparison-r2-label")
-    .data(chartData)
-    .join("text")
-    .attr("class", "comparison-r2-label")
-    .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
-    .attr("y", (d) => y(d.r2) + 42)
-    .attr("text-anchor", "middle")
-    .attr("font-size", "12")
-    .attr("fill", "#0f2741")
-    .text((d) => `R²=${d.r2.toFixed(3)}`);
+    chart
+      .append("text")
+      .attr("x", colX + colWidth / 2)
+      .attr("y", margins.top + 12)
+      .attr("text-anchor", "middle")
+      .attr("font-size", "11")
+      .attr("font-weight", "700")
+      .attr("fill", "#ccd6f6")
+      .text(sampleCol.title);
 
-  chart
-    .selectAll(".comparison-x-label")
-    .data(chartData)
-    .join("text")
-    .attr("class", "comparison-x-label")
-    .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
-    .attr("y", (d) => Math.max(margins.top - 8, y(d.r2) - 8))
-    .attr("text-anchor", "middle")
-    .attr("font-size", "12")
-    .attr("fill", "#8892b0")
-    .text((d, i) => (i === 0 ? "Left" : "Right"));
+    rowSlots.forEach((slot, rowIdx) => {
+      const boxY = sectionTop + rowIdx * (rowHeight + rowGap);
 
-  const coefY = y(0) + 30;
-  chart
-    .append("text")
-    .attr("x", margins.left - 8)
-    .attr("y", coefY)
-    .attr("text-anchor", "end")
-    .attr("font-size", "11")
-    .attr("fill", "#8892b0")
-    .text("Coef.");
+      chart
+        .append("rect")
+        .attr("x", colX)
+        .attr("y", boxY)
+        .attr("width", colWidth)
+        .attr("height", rowHeight)
+        .attr("rx", 6)
+        .attr("fill", "rgba(10, 25, 47, 0.28)")
+        .attr("stroke", "rgba(136, 146, 176, 0.35)");
 
-  chart
-    .selectAll(".comparison-coef-label")
-    .data(chartData)
-    .join("text")
-    .attr("class", "comparison-coef-label")
-    .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
-    .attr("y", coefY)
-    .attr("text-anchor", "middle")
-    .attr("font-size", "11")
-    .attr("fill", "#ccd6f6")
-    .text((d) => formatCoefficient(d.coefficient));
+      chart
+        .append("text")
+        .attr("x", colX + 8)
+        .attr("y", boxY + 12)
+        .attr("font-size", "10")
+        .attr("fill", "#8892b0")
+        .text(slot.title);
+
+      const pairGap = 8;
+      const pairWidth = (colWidth - 16 - pairGap * 2) / 3;
+      const pairTop = boxY + 20;
+      const pairBottom = boxY + rowHeight - 18;
+      const y = d3.scaleLinear().domain([0, 1]).range([pairBottom, pairTop + 8]);
+
+      chart
+        .append("text")
+        .attr("x", colX + 4)
+        .attr("y", pairBottom + 14)
+        .attr("font-size", "9")
+        .attr("fill", "#8892b0")
+        .text("Coef.");
+
+      withWhatOrder.forEach((withWhat, pairIdx) => {
+        const pairX = colX + 8 + pairIdx * (pairWidth + pairGap);
+        const regDef = getRegressionBySlot(sampleCol.key, slot.whatFirms, slot.predict, withWhat);
+        if (!regDef) return;
+
+        chart
+          .append("text")
+          .attr("x", pairX + pairWidth / 2)
+          .attr("y", pairTop + 2)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "9")
+          .attr("fill", "#ccd6f6")
+          .text(withWhatLabel[withWhat]);
+
+        const barGap = 2;
+        const barWidth = (pairWidth - barGap) / 2;
+        const regNum = Number(regDef.regression_number);
+        const leftKey = `${regNum}|${selectedLeftFile}`;
+        const rightKey = `${regNum}|${selectedRightFile}`;
+        const leftData = rankingByRegressionFile[leftKey] || { r2: 0, rank: NaN, coefficient: NaN };
+        const rightData = rankingByRegressionFile[rightKey] || { r2: 0, rank: NaN, coefficient: NaN };
+        const pairData = [
+          { side: "left", ...leftData, x: pairX },
+          { side: "right", ...rightData, x: pairX + barWidth + barGap },
+        ];
+
+        chart
+          .append("text")
+          .attr("x", pairX + barWidth / 2)
+          .attr("y", pairTop + 12)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "8")
+          .attr("fill", "#8892b0")
+          .text("Left");
+
+        chart
+          .append("text")
+          .attr("x", pairX + barWidth + barGap + barWidth / 2)
+          .attr("y", pairTop + 12)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "8")
+          .attr("fill", "#8892b0")
+          .text("Right");
+
+        pairData.forEach((bar) => {
+          const barTop = y(bar.r2);
+          const barHeight = Math.max(1, pairBottom - barTop);
+          chart
+            .append("rect")
+            .attr("x", bar.x)
+            .attr("y", barTop)
+            .attr("width", barWidth)
+            .attr("height", barHeight)
+            .attr("rx", 3)
+            .attr("fill", bar.side === "left" ? "rgba(255, 176, 95, 0.95)" : "rgba(128, 170, 255, 0.95)");
+
+          chart
+            .append("text")
+            .attr("x", bar.x + barWidth / 2)
+            .attr("y", barTop + 11)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "11")
+            .attr("font-weight", "700")
+            .attr("fill", "#081a2f")
+            .text(getRankLabel(bar.rank));
+
+          chart
+            .append("text")
+            .attr("x", bar.x + barWidth / 2)
+            .attr("y", barTop + 21)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "8")
+            .attr("fill", "#0f2741")
+            .text(`R²=${bar.r2.toFixed(2)}`);
+        });
+
+        chart
+          .append("text")
+          .attr("x", pairX + barWidth / 2)
+          .attr("y", pairBottom + 14)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "9")
+          .attr("fill", "#ccd6f6")
+          .text(formatCoefficient(leftData.coefficient));
+
+        chart
+          .append("text")
+          .attr("x", pairX + barWidth + barGap + barWidth / 2)
+          .attr("y", pairBottom + 14)
+          .attr("text-anchor", "middle")
+          .attr("font-size", "9")
+          .attr("fill", "#ccd6f6")
+          .text(formatCoefficient(rightData.coefficient));
+      });
+    });
+  });
 }
 
 function applySelectedClassifications() {
@@ -446,10 +536,11 @@ async function initialize() {
   getMapDimensions();
 
   try {
-    const [raw, classificationSources, rankingsRaw] = await Promise.all([
+    const [raw, classificationSources, rankingsRaw, regressionStructureRaw] = await Promise.all([
       d3.csv(DATA_PATH),
       d3.csv(CLASSIFICATION_SOURCES_PATH),
       d3.csv(RANKINGS_PATH),
+      d3.csv(REGRESSION_STRUCTURE_PATH),
     ]);
 
     classificationOptions = classificationSources
@@ -477,16 +568,27 @@ async function initialize() {
       );
     });
 
-    rankingByFileName = {};
+    rankingByRegressionFile = {};
     rankingsRaw.forEach((row) => {
       const fileName = row.file_name?.trim();
-      if (!fileName) return;
-      rankingByFileName[fileName] = {
+      const regressionNumber = Number(row.regression_number);
+      if (!fileName || !Number.isFinite(regressionNumber)) return;
+      rankingByRegressionFile[`${regressionNumber}|${fileName}`] = {
         r2: Number(row.r2),
         rank: Number(row.rank),
         coefficient: Number(row.coefficient),
       };
     });
+
+    regressionStructureRows = regressionStructureRaw
+      .map((row) => ({
+        regression_number: Number(row.regression_number),
+        predict: row.predict?.trim(),
+        with_what: row.with_what?.trim(),
+        sample_restrict: row.sample_restrict?.trim(),
+        what_firms: row.what_firms?.trim(),
+      }))
+      .filter((row) => Number.isFinite(row.regression_number));
 
     selectedLeftFile = classificationOptions[0].fileName;
     selectedRightFile = classificationOptions[Math.min(1, classificationOptions.length - 1)].fileName;
