@@ -14,7 +14,7 @@ const zoomInBtn = document.getElementById("zoom-in");
 const zoomOutBtn = document.getElementById("zoom-out");
 const leftClassSelect = document.getElementById("map-left-select");
 const rightClassSelect = document.getElementById("map-right-select");
-const bridgeActiveLabelEl = document.getElementById("bridge-active-label");
+const bridgeGroupSelect = document.getElementById("bridge-group-select");
 const bridgeListTitleEl = document.getElementById("bridge-list-title");
 const bridgePositionListEl = document.getElementById("bridge-position-list");
 
@@ -35,6 +35,11 @@ let classificationOptions = [];
 let roleSetByFileName = {};
 let selectedLeftFile = "";
 let selectedRightFile = "";
+let selectedBridgeGroup = "left";
+
+function getDisplayTitleByFileName(fileName) {
+  return classificationOptions.find((option) => option.fileName === fileName)?.displayTitle || fileName;
+}
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -128,12 +133,14 @@ function computeNeighborhoodBridgeSet(data, classRoleNums, k = NEIGHBOR_K, minCl
 function updateBridgePositionList() {
   if (!bridgePositionListEl || !bridgeListTitleEl) return;
 
-  const leftLabel = classificationOptions.find((option) => option.fileName === selectedLeftFile)?.displayTitle || selectedLeftFile;
+  const activeLabel = selectedBridgeGroup === "right"
+    ? getDisplayTitleByFileName(selectedRightFile)
+    : getDisplayTitleByFileName(selectedLeftFile);
   const ringedPoints = pointsData
     .filter((d) => neighborhoodBridgeRoleNums.has(d.roleNum))
     .sort((a, b) => a.title.localeCompare(b.title));
 
-  bridgeListTitleEl.textContent = `${leftLabel}: positions highlighted in red (${ringedPoints.length})`;
+  bridgeListTitleEl.textContent = `${activeLabel}: positions highlighted in red (${ringedPoints.length})`;
 
   bridgePositionListEl.innerHTML = "";
 
@@ -160,12 +167,8 @@ function updateStatusCounts() {
 function applySelectedClassifications() {
   leftRoleNums = roleSetByFileName[selectedLeftFile] || new Set();
   rightRoleNums = roleSetByFileName[selectedRightFile] || new Set();
-  neighborhoodBridgeRoleNums = computeNeighborhoodBridgeSet(pointsData, leftRoleNums);
-  if (bridgeActiveLabelEl) {
-    const leftLabel =
-      classificationOptions.find((option) => option.fileName === selectedLeftFile)?.displayTitle || selectedLeftFile;
-    bridgeActiveLabelEl.textContent = `Active reference group for red rings: ${leftLabel}`;
-  }
+  const bridgeReferenceSet = selectedBridgeGroup === "right" ? rightRoleNums : leftRoleNums;
+  neighborhoodBridgeRoleNums = computeNeighborhoodBridgeSet(pointsData, bridgeReferenceSet);
   renderPoints();
   updateBridgePositionList();
   updateStatusCounts();
@@ -250,10 +253,42 @@ function populateClassificationSelect(selectEl, selectedFileName) {
   });
 }
 
+function populateBridgeGroupSelect() {
+  if (!bridgeGroupSelect) return;
+  bridgeGroupSelect.innerHTML = "";
+
+  const leftOption = document.createElement("option");
+  leftOption.value = "left";
+  leftOption.textContent = getDisplayTitleByFileName(selectedLeftFile);
+  bridgeGroupSelect.appendChild(leftOption);
+
+  const rightOption = document.createElement("option");
+  rightOption.value = "right";
+  rightOption.textContent = getDisplayTitleByFileName(selectedRightFile);
+  bridgeGroupSelect.appendChild(rightOption);
+
+  bridgeGroupSelect.value = selectedBridgeGroup;
+}
+
+function ensureDistinctSelections(changedSide) {
+  if (selectedLeftFile !== selectedRightFile || classificationOptions.length < 2) return;
+  const fallback = classificationOptions.find((option) => option.fileName !== selectedLeftFile)?.fileName;
+  if (!fallback) return;
+  if (changedSide === "left") {
+    selectedRightFile = fallback;
+    if (rightClassSelect) rightClassSelect.value = selectedRightFile;
+  } else {
+    selectedLeftFile = fallback;
+    if (leftClassSelect) leftClassSelect.value = selectedLeftFile;
+  }
+}
+
 function setupClassificationControls() {
   if (leftClassSelect) {
     leftClassSelect.addEventListener("change", () => {
       selectedLeftFile = leftClassSelect.value;
+      ensureDistinctSelections("left");
+      populateBridgeGroupSelect();
       applySelectedClassifications();
     });
   }
@@ -261,6 +296,15 @@ function setupClassificationControls() {
   if (rightClassSelect) {
     rightClassSelect.addEventListener("change", () => {
       selectedRightFile = rightClassSelect.value;
+      ensureDistinctSelections("right");
+      populateBridgeGroupSelect();
+      applySelectedClassifications();
+    });
+  }
+
+  if (bridgeGroupSelect) {
+    bridgeGroupSelect.addEventListener("change", () => {
+      selectedBridgeGroup = bridgeGroupSelect.value;
       applySelectedClassifications();
     });
   }
@@ -300,8 +344,10 @@ async function initialize() {
 
     selectedLeftFile = classificationOptions[0].fileName;
     selectedRightFile = classificationOptions[Math.min(1, classificationOptions.length - 1)].fileName;
+    ensureDistinctSelections("right");
     populateClassificationSelect(leftClassSelect, selectedLeftFile);
     populateClassificationSelect(rightClassSelect, selectedRightFile);
+    populateBridgeGroupSelect();
 
     pointsData = raw
       .map((row, idx) => ({

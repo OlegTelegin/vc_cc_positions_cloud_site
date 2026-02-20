@@ -9,20 +9,18 @@
   <body>
     <main class="page">
       <header class="page-header">
-        <h1>Predicting S&amp;M: a Horserace</h1>
+        <div class="header-row">
+          <h1>Predicting S&amp;M: a Horserace</h1>
+          <section class="top-controls" aria-label="Classification selection">
+            <p class="top-controls-title">Pick 2 different approaches to compare</p>
+            <div class="top-controls-row">
+              <select id="map-left-select" class="panel-select"></select>
+              <select id="map-right-select" class="panel-select"></select>
+            </div>
+          </section>
+        </div>
         <p>Interactive 2D view of 1,000 position titles</p>
       </header>
-
-      <section class="top-controls" aria-label="Classification selection">
-        <div class="top-control">
-          <label class="panel-label" for="map-left-select">Left-half classification</label>
-          <select id="map-left-select" class="panel-select"></select>
-        </div>
-        <div class="top-control">
-          <label class="panel-label" for="map-right-select">Right-half classification</label>
-          <select id="map-right-select" class="panel-select"></select>
-        </div>
-      </section>
 
       <section class="content-shell" aria-label="Map and controls">
         <section class="map-shell" aria-label="Position titles map">
@@ -37,10 +35,10 @@
 
         <aside class="side-panel" aria-label="Neighborhood bridge controls">
           <section class="panel-top">
-            <p class="panel-label">
+            <label class="panel-label" for="bridge-group-select">
               Which positions are not picked but are among the picked?
-            </p>
-            <p id="bridge-active-label" class="panel-subtitle"></p>
+            </label>
+            <select id="bridge-group-select" class="panel-select"></select>
           </section>
 
           <section class="panel-bottom">

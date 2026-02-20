@@ -41,13 +41,30 @@ body {
 }
 
 .top-controls {
-  display: flex;
-  gap: 0.9rem;
+  min-width: 440px;
+  width: min(700px, 68vw);
 }
 
-.top-control {
-  min-width: 290px;
-  width: min(420px, 42vw);
+.top-controls-title {
+  margin: 0 0 0.45rem;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+}
+
+.top-controls-row {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.top-controls-row .panel-select {
+  flex: 1;
+}
+
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.9rem;
 }
 
 .page-header h1 {
