@@ -12,6 +12,7 @@ const NEIGHBOR_CLASS_THRESHOLD = 3;
 const svg = d3.select("#map");
 const tooltip = document.getElementById("tooltip");
 const statusEl = document.getElementById("status");
+const showRingHighlightsCheckbox = document.getElementById("show-ring-highlights");
 const zoomInBtn = document.getElementById("zoom-in");
 const zoomOutBtn = document.getElementById("zoom-out");
 const leftClassSelect = document.getElementById("map-left-select");
@@ -42,12 +43,14 @@ let selectedLeftFile = "";
 let selectedRightFile = "";
 let selectedBridgeGroup = "left";
 let chartPopupTimer = null;
+let showAdditionalHighlights = false;
 
 function getDisplayTitleByFileName(fileName) {
   return classificationOptions.find((option) => option.fileName === fileName)?.displayTitle || fileName;
 }
 
 function setStatus(message, isError = false) {
+  if (!statusEl) return;
   statusEl.textContent = message;
   statusEl.classList.toggle("error", isError);
 }
@@ -447,7 +450,7 @@ function renderPoints() {
     })
     .classed("is-highlighted", (d) => leftRoleNums.has(d.roleNum))
     .classed("is-right-highlighted", (d) => rightRoleNums.has(d.roleNum))
-    .classed("is-neighborhood-bridge", (d) => neighborhoodBridgeRoleNums.has(d.roleNum))
+    .classed("is-neighborhood-bridge", (d) => showAdditionalHighlights && neighborhoodBridgeRoleNums.has(d.roleNum))
     .on("mouseenter", showTooltip)
     .on("mousemove", (event, d) => showTooltip(event, d))
     .on("mouseleave", hideTooltip);
@@ -573,6 +576,14 @@ function setupClassificationControls() {
   document.addEventListener("click", () => {
     hideChartPairPopup();
   });
+
+  if (showRingHighlightsCheckbox) {
+    showAdditionalHighlights = showRingHighlightsCheckbox.checked;
+    showRingHighlightsCheckbox.addEventListener("change", () => {
+      showAdditionalHighlights = showRingHighlightsCheckbox.checked;
+      renderPoints();
+    });
+  }
 }
 
 async function initialize() {

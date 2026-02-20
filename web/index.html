@@ -22,7 +22,12 @@
         </section>
 
         <section class="map-shell" aria-label="Position titles map">
-          <div id="status" class="status">Loading position data...</div>
+          <div class="map-overlay-control">
+            <label class="map-overlay-label" for="show-ring-highlights">
+              <input id="show-ring-highlights" type="checkbox" />
+              Display additional highlights (right-lower window)
+            </label>
+          </div>
           <svg id="map" role="img" aria-label="2D position title map"></svg>
 
           <div class="zoom-controls" aria-label="Zoom controls">
