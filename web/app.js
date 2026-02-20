@@ -316,7 +316,7 @@ function renderComparisonChart() {
       chart
         .append("text")
         .attr("x", colX + 8)
-        .attr("y", boxY + 7)
+        .attr("y", boxY + 9)
         .attr("font-size", "10")
         .attr("fill", "#8892b0")
         .text(slot.title);
@@ -388,7 +388,7 @@ function renderComparisonChart() {
           chart
             .append("text")
             .attr("x", bar.x + barWidth / 2)
-            .attr("y", barTop + 10)
+            .attr("y", barTop + 12)
             .attr("text-anchor", "middle")
             .attr("font-size", "14")
             .attr("font-weight", "700")
@@ -398,7 +398,7 @@ function renderComparisonChart() {
           chart
             .append("text")
             .attr("x", bar.x + barWidth / 2)
-            .attr("y", barTop + 24)
+            .attr("y", barTop + 27)
             .attr("text-anchor", "middle")
             .attr("font-size", "10")
             .attr("fill", "#0f2741")
