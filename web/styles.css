@@ -93,8 +93,8 @@ body {
 }
 
 .side-column {
-  width: min(470px, 40vw);
-  min-width: 360px;
+  width: min(560px, 46vw);
+  min-width: 430px;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -132,7 +132,7 @@ body {
 }
 
 .side-panel .panel-top {
-  padding: 0.62rem 0.75rem;
+  padding: 0.5rem 0.65rem;
 }
 
 .side-panel .panel-bottom {
@@ -140,14 +140,14 @@ body {
 }
 
 .side-panel .panel-label {
-  margin: 0 0 0.34rem;
-  font-size: 0.88rem;
+  margin: 0 0 0.24rem;
+  font-size: 0.84rem;
   line-height: 1.2;
 }
 
 .side-panel .panel-select {
-  padding: 0.36rem 0.5rem;
-  font-size: 0.84rem;
+  padding: 0.3rem 0.46rem;
+  font-size: 0.8rem;
 }
 
 .panel-top,

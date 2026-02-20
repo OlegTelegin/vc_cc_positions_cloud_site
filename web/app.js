@@ -175,6 +175,12 @@ function getRankLabel(rank) {
   return `${rank}th`;
 }
 
+function formatCoefficient(value) {
+  if (!Number.isFinite(value)) return "n/a";
+  if (value > 10 || value < -10) return `${Math.round(value)}`;
+  return `${value.toFixed(1)}`;
+}
+
 function renderComparisonChart() {
   if (!comparisonChartEl) return;
   const chart = d3.select(comparisonChartEl);
@@ -186,16 +192,17 @@ function renderComparisonChart() {
 
   const selectedFiles = [selectedLeftFile, selectedRightFile];
   const chartData = selectedFiles.map((fileName) => {
-    const ranking = rankingByFileName[fileName] || { r2: 0, rank: NaN };
+    const ranking = rankingByFileName[fileName] || { r2: 0, rank: NaN, coefficient: NaN };
     return {
       fileName,
       label: getDisplayTitleByFileName(fileName),
       r2: Number.isFinite(ranking.r2) ? ranking.r2 : 0,
       rank: ranking.rank,
+      coefficient: ranking.coefficient,
     };
   });
 
-  const margins = { top: 16, right: 16, bottom: 46, left: 36 };
+  const margins = { top: 30, right: 16, bottom: 58, left: 52 };
   const innerWidth = Math.max(1, width - margins.left - margins.right);
   const innerHeight = Math.max(1, height - margins.top - margins.bottom);
   const x = d3
@@ -232,9 +239,9 @@ function renderComparisonChart() {
     .join("text")
     .attr("class", "comparison-rank-label")
     .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
-    .attr("y", (d) => y(d.r2) + 18)
+    .attr("y", (d) => y(d.r2) + 22)
     .attr("text-anchor", "middle")
-    .attr("font-size", "12")
+    .attr("font-size", "16")
     .attr("font-weight", "700")
     .attr("fill", "#081a2f")
     .text((d) => getRankLabel(d.rank));
@@ -245,11 +252,11 @@ function renderComparisonChart() {
     .join("text")
     .attr("class", "comparison-r2-label")
     .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
-    .attr("y", (d) => y(d.r2) + 34)
+    .attr("y", (d) => y(d.r2) + 42)
     .attr("text-anchor", "middle")
-    .attr("font-size", "11")
+    .attr("font-size", "12")
     .attr("fill", "#0f2741")
-    .text((d) => `R2=${d.r2.toFixed(3)}`);
+    .text((d) => `R²=${d.r2.toFixed(3)}`);
 
   chart
     .selectAll(".comparison-x-label")
@@ -257,11 +264,33 @@ function renderComparisonChart() {
     .join("text")
     .attr("class", "comparison-x-label")
     .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
-    .attr("y", y(0) + 16)
+    .attr("y", (d) => Math.max(margins.top - 8, y(d.r2) - 8))
     .attr("text-anchor", "middle")
-    .attr("font-size", "11")
+    .attr("font-size", "12")
     .attr("fill", "#8892b0")
     .text((d, i) => (i === 0 ? "Left" : "Right"));
+
+  const coefY = y(0) + 30;
+  chart
+    .append("text")
+    .attr("x", margins.left - 8)
+    .attr("y", coefY)
+    .attr("text-anchor", "end")
+    .attr("font-size", "11")
+    .attr("fill", "#8892b0")
+    .text("Coef.");
+
+  chart
+    .selectAll(".comparison-coef-label")
+    .data(chartData)
+    .join("text")
+    .attr("class", "comparison-coef-label")
+    .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
+    .attr("y", coefY)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "11")
+    .attr("fill", "#ccd6f6")
+    .text((d) => formatCoefficient(d.coefficient));
 }
 
 function applySelectedClassifications() {
@@ -455,6 +484,7 @@ async function initialize() {
       rankingByFileName[fileName] = {
         r2: Number(row.r2),
         rank: Number(row.rank),
+        coefficient: Number(row.coefficient),
       };
     });
 
