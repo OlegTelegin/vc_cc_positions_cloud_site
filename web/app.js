@@ -295,7 +295,7 @@ function renderComparisonChart() {
       .attr("x", colX + colWidth / 2)
         .attr("y", margins.top + 7)
       .attr("text-anchor", "middle")
-        .attr("font-size", "10")
+        .attr("font-size", "11")
       .attr("font-weight", "700")
       .attr("fill", "#ccd6f6")
       .text(sampleCol.title);
@@ -317,7 +317,7 @@ function renderComparisonChart() {
         .append("text")
         .attr("x", colX + 8)
         .attr("y", boxY + 7)
-        .attr("font-size", "9")
+        .attr("font-size", "10")
         .attr("fill", "#8892b0")
         .text(slot.title);
 
@@ -337,7 +337,7 @@ function renderComparisonChart() {
           .attr("x", pairX + pairWidth / 2)
           .attr("y", pairTop + 4)
           .attr("text-anchor", "middle")
-          .attr("font-size", "8")
+          .attr("font-size", "9")
           .attr("fill", "#ccd6f6")
           .text(withWhatLabel[withWhat]);
 
