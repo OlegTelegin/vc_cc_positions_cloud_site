@@ -1,5 +1,6 @@
 const DATA_PATH = "./data/1000_positions_jobbert_v2_2d_coords_umap.csv";
 const CLASSIFICATION_SOURCES_PATH = "./data/classification_sources.csv";
+const RANKINGS_PATH = "./data/classification_r2_rankings.csv";
 const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
@@ -16,6 +17,7 @@ const leftClassSelect = document.getElementById("map-left-select");
 const rightClassSelect = document.getElementById("map-right-select");
 const bridgeGroupSelect = document.getElementById("bridge-group-select");
 const bridgePositionListEl = document.getElementById("bridge-position-list");
+const comparisonChartEl = document.getElementById("comparison-chart");
 
 const scene = svg.append("g").attr("class", "scene");
 const pointsLayer = scene.append("g").attr("class", "points-layer");
@@ -32,6 +34,7 @@ let rightRoleNums = new Set();
 let neighborhoodBridgeRoleNums = new Set();
 let classificationOptions = [];
 let roleSetByFileName = {};
+let rankingByFileName = {};
 let selectedLeftFile = "";
 let selectedRightFile = "";
 let selectedBridgeGroup = "left";
@@ -161,12 +164,113 @@ function updateStatusCounts() {
   );
 }
 
+function getRankLabel(rank) {
+  if (!Number.isFinite(rank)) return "n/a";
+  const mod100 = rank % 100;
+  if (mod100 >= 11 && mod100 <= 13) return `${rank}th`;
+  const mod10 = rank % 10;
+  if (mod10 === 1) return `${rank}st`;
+  if (mod10 === 2) return `${rank}nd`;
+  if (mod10 === 3) return `${rank}rd`;
+  return `${rank}th`;
+}
+
+function renderComparisonChart() {
+  if (!comparisonChartEl) return;
+  const chart = d3.select(comparisonChartEl);
+  const bounds = comparisonChartEl.getBoundingClientRect();
+  const width = Math.max(260, Math.floor(bounds.width));
+  const height = Math.max(180, Math.floor(bounds.height));
+  chart.attr("viewBox", `0 0 ${width} ${height}`);
+  chart.selectAll("*").remove();
+
+  const selectedFiles = [selectedLeftFile, selectedRightFile];
+  const chartData = selectedFiles.map((fileName) => {
+    const ranking = rankingByFileName[fileName] || { r2: 0, rank: NaN };
+    return {
+      fileName,
+      label: getDisplayTitleByFileName(fileName),
+      r2: Number.isFinite(ranking.r2) ? ranking.r2 : 0,
+      rank: ranking.rank,
+    };
+  });
+
+  const margins = { top: 16, right: 16, bottom: 46, left: 36 };
+  const innerWidth = Math.max(1, width - margins.left - margins.right);
+  const innerHeight = Math.max(1, height - margins.top - margins.bottom);
+  const x = d3
+    .scaleBand()
+    .domain(chartData.map((d) => d.fileName))
+    .range([margins.left, margins.left + innerWidth])
+    .padding(0.24);
+  const y = d3.scaleLinear().domain([0, 1]).range([margins.top + innerHeight, margins.top]);
+
+  chart
+    .append("line")
+    .attr("x1", margins.left)
+    .attr("x2", margins.left + innerWidth)
+    .attr("y1", y(0))
+    .attr("y2", y(0))
+    .attr("stroke", "rgba(136, 146, 176, 0.6)")
+    .attr("stroke-width", 1);
+
+  const bars = chart
+    .selectAll(".comparison-bar")
+    .data(chartData)
+    .join("rect")
+    .attr("class", "comparison-bar")
+    .attr("x", (d) => x(d.fileName))
+    .attr("y", (d) => y(d.r2))
+    .attr("width", x.bandwidth())
+    .attr("height", (d) => y(0) - y(d.r2))
+    .attr("rx", 6)
+    .attr("fill", (d, i) => (i === 0 ? "rgba(255, 176, 95, 0.95)" : "rgba(128, 170, 255, 0.95)"));
+
+  chart
+    .selectAll(".comparison-rank-label")
+    .data(chartData)
+    .join("text")
+    .attr("class", "comparison-rank-label")
+    .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
+    .attr("y", (d) => y(d.r2) + 18)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "12")
+    .attr("font-weight", "700")
+    .attr("fill", "#081a2f")
+    .text((d) => getRankLabel(d.rank));
+
+  chart
+    .selectAll(".comparison-r2-label")
+    .data(chartData)
+    .join("text")
+    .attr("class", "comparison-r2-label")
+    .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
+    .attr("y", (d) => y(d.r2) + 34)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "11")
+    .attr("fill", "#0f2741")
+    .text((d) => `R2=${d.r2.toFixed(3)}`);
+
+  chart
+    .selectAll(".comparison-x-label")
+    .data(chartData)
+    .join("text")
+    .attr("class", "comparison-x-label")
+    .attr("x", (d) => (x(d.fileName) || 0) + x.bandwidth() / 2)
+    .attr("y", y(0) + 16)
+    .attr("text-anchor", "middle")
+    .attr("font-size", "11")
+    .attr("fill", "#8892b0")
+    .text((d, i) => (i === 0 ? "Left" : "Right"));
+}
+
 function applySelectedClassifications() {
   leftRoleNums = roleSetByFileName[selectedLeftFile] || new Set();
   rightRoleNums = roleSetByFileName[selectedRightFile] || new Set();
   const bridgeReferenceSet = selectedBridgeGroup === "right" ? rightRoleNums : leftRoleNums;
   neighborhoodBridgeRoleNums = computeNeighborhoodBridgeSet(pointsData, bridgeReferenceSet);
   renderPoints();
+  renderComparisonChart();
   updateBridgePositionList();
   updateStatusCounts();
 }
@@ -234,6 +338,7 @@ function resizeMap() {
   getMapDimensions();
   buildScales(pointsData);
   renderPoints();
+  renderComparisonChart();
   currentTransform = d3.zoomIdentity;
   svg.call(zoomBehavior.transform, currentTransform);
 }
@@ -312,7 +417,11 @@ async function initialize() {
   getMapDimensions();
 
   try {
-    const [raw, classificationSources] = await Promise.all([d3.csv(DATA_PATH), d3.csv(CLASSIFICATION_SOURCES_PATH)]);
+    const [raw, classificationSources, rankingsRaw] = await Promise.all([
+      d3.csv(DATA_PATH),
+      d3.csv(CLASSIFICATION_SOURCES_PATH),
+      d3.csv(RANKINGS_PATH),
+    ]);
 
     classificationOptions = classificationSources
       .map((row) => ({
@@ -337,6 +446,16 @@ async function initialize() {
           .map((row) => Number(row.role_k1000_v3_num))
           .filter((value) => Number.isFinite(value))
       );
+    });
+
+    rankingByFileName = {};
+    rankingsRaw.forEach((row) => {
+      const fileName = row.file_name?.trim();
+      if (!fileName) return;
+      rankingByFileName[fileName] = {
+        r2: Number(row.r2),
+        rank: Number(row.rank),
+      };
     });
 
     selectedLeftFile = classificationOptions[0].fileName;

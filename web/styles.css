@@ -120,6 +120,17 @@ body {
   flex: 1;
 }
 
+.chart-panel-body {
+  flex: 1;
+  min-height: 0;
+}
+
+#comparison-chart {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .side-panel .panel-top {
   padding: 0.62rem 0.75rem;
 }
