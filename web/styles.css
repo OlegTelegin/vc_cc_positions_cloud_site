@@ -103,7 +103,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0;
 }
 
 .chart-window-title {
