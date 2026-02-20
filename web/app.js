@@ -15,7 +15,6 @@ const zoomOutBtn = document.getElementById("zoom-out");
 const leftClassSelect = document.getElementById("map-left-select");
 const rightClassSelect = document.getElementById("map-right-select");
 const bridgeGroupSelect = document.getElementById("bridge-group-select");
-const bridgeListTitleEl = document.getElementById("bridge-list-title");
 const bridgePositionListEl = document.getElementById("bridge-position-list");
 
 const scene = svg.append("g").attr("class", "scene");
@@ -131,7 +130,7 @@ function computeNeighborhoodBridgeSet(data, classRoleNums, k = NEIGHBOR_K, minCl
 }
 
 function updateBridgePositionList() {
-  if (!bridgePositionListEl || !bridgeListTitleEl) return;
+  if (!bridgePositionListEl) return;
 
   const activeLabel = selectedBridgeGroup === "right"
     ? getDisplayTitleByFileName(selectedRightFile)
@@ -140,13 +139,11 @@ function updateBridgePositionList() {
     .filter((d) => neighborhoodBridgeRoleNums.has(d.roleNum))
     .sort((a, b) => a.title.localeCompare(b.title));
 
-  bridgeListTitleEl.textContent = `${activeLabel}: positions highlighted in red (${ringedPoints.length})`;
-
   bridgePositionListEl.innerHTML = "";
 
   if (!ringedPoints.length) {
     const emptyItem = document.createElement("li");
-    emptyItem.textContent = "No positions match this rule.";
+    emptyItem.textContent = `No positions match this rule for "${activeLabel}".`;
     bridgePositionListEl.appendChild(emptyItem);
     return;
   }

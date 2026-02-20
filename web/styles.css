@@ -120,6 +120,25 @@ body {
   flex: 1;
 }
 
+.side-panel .panel-top {
+  padding: 0.62rem 0.75rem;
+}
+
+.side-panel .panel-bottom {
+  padding: 0.62rem 0.75rem 0.72rem;
+}
+
+.side-panel .panel-label {
+  margin: 0 0 0.34rem;
+  font-size: 0.88rem;
+  line-height: 1.2;
+}
+
+.side-panel .panel-select {
+  padding: 0.36rem 0.5rem;
+  font-size: 0.84rem;
+}
+
 .panel-top,
 .panel-bottom {
   padding: 0.9rem;
