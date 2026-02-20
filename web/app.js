@@ -316,14 +316,14 @@ function renderComparisonChart() {
       chart
         .append("text")
         .attr("x", colX + 8)
-        .attr("y", boxY + 9)
+        .attr("y", boxY + 8)
         .attr("font-size", "8")
         .attr("fill", "#8892b0")
         .text(slot.title);
 
       const pairGap = 6;
       const pairWidth = (colWidth - 16 - pairGap * 2) / 3;
-      const pairTop = boxY + 10;
+      const pairTop = boxY + 12;
       const pairBottom = boxY + rowHeight - 8;
       const y = d3.scaleLinear().domain([0, 1]).range([pairBottom, pairTop + 6]);
 
@@ -335,7 +335,7 @@ function renderComparisonChart() {
         chart
           .append("text")
           .attr("x", pairX + pairWidth / 2)
-          .attr("y", pairTop + 1)
+          .attr("y", pairTop + 3)
           .attr("text-anchor", "middle")
           .attr("font-size", "7")
           .attr("fill", "#ccd6f6")
