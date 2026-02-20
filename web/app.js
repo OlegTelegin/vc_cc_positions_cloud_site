@@ -1,6 +1,6 @@
 const DATA_PATH = "./data/1000_positions_jobbert_v2_2d_coords_umap.csv";
 const HIGHLIGHT_PATH = "./data/list_by_type_3.csv";
-const RIGHT_HIGHLIGHT_PATH = "./data/global_selected_vars.csv";
+const RIGHT_HIGHLIGHT_PATH = "./data/list_by_type_1.csv";
 const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
@@ -9,7 +9,7 @@ const NEIGHBOR_K = 4;
 const NEIGHBOR_CLASS_THRESHOLD = 3;
 const BRIDGE_GROUPS = {
   amir: "Amir's classification from S&M words",
-  r2: "Picking a subset to maximise R2 with actual expenses",
+  r2: "All positions from 10-positions-level S&M category",
 };
 
 const svg = d3.select("#map");
@@ -263,7 +263,7 @@ async function initialize() {
 
     rightHighlightRoleNums = new Set(
       rightHighlightsRaw
-        .map((row) => Number(row.cat))
+        .map((row) => Number(row.role_k1000_v3_num))
         .filter((value) => Number.isFinite(value))
     );
 
