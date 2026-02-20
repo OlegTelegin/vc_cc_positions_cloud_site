@@ -19,6 +19,7 @@ const rightClassSelect = document.getElementById("map-right-select");
 const bridgeGroupSelect = document.getElementById("bridge-group-select");
 const bridgePositionListEl = document.getElementById("bridge-position-list");
 const comparisonChartEl = document.getElementById("comparison-chart");
+const chartPairPopupEl = document.getElementById("chart-pair-popup");
 
 const scene = svg.append("g").attr("class", "scene");
 const pointsLayer = scene.append("g").attr("class", "points-layer");
@@ -40,6 +41,7 @@ let regressionStructureRows = [];
 let selectedLeftFile = "";
 let selectedRightFile = "";
 let selectedBridgeGroup = "left";
+let chartPopupTimer = null;
 
 function getDisplayTitleByFileName(fileName) {
   return classificationOptions.find((option) => option.fileName === fileName)?.displayTitle || fileName;
@@ -184,6 +186,46 @@ function formatCoefficient(value) {
   return `${value.toFixed(1)}`;
 }
 
+function hideChartPairPopup() {
+  if (!chartPairPopupEl) return;
+  chartPairPopupEl.hidden = true;
+  if (chartPopupTimer) {
+    clearTimeout(chartPopupTimer);
+    chartPopupTimer = null;
+  }
+}
+
+function positionChartPairPopup(event) {
+  if (!chartPairPopupEl) return;
+  const spacing = 14;
+  const rect = chartPairPopupEl.getBoundingClientRect();
+  let x = event.clientX + spacing;
+  let y = event.clientY + spacing;
+  const maxX = window.innerWidth - rect.width - 8;
+  const maxY = window.innerHeight - rect.height - 8;
+  if (x > maxX) x = Math.max(8, event.clientX - rect.width - spacing);
+  if (y > maxY) y = Math.max(8, event.clientY - rect.height - spacing);
+  chartPairPopupEl.style.left = `${x}px`;
+  chartPairPopupEl.style.top = `${y}px`;
+}
+
+function showChartPairPopup(event, context) {
+  if (!chartPairPopupEl) return;
+  const leftName = getDisplayTitleByFileName(selectedLeftFile);
+  const rightName = getDisplayTitleByFileName(selectedRightFile);
+  chartPairPopupEl.textContent =
+    `${context.metricLabel} | ${context.sectionLabel}\n` +
+    `${leftName}: Coef. ${formatCoefficient(context.leftCoefficient)}\n` +
+    `${rightName}: Coef. ${formatCoefficient(context.rightCoefficient)}`;
+  chartPairPopupEl.hidden = false;
+  positionChartPairPopup(event);
+
+  if (chartPopupTimer) clearTimeout(chartPopupTimer);
+  chartPopupTimer = setTimeout(() => {
+    hideChartPairPopup();
+  }, 5000);
+}
+
 function rankToRelativeHeight(rank, maxRank = 4) {
   const boundedRank = Number.isFinite(rank) ? Math.min(Math.max(rank, 1), maxRank) : maxRank;
   if (maxRank <= 1) return 1;
@@ -285,14 +327,6 @@ function renderComparisonChart() {
       const pairBottom = boxY + rowHeight - 8;
       const y = d3.scaleLinear().domain([0, 1]).range([pairBottom, pairTop + 6]);
 
-      chart
-        .append("text")
-        .attr("x", colX + 4)
-        .attr("y", pairBottom + 7)
-        .attr("font-size", "7")
-        .attr("fill", "#8892b0")
-        .text("Coef.");
-
       withWhatOrder.forEach((withWhat, pairIdx) => {
         const pairX = colX + 8 + pairIdx * (pairWidth + pairGap);
         const regDef = getRegressionBySlot(sampleCol.key, slot.whatFirms, slot.predict, withWhat);
@@ -318,6 +352,26 @@ function renderComparisonChart() {
           { side: "left", ...leftData, x: pairX, heightScore: rankToRelativeHeight(leftData.rank) },
           { side: "right", ...rightData, x: pairX + barWidth + barGap, heightScore: rankToRelativeHeight(rightData.rank) },
         ];
+
+        chart
+          .append("rect")
+          .attr("x", pairX)
+          .attr("y", pairTop)
+          .attr("width", pairWidth)
+          .attr("height", Math.max(1, pairBottom - pairTop + 2))
+          .attr("fill", "transparent")
+          .attr("pointer-events", "all")
+          .on("mouseenter", (event) => {
+            showChartPairPopup(event, {
+              metricLabel: withWhatLabel[withWhat],
+              sectionLabel: slot.title,
+              leftCoefficient: leftData.coefficient,
+              rightCoefficient: rightData.coefficient,
+            });
+          })
+          .on("mousemove", (event) => {
+            if (chartPairPopupEl && !chartPairPopupEl.hidden) positionChartPairPopup(event);
+          });
 
         pairData.forEach((bar) => {
           const barTop = y(bar.heightScore);
@@ -351,23 +405,6 @@ function renderComparisonChart() {
             .text(`R²=${bar.r2.toFixed(2)}`);
         });
 
-        chart
-          .append("text")
-          .attr("x", pairX + barWidth / 2)
-          .attr("y", pairBottom + 7)
-          .attr("text-anchor", "middle")
-          .attr("font-size", "7")
-          .attr("fill", "#ccd6f6")
-          .text(formatCoefficient(leftData.coefficient));
-
-        chart
-          .append("text")
-          .attr("x", pairX + barWidth + barGap + barWidth / 2)
-          .attr("y", pairBottom + 7)
-          .attr("text-anchor", "middle")
-          .attr("font-size", "7")
-          .attr("fill", "#ccd6f6")
-          .text(formatCoefficient(rightData.coefficient));
       });
     });
   });
@@ -519,6 +556,10 @@ function setupClassificationControls() {
       applySelectedClassifications();
     });
   }
+
+  document.addEventListener("click", () => {
+    hideChartPairPopup();
+  });
 }
 
 async function initialize() {

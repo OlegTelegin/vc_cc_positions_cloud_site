@@ -103,7 +103,7 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.4rem;
 }
 
 .chart-window-title {
@@ -132,7 +132,7 @@ body {
 }
 
 .side-panel {
-  flex: 0 0 clamp(165px, 26vh, 220px);
+  flex: 0 0 clamp(145px, 22vh, 190px);
 }
 
 .chart-panel-body {
@@ -344,4 +344,19 @@ body {
   box-shadow: 0 10px 24px -14px var(--shadow);
   pointer-events: none;
   white-space: nowrap;
+}
+
+.chart-pair-popup {
+  position: fixed;
+  z-index: 12;
+  max-width: 320px;
+  padding: 0.42rem 0.55rem;
+  font-size: 0.8rem;
+  line-height: 1.25;
+  color: var(--text-primary);
+  background: rgba(2, 12, 27, 0.97);
+  border: 1px solid rgba(128, 170, 255, 0.45);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px -14px var(--shadow);
+  pointer-events: none;
 }
