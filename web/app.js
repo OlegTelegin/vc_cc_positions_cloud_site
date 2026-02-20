@@ -233,6 +233,15 @@ function rankToRelativeHeight(rank, maxRank = 4) {
   return 1 - (boundedRank - 1) * step;
 }
 
+function getR2Color(value) {
+  const safe = Number.isFinite(value) ? value : 0;
+  return d3
+    .scaleLinear()
+    .domain([0, 0.4, 0.8])
+    .range(["#ff8a8a", "#ffc777", "#7fd8a6"])
+    .clamp(true)(safe);
+}
+
 function normalizeWithWhat(value) {
   if (!value) return "";
   if (value.includes("employment")) return "employment";
@@ -402,7 +411,11 @@ function renderComparisonChart() {
             .attr("text-anchor", "middle")
             .attr("font-size", "10")
             .attr("fill", "#0f2741")
-            .text(`R²=${bar.r2.toFixed(2)}`);
+            .each(function () {
+              const text = d3.select(this);
+              text.append("tspan").attr("fill", "#0f2741").text("R²=");
+              text.append("tspan").attr("fill", getR2Color(bar.r2)).text(bar.r2.toFixed(2));
+            });
         });
 
       });
