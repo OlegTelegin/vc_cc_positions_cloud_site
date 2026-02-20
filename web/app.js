@@ -1,23 +1,20 @@
 const DATA_PATH = "./data/1000_positions_jobbert_v2_2d_coords_umap.csv";
-const HIGHLIGHT_PATH = "./data/list_by_type_3.csv";
-const RIGHT_HIGHLIGHT_PATH = "./data/list_by_type_1.csv";
+const CLASSIFICATION_SOURCES_PATH = "./data/classification_sources.csv";
 const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
 const DOT_RADIUS = 2.1;
 const NEIGHBOR_K = 4;
 const NEIGHBOR_CLASS_THRESHOLD = 3;
-const BRIDGE_GROUPS = {
-  amir: "Amir's classification from S&M words",
-  r2: "All positions from 10-positions-level S&M category",
-};
 
 const svg = d3.select("#map");
 const tooltip = document.getElementById("tooltip");
 const statusEl = document.getElementById("status");
 const zoomInBtn = document.getElementById("zoom-in");
 const zoomOutBtn = document.getElementById("zoom-out");
-const bridgeGroupSelect = document.getElementById("bridge-group-select");
+const leftClassSelect = document.getElementById("map-left-select");
+const rightClassSelect = document.getElementById("map-right-select");
+const bridgeActiveLabelEl = document.getElementById("bridge-active-label");
 const bridgeListTitleEl = document.getElementById("bridge-list-title");
 const bridgePositionListEl = document.getElementById("bridge-position-list");
 
@@ -31,14 +28,13 @@ let yScale = null;
 let zoomBehavior = null;
 let currentTransform = d3.zoomIdentity;
 let pointsData = [];
-let highlightRoleNums = new Set();
-let rightHighlightRoleNums = new Set();
+let leftRoleNums = new Set();
+let rightRoleNums = new Set();
 let neighborhoodBridgeRoleNums = new Set();
-let bridgeSetByGroup = {
-  amir: new Set(),
-  r2: new Set(),
-};
-let selectedBridgeGroup = "amir";
+let classificationOptions = [];
+let roleSetByFileName = {};
+let selectedLeftFile = "";
+let selectedRightFile = "";
 
 function setStatus(message, isError = false) {
   statusEl.textContent = message;
@@ -132,12 +128,12 @@ function computeNeighborhoodBridgeSet(data, classRoleNums, k = NEIGHBOR_K, minCl
 function updateBridgePositionList() {
   if (!bridgePositionListEl || !bridgeListTitleEl) return;
 
-  const groupLabel = BRIDGE_GROUPS[selectedBridgeGroup] || selectedBridgeGroup;
+  const leftLabel = classificationOptions.find((option) => option.fileName === selectedLeftFile)?.displayTitle || selectedLeftFile;
   const ringedPoints = pointsData
     .filter((d) => neighborhoodBridgeRoleNums.has(d.roleNum))
     .sort((a, b) => a.title.localeCompare(b.title));
 
-  bridgeListTitleEl.textContent = `${groupLabel}: positions highlighted in red (${ringedPoints.length})`;
+  bridgeListTitleEl.textContent = `${leftLabel}: positions highlighted in red (${ringedPoints.length})`;
 
   bridgePositionListEl.innerHTML = "";
 
@@ -157,12 +153,19 @@ function updateBridgePositionList() {
 
 function updateStatusCounts() {
   setStatus(
-    `Loaded ${pointsData.length} positions (left: ${highlightRoleNums.size}, right: ${rightHighlightRoleNums.size}, ringed: ${neighborhoodBridgeRoleNums.size}).`
+    `Loaded ${pointsData.length} positions (left: ${leftRoleNums.size}, right: ${rightRoleNums.size}, ringed: ${neighborhoodBridgeRoleNums.size}).`
   );
 }
 
-function applySelectedBridgeGroup() {
-  neighborhoodBridgeRoleNums = bridgeSetByGroup[selectedBridgeGroup] || new Set();
+function applySelectedClassifications() {
+  leftRoleNums = roleSetByFileName[selectedLeftFile] || new Set();
+  rightRoleNums = roleSetByFileName[selectedRightFile] || new Set();
+  neighborhoodBridgeRoleNums = computeNeighborhoodBridgeSet(pointsData, leftRoleNums);
+  if (bridgeActiveLabelEl) {
+    const leftLabel =
+      classificationOptions.find((option) => option.fileName === selectedLeftFile)?.displayTitle || selectedLeftFile;
+    bridgeActiveLabelEl.textContent = `Active reference group for red rings: ${leftLabel}`;
+  }
   renderPoints();
   updateBridgePositionList();
   updateStatusCounts();
@@ -179,8 +182,8 @@ function renderPoints() {
       group.append("circle").attr("class", "dot-ring");
       return group;
     })
-    .classed("is-highlighted", (d) => highlightRoleNums.has(d.roleNum))
-    .classed("is-right-highlighted", (d) => rightHighlightRoleNums.has(d.roleNum))
+    .classed("is-highlighted", (d) => leftRoleNums.has(d.roleNum))
+    .classed("is-right-highlighted", (d) => rightRoleNums.has(d.roleNum))
     .classed("is-neighborhood-bridge", (d) => neighborhoodBridgeRoleNums.has(d.roleNum))
     .on("mouseenter", showTooltip)
     .on("mousemove", (event, d) => showTooltip(event, d))
@@ -235,13 +238,32 @@ function resizeMap() {
   svg.call(zoomBehavior.transform, currentTransform);
 }
 
-function setupBridgeControls() {
-  if (!bridgeGroupSelect) return;
-  bridgeGroupSelect.value = selectedBridgeGroup;
-  bridgeGroupSelect.addEventListener("change", () => {
-    selectedBridgeGroup = bridgeGroupSelect.value;
-    applySelectedBridgeGroup();
+function populateClassificationSelect(selectEl, selectedFileName) {
+  if (!selectEl) return;
+  selectEl.innerHTML = "";
+  classificationOptions.forEach((option) => {
+    const opt = document.createElement("option");
+    opt.value = option.fileName;
+    opt.textContent = option.displayTitle;
+    if (option.fileName === selectedFileName) opt.selected = true;
+    selectEl.appendChild(opt);
   });
+}
+
+function setupClassificationControls() {
+  if (leftClassSelect) {
+    leftClassSelect.addEventListener("change", () => {
+      selectedLeftFile = leftClassSelect.value;
+      applySelectedClassifications();
+    });
+  }
+
+  if (rightClassSelect) {
+    rightClassSelect.addEventListener("change", () => {
+      selectedRightFile = rightClassSelect.value;
+      applySelectedClassifications();
+    });
+  }
 }
 
 async function initialize() {
@@ -249,23 +271,37 @@ async function initialize() {
   getMapDimensions();
 
   try {
-    const [raw, highlightsRaw, rightHighlightsRaw] = await Promise.all([
-      d3.csv(DATA_PATH),
-      d3.csv(HIGHLIGHT_PATH),
-      d3.csv(RIGHT_HIGHLIGHT_PATH),
-    ]);
+    const [raw, classificationSources] = await Promise.all([d3.csv(DATA_PATH), d3.csv(CLASSIFICATION_SOURCES_PATH)]);
 
-    highlightRoleNums = new Set(
-      highlightsRaw
-        .map((row) => Number(row.role_k1000_v3_num))
-        .filter((value) => Number.isFinite(value))
+    classificationOptions = classificationSources
+      .map((row) => ({
+        fileName: row.file_name?.trim(),
+        displayTitle: row.display_title?.trim(),
+      }))
+      .filter((row) => row.fileName && row.displayTitle);
+
+    if (!classificationOptions.length) {
+      throw new Error("No classification options found.");
+    }
+
+    const uniqueFileNames = Array.from(new Set(classificationOptions.map((option) => option.fileName)));
+    const classificationFileRows = await Promise.all(
+      uniqueFileNames.map((fileName) => d3.csv(`./data/${fileName}.csv`))
     );
 
-    rightHighlightRoleNums = new Set(
-      rightHighlightsRaw
-        .map((row) => Number(row.role_k1000_v3_num))
-        .filter((value) => Number.isFinite(value))
-    );
+    roleSetByFileName = {};
+    uniqueFileNames.forEach((fileName, index) => {
+      roleSetByFileName[fileName] = new Set(
+        classificationFileRows[index]
+          .map((row) => Number(row.role_k1000_v3_num))
+          .filter((value) => Number.isFinite(value))
+      );
+    });
+
+    selectedLeftFile = classificationOptions[0].fileName;
+    selectedRightFile = classificationOptions[Math.min(1, classificationOptions.length - 1)].fileName;
+    populateClassificationSelect(leftClassSelect, selectedLeftFile);
+    populateClassificationSelect(rightClassSelect, selectedRightFile);
 
     pointsData = raw
       .map((row, idx) => ({
@@ -281,13 +317,8 @@ async function initialize() {
       throw new Error("No usable points found in CSV.");
     }
 
-    bridgeSetByGroup = {
-      amir: computeNeighborhoodBridgeSet(pointsData, highlightRoleNums),
-      r2: computeNeighborhoodBridgeSet(pointsData, rightHighlightRoleNums),
-    };
-
     buildScales(pointsData);
-    applySelectedBridgeGroup();
+    applySelectedClassifications();
     setupZoom();
   } catch (error) {
     console.error(error);
@@ -295,7 +326,7 @@ async function initialize() {
   }
 }
 
-setupBridgeControls();
+setupClassificationControls();
 window.addEventListener("resize", resizeMap);
 window.addEventListener("blur", hideTooltip);
 

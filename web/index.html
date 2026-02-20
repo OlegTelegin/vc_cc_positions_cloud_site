@@ -3,15 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Position Titles Map</title>
+    <title>Predicting S&amp;M: a Horserace</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main class="page">
       <header class="page-header">
-        <h1>Position Titles Map</h1>
+        <h1>Predicting S&amp;M: a Horserace</h1>
         <p>Interactive 2D view of 1,000 position titles</p>
       </header>
+
+      <section class="top-controls" aria-label="Classification selection">
+        <div class="top-control">
+          <label class="panel-label" for="map-left-select">Left-half classification</label>
+          <select id="map-left-select" class="panel-select"></select>
+        </div>
+        <div class="top-control">
+          <label class="panel-label" for="map-right-select">Right-half classification</label>
+          <select id="map-right-select" class="panel-select"></select>
+        </div>
+      </section>
 
       <section class="content-shell" aria-label="Map and controls">
         <section class="map-shell" aria-label="Position titles map">
@@ -26,13 +37,10 @@
 
         <aside class="side-panel" aria-label="Neighborhood bridge controls">
           <section class="panel-top">
-            <label class="panel-label" for="bridge-group-select">
+            <p class="panel-label">
               Which positions are not picked but are among the picked?
-            </label>
-            <select id="bridge-group-select" class="panel-select">
-              <option value="amir">Amir's classification from S&amp;M words</option>
-              <option value="r2">All positions from 10-positions-level S&amp;M category</option>
-            </select>
+            </p>
+            <p id="bridge-active-label" class="panel-subtitle"></p>
           </section>
 
           <section class="panel-bottom">
