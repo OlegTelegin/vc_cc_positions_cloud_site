@@ -392,7 +392,7 @@ function renderComparisonChart() {
             .attr("width", barWidth)
             .attr("height", barHeight)
             .attr("rx", 3)
-            .attr("fill", bar.side === "left" ? "rgba(255, 176, 95, 0.95)" : "rgba(128, 170, 255, 0.95)");
+            .attr("fill", bar.side === "left" ? "rgba(255, 198, 138, 0.98)" : "rgba(168, 198, 255, 0.98)");
 
           chart
             .append("text")
