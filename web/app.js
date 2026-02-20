@@ -184,6 +184,13 @@ function formatCoefficient(value) {
   return `${value.toFixed(1)}`;
 }
 
+function rankToRelativeHeight(rank, maxRank = 4) {
+  const boundedRank = Number.isFinite(rank) ? Math.min(Math.max(rank, 1), maxRank) : maxRank;
+  if (maxRank <= 1) return 1;
+  const step = 0.6 / (maxRank - 1);
+  return 1 - (boundedRank - 1) * step;
+}
+
 function normalizeWithWhat(value) {
   if (!value) return "";
   if (value.includes("employment")) return "employment";
@@ -308,8 +315,8 @@ function renderComparisonChart() {
         const leftData = rankingByRegressionFile[leftKey] || { r2: 0, rank: NaN, coefficient: NaN };
         const rightData = rankingByRegressionFile[rightKey] || { r2: 0, rank: NaN, coefficient: NaN };
         const pairData = [
-          { side: "left", ...leftData, x: pairX },
-          { side: "right", ...rightData, x: pairX + barWidth + barGap },
+          { side: "left", ...leftData, x: pairX, heightScore: rankToRelativeHeight(leftData.rank) },
+          { side: "right", ...rightData, x: pairX + barWidth + barGap, heightScore: rankToRelativeHeight(rightData.rank) },
         ];
 
         chart
@@ -331,7 +338,7 @@ function renderComparisonChart() {
           .text("Right");
 
         pairData.forEach((bar) => {
-          const barTop = y(bar.r2);
+          const barTop = y(bar.heightScore);
           const barHeight = Math.max(1, pairBottom - barTop);
           chart
             .append("rect")
@@ -347,7 +354,7 @@ function renderComparisonChart() {
             .attr("x", bar.x + barWidth / 2)
             .attr("y", barTop + 9)
             .attr("text-anchor", "middle")
-            .attr("font-size", "10")
+            .attr("font-size", "12")
             .attr("font-weight", "700")
             .attr("fill", "#081a2f")
             .text(getRankLabel(bar.rank));
@@ -355,9 +362,9 @@ function renderComparisonChart() {
           chart
             .append("text")
             .attr("x", bar.x + barWidth / 2)
-            .attr("y", barTop + 17)
+            .attr("y", barTop + 20)
             .attr("text-anchor", "middle")
-            .attr("font-size", "7")
+            .attr("font-size", "9")
             .attr("fill", "#0f2741")
             .text(`R²=${bar.r2.toFixed(2)}`);
         });

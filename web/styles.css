@@ -33,16 +33,20 @@ body {
   gap: 0.9rem;
 }
 
-.content-shell {
+.main-layout {
   flex: 1;
   min-height: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(500px, 49vw);
+  grid-template-rows: auto minmax(0, 1fr);
   gap: 0.9rem;
 }
 
 .top-controls {
-  min-width: 620px;
-  width: min(980px, 78vw);
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  min-width: 0;
 }
 
 .top-controls-title {
@@ -61,13 +65,6 @@ body {
   min-width: 300px;
 }
 
-.header-row {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.9rem;
-}
-
 .page-header h1 {
   margin: 0;
   font-size: clamp(1.25rem, 2vw, 1.75rem);
@@ -75,15 +72,10 @@ body {
   letter-spacing: 0.01em;
 }
 
-.page-header p {
-  margin: 0.2rem 0 0;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-}
-
 .map-shell {
+  grid-column: 1;
+  grid-row: 2;
   position: relative;
-  flex: 1;
   min-height: 0;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -93,8 +85,10 @@ body {
 }
 
 .side-column {
-  width: min(560px, 46vw);
-  min-width: 430px;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 100%;
+  min-width: 0;
   min-height: 0;
   display: flex;
   flex-direction: column;
@@ -119,11 +113,11 @@ body {
 }
 
 .placeholder-panel {
-  flex: 2;
+  flex: 1 1 auto;
 }
 
 .side-panel {
-  flex: 1;
+  flex: 0 0 clamp(220px, 35vh, 300px);
 }
 
 .chart-panel-body {
