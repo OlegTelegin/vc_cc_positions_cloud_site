@@ -238,7 +238,7 @@ function getR2Color(value) {
   return d3
     .scaleLinear()
     .domain([0, 0.4, 0.8])
-    .range(["#ff8a8a", "#ffc777", "#7fd8a6"])
+    .range(["#b83f52", "#b87922", "#2e8f62"])
     .clamp(true)(safe);
 }
 
