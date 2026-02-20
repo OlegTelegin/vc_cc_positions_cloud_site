@@ -1,0 +1,26 @@
+Elastic net run on temp_wfd_1702_6.dta
+Dependent variable: w_xsalesmktrawCIQ
+Predictors: w_weight_k50_1-w_weight_k50_53
+Train/test split seed: 1702
+Specification: nonnegative lasso (alpha=1) with CV + one-SE rule, grid(200, ratio(1e-6))
+CV alpha(min-MSE): 5205.917124
+CV alpha(one-SE): 5205.917124
+
+Selected variables:
+w_weight_k50_20 w_weight_k50_25 w_weight_k50_27 w_weight_k50_38 w_weight_k50_39 w_weight_k50_43 w_weight_k50_50 w_weight_k50_51
+
+Selected variables and weights:
+w_weight_k50_20	153591.18814791
+w_weight_k50_25	210439.07739692
+w_weight_k50_27	134462.88603997
+w_weight_k50_38	635434.65584018
+w_weight_k50_39	104466.79312998
+w_weight_k50_43	1842.51065246
+w_weight_k50_50	286064.57411070
+w_weight_k50_51	29981.87910233
+
+Holdout metrics (split==2):
+N test =        125
+RMSE   =  966483.2932
+MAE    =  737190.5478
+R2     =       0.6402

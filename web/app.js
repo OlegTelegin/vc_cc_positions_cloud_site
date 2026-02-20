@@ -1,5 +1,5 @@
 const DATA_PATH = "./data/1000_positions_jobbert_v2_2d_coords_umap.csv";
-const HIGHLIGHT_PATH = "./data/amir_category_role_numbers.csv";
+const HIGHLIGHT_PATH = "./data/list_by_type_3.csv";
 const RIGHT_HIGHLIGHT_PATH = "./data/global_selected_vars.csv";
 const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;

@@ -1,0 +1,27 @@
+Elastic net run on temp_wfd_1702_6.dta
+Dependent variable: w_xsalesmktrawCIQ
+Predictors: w_salary_k50_1-w_salary_k50_53
+Train/test split seed: 1702
+Specification: nonnegative lasso (alpha=1) with CV + one-SE rule, grid(200, ratio(1e-6))
+CV alpha(min-MSE): 2.342953027
+CV alpha(one-SE): 5205.917124
+
+Selected variables:
+w_salary_k50_8 w_salary_k50_20 w_salary_k50_25 w_salary_k50_27 w_salary_k50_38 w_salary_k50_39 w_salary_k50_40 w_salary_k50_43 w_salary_k50_50
+
+Selected variables and weights:
+w_salary_k50_20	189218.75985579
+w_salary_k50_25	215496.25300497
+w_salary_k50_27	158812.59043732
+w_salary_k50_38	487456.10056209
+w_salary_k50_39	149935.12432189
+w_salary_k50_40	20125.35193939
+w_salary_k50_43	58571.21681296
+w_salary_k50_50	326725.87853391
+w_salary_k50_8	36765.28499345
+
+Holdout metrics (split==2):
+N test =        125
+RMSE   =  940977.2737
+MAE    =  711662.7348
+R2     =       0.6584
