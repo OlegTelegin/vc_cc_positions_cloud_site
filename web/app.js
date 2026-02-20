@@ -218,7 +218,7 @@ function renderComparisonChart() {
   chart.attr("viewBox", `0 0 ${width} ${height}`);
   chart.selectAll("*").remove();
 
-  const margins = { top: 4, right: 4, bottom: 4, left: 4 };
+  const margins = { top: 1, right: 1, bottom: 1, left: 1 };
   const innerWidth = Math.max(1, width - margins.left - margins.right);
   const innerHeight = Math.max(1, height - margins.top - margins.bottom);
 
@@ -239,11 +239,11 @@ function renderComparisonChart() {
     total_compensation: "Total Compensation",
   };
 
-  const colGap = 6;
+  const colGap = 4;
   const colWidth = (innerWidth - colGap) / 2;
-  const rowGap = 4;
-  const rowHeight = (innerHeight - 18 - rowGap * 3) / 4;
-  const sectionTop = margins.top + 16;
+  const rowGap = 2;
+  const rowHeight = (innerHeight - 11 - rowGap * 3) / 4;
+  const sectionTop = margins.top + 10;
 
   sampleColumns.forEach((sampleCol, colIdx) => {
     const colX = margins.left + colIdx * (colWidth + colGap);
@@ -251,9 +251,9 @@ function renderComparisonChart() {
     chart
       .append("text")
       .attr("x", colX + colWidth / 2)
-        .attr("y", margins.top + 10)
+        .attr("y", margins.top + 7)
       .attr("text-anchor", "middle")
-        .attr("font-size", "10")
+        .attr("font-size", "9")
       .attr("font-weight", "700")
       .attr("fill", "#ccd6f6")
       .text(sampleCol.title);
@@ -274,21 +274,21 @@ function renderComparisonChart() {
       chart
         .append("text")
         .attr("x", colX + 8)
-        .attr("y", boxY + 10)
-        .attr("font-size", "9")
+        .attr("y", boxY + 9)
+        .attr("font-size", "8")
         .attr("fill", "#8892b0")
         .text(slot.title);
 
       const pairGap = 6;
       const pairWidth = (colWidth - 16 - pairGap * 2) / 3;
-      const pairTop = boxY + 13;
-      const pairBottom = boxY + rowHeight - 11;
+      const pairTop = boxY + 10;
+      const pairBottom = boxY + rowHeight - 8;
       const y = d3.scaleLinear().domain([0, 1]).range([pairBottom, pairTop + 6]);
 
       chart
         .append("text")
         .attr("x", colX + 4)
-        .attr("y", pairBottom + 9)
+        .attr("y", pairBottom + 7)
         .attr("font-size", "7")
         .attr("fill", "#8892b0")
         .text("Coef.");
@@ -303,7 +303,7 @@ function renderComparisonChart() {
           .attr("x", pairX + pairWidth / 2)
           .attr("y", pairTop + 1)
           .attr("text-anchor", "middle")
-          .attr("font-size", "8")
+          .attr("font-size", "7")
           .attr("fill", "#ccd6f6")
           .text(withWhatLabel[withWhat]);
 
@@ -318,24 +318,6 @@ function renderComparisonChart() {
           { side: "left", ...leftData, x: pairX, heightScore: rankToRelativeHeight(leftData.rank) },
           { side: "right", ...rightData, x: pairX + barWidth + barGap, heightScore: rankToRelativeHeight(rightData.rank) },
         ];
-
-        chart
-          .append("text")
-          .attr("x", pairX + barWidth / 2)
-          .attr("y", pairTop + 10)
-          .attr("text-anchor", "middle")
-          .attr("font-size", "7")
-          .attr("fill", "#8892b0")
-          .text("Left");
-
-        chart
-          .append("text")
-          .attr("x", pairX + barWidth + barGap + barWidth / 2)
-          .attr("y", pairTop + 10)
-          .attr("text-anchor", "middle")
-          .attr("font-size", "7")
-          .attr("fill", "#8892b0")
-          .text("Right");
 
         pairData.forEach((bar) => {
           const barTop = y(bar.heightScore);
@@ -352,9 +334,9 @@ function renderComparisonChart() {
           chart
             .append("text")
             .attr("x", bar.x + barWidth / 2)
-            .attr("y", barTop + 9)
+            .attr("y", barTop + 10)
             .attr("text-anchor", "middle")
-            .attr("font-size", "12")
+            .attr("font-size", "14")
             .attr("font-weight", "700")
             .attr("fill", "#081a2f")
             .text(getRankLabel(bar.rank));
@@ -362,9 +344,9 @@ function renderComparisonChart() {
           chart
             .append("text")
             .attr("x", bar.x + barWidth / 2)
-            .attr("y", barTop + 20)
+            .attr("y", barTop + 24)
             .attr("text-anchor", "middle")
-            .attr("font-size", "9")
+            .attr("font-size", "10")
             .attr("fill", "#0f2741")
             .text(`R²=${bar.r2.toFixed(2)}`);
         });
@@ -372,7 +354,7 @@ function renderComparisonChart() {
         chart
           .append("text")
           .attr("x", pairX + barWidth / 2)
-          .attr("y", pairBottom + 9)
+          .attr("y", pairBottom + 7)
           .attr("text-anchor", "middle")
           .attr("font-size", "7")
           .attr("fill", "#ccd6f6")
@@ -381,7 +363,7 @@ function renderComparisonChart() {
         chart
           .append("text")
           .attr("x", pairX + barWidth + barGap + barWidth / 2)
-          .attr("y", pairBottom + 9)
+          .attr("y", pairBottom + 7)
           .attr("text-anchor", "middle")
           .attr("font-size", "7")
           .attr("fill", "#ccd6f6")
