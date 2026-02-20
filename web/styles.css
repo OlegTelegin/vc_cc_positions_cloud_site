@@ -101,6 +101,12 @@ body {
   gap: 0.9rem;
 }
 
+.chart-window-title {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
 .placeholder-panel,
 .side-panel {
   border: 1px solid var(--border);
@@ -123,6 +129,7 @@ body {
 .chart-panel-body {
   flex: 1;
   min-height: 0;
+  padding: 0.3rem;
 }
 
 #comparison-chart {
@@ -187,6 +194,10 @@ body {
   min-height: 0;
   display: flex;
   flex-direction: column;
+}
+
+.placeholder-panel .chart-panel-body {
+  padding: 0.3rem;
 }
 
 .panel-subtitle {
