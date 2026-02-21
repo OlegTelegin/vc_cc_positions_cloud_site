@@ -244,11 +244,15 @@ function showChartPairPopup(event, context) {
   const isSpendingWithSalaryOrComp =
     context.predict === "spending" &&
     (context.withWhat === "salaries" || context.withWhat === "total_compensation");
-  const leftValue = isSpendingWithSalaryOrComp ? context.leftCoefficient : context.leftCoefficient / 100;
-  const rightValue = isSpendingWithSalaryOrComp ? context.rightCoefficient : context.rightCoefficient / 100;
+  const isSpendingWithEmployment = context.predict === "spending" && context.withWhat === "employment";
+  const useRawCoefficient = isSpendingWithSalaryOrComp || isSpendingWithEmployment;
+  const leftValue = useRawCoefficient ? context.leftCoefficient : context.leftCoefficient / 100;
+  const rightValue = useRawCoefficient ? context.rightCoefficient : context.rightCoefficient / 100;
   const interpretation = isSpendingWithSalaryOrComp
     ? "Dollar change after 1$ increase in spending"
-    : "Dollar per employee change after increase in share by 1%";
+    : isSpendingWithEmployment
+      ? "Dollar change after 1 employee increase"
+      : "Dollar per employee change after increase in share by 1%";
 
   chartPairPopupEl.innerHTML =
     `<div class="chart-pair-popup-grid">` +
