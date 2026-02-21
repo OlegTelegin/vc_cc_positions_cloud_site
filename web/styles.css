@@ -406,3 +406,30 @@ body {
   box-shadow: 0 10px 24px -14px var(--shadow);
   pointer-events: none;
 }
+
+.chart-pair-popup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 0.8rem;
+  row-gap: 0.2rem;
+  align-items: center;
+}
+
+.chart-pair-popup-head {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.74rem;
+}
+
+.chart-pair-popup-value {
+  text-align: center;
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 0.84rem;
+}
+
+.chart-pair-popup-note {
+  margin-top: 0.35rem;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}

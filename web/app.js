@@ -205,6 +205,16 @@ function formatCoefficient(value) {
   return `${value.toFixed(1)}`;
 }
 
+function formatPopupCoefficient(value) {
+  if (!Number.isFinite(value)) return "n/a";
+  const abs = Math.abs(value);
+  if (abs >= 1000) return `${(value / 1000).toFixed(1)}K`;
+  if (abs >= 10) return `${Math.round(value)}`;
+  if (abs >= 1) return value.toFixed(1);
+  if (abs >= 0.01) return value.toFixed(2);
+  return value.toFixed(3);
+}
+
 function hideChartPairPopup() {
   if (!chartPairPopupEl) return;
   chartPairPopupEl.hidden = true;
@@ -230,12 +240,24 @@ function positionChartPairPopup(event) {
 
 function showChartPairPopup(event, context) {
   if (!chartPairPopupEl) return;
-  const leftName = getDisplayTitleByFileName(selectedLeftFile);
-  const rightName = getDisplayTitleByFileName(selectedRightFile);
-  chartPairPopupEl.textContent =
-    `${context.metricLabel} | ${context.sectionLabel}\n` +
-    `${leftName}: Coef. ${formatCoefficient(context.leftCoefficient)}\n` +
-    `${rightName}: Coef. ${formatCoefficient(context.rightCoefficient)}`;
+
+  const isSpendingWithSalaryOrComp =
+    context.predict === "spending" &&
+    (context.withWhat === "salaries" || context.withWhat === "total_compensation");
+  const leftValue = isSpendingWithSalaryOrComp ? context.leftCoefficient : context.leftCoefficient / 100;
+  const rightValue = isSpendingWithSalaryOrComp ? context.rightCoefficient : context.rightCoefficient / 100;
+  const interpretation = isSpendingWithSalaryOrComp
+    ? "Dollar change after 1$ increase in spending"
+    : "Dollar per employee change after increase in share by 1%";
+
+  chartPairPopupEl.innerHTML =
+    `<div class="chart-pair-popup-grid">` +
+    `<span class="chart-pair-popup-head">Left</span>` +
+    `<span class="chart-pair-popup-head">Right</span>` +
+    `<span class="chart-pair-popup-value">${formatPopupCoefficient(leftValue)}</span>` +
+    `<span class="chart-pair-popup-value">${formatPopupCoefficient(rightValue)}</span>` +
+    `</div>` +
+    `<div class="chart-pair-popup-note">${interpretation}</div>`;
   chartPairPopupEl.hidden = false;
   positionChartPairPopup(event);
 
@@ -393,6 +415,8 @@ function renderComparisonChart() {
             showChartPairPopup(event, {
               metricLabel: withWhatLabel[withWhat],
               sectionLabel: slot.title,
+              predict: slot.predict,
+              withWhat,
               leftCoefficient: leftData.coefficient,
               rightCoefficient: rightData.coefficient,
             });
