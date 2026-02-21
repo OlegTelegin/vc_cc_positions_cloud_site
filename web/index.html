@@ -46,10 +46,19 @@
 
           <aside class="side-panel" aria-label="Neighborhood bridge controls">
             <section class="panel-top">
-              <label class="panel-label" for="bridge-group-select">
-                Which positions are not picked but are among the picked?
-              </label>
-              <select id="bridge-group-select" class="panel-select"></select>
+              <div class="additional-highlights-row">
+                <span class="panel-label panel-label-inline">Additional highlights</span>
+                <select id="additional-highlights-mode" class="panel-select panel-select-compact">
+                  <option value="neighbors">Which positions are not picked but are among the picked?</option>
+                  <option value="compare">Compare 2 approaches</option>
+                </select>
+              </div>
+              <select id="bridge-group-select" class="panel-select panel-select-compact"></select>
+              <select id="approach-compare-mode" class="panel-select panel-select-compact" hidden>
+                <option value="both">Present in both approaches</option>
+                <option value="left_only">Among the left one, but not in the right one</option>
+                <option value="right_only">Among the right one, but not in the left one</option>
+              </select>
             </section>
 
             <section class="panel-bottom">

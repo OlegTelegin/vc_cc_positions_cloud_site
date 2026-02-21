@@ -17,7 +17,9 @@ const zoomInBtn = document.getElementById("zoom-in");
 const zoomOutBtn = document.getElementById("zoom-out");
 const leftClassSelect = document.getElementById("map-left-select");
 const rightClassSelect = document.getElementById("map-right-select");
+const additionalHighlightsModeSelect = document.getElementById("additional-highlights-mode");
 const bridgeGroupSelect = document.getElementById("bridge-group-select");
+const approachCompareModeSelect = document.getElementById("approach-compare-mode");
 const bridgePositionListEl = document.getElementById("bridge-position-list");
 const comparisonChartEl = document.getElementById("comparison-chart");
 const chartPairPopupEl = document.getElementById("chart-pair-popup");
@@ -42,6 +44,9 @@ let regressionStructureRows = [];
 let selectedLeftFile = "";
 let selectedRightFile = "";
 let selectedBridgeGroup = "left";
+let selectedAdditionalHighlightsMode = "neighbors";
+let selectedApproachCompareMode = "both";
+let activeAdditionalHighlightRoleNums = new Set();
 let chartPopupTimer = null;
 let showAdditionalHighlights = false;
 
@@ -142,11 +147,22 @@ function computeNeighborhoodBridgeSet(data, classRoleNums, k = NEIGHBOR_K, minCl
 function updateBridgePositionList() {
   if (!bridgePositionListEl) return;
 
-  const activeLabel = selectedBridgeGroup === "right"
-    ? getDisplayTitleByFileName(selectedRightFile)
-    : getDisplayTitleByFileName(selectedLeftFile);
+  let activeLabel = "";
+  if (selectedAdditionalHighlightsMode === "neighbors") {
+    activeLabel =
+      selectedBridgeGroup === "right"
+        ? getDisplayTitleByFileName(selectedRightFile)
+        : getDisplayTitleByFileName(selectedLeftFile);
+  } else if (selectedApproachCompareMode === "left_only") {
+    activeLabel = `${getDisplayTitleByFileName(selectedLeftFile)} only`;
+  } else if (selectedApproachCompareMode === "right_only") {
+    activeLabel = `${getDisplayTitleByFileName(selectedRightFile)} only`;
+  } else {
+    activeLabel = "Present in both approaches";
+  }
+
   const ringedPoints = pointsData
-    .filter((d) => neighborhoodBridgeRoleNums.has(d.roleNum))
+    .filter((d) => activeAdditionalHighlightRoleNums.has(d.roleNum))
     .sort((a, b) => a.title.localeCompare(b.title));
 
   bridgePositionListEl.innerHTML = "";
@@ -426,11 +442,41 @@ function renderComparisonChart() {
   });
 }
 
+function getApproachCompareHighlightSet() {
+  const result = new Set();
+  pointsData.forEach((point) => {
+    const inLeft = leftRoleNums.has(point.roleNum);
+    const inRight = rightRoleNums.has(point.roleNum);
+    if (selectedApproachCompareMode === "left_only") {
+      if (inLeft && !inRight) result.add(point.roleNum);
+      return;
+    }
+    if (selectedApproachCompareMode === "right_only") {
+      if (inRight && !inLeft) result.add(point.roleNum);
+      return;
+    }
+    if (inLeft && inRight) result.add(point.roleNum);
+  });
+  return result;
+}
+
+function updateAdditionalHighlightsVisibility() {
+  if (!bridgeGroupSelect || !approachCompareModeSelect) return;
+  const isNeighborsMode = selectedAdditionalHighlightsMode === "neighbors";
+  bridgeGroupSelect.hidden = !isNeighborsMode;
+  approachCompareModeSelect.hidden = isNeighborsMode;
+}
+
 function applySelectedClassifications() {
   leftRoleNums = roleSetByFileName[selectedLeftFile] || new Set();
   rightRoleNums = roleSetByFileName[selectedRightFile] || new Set();
-  const bridgeReferenceSet = selectedBridgeGroup === "right" ? rightRoleNums : leftRoleNums;
-  neighborhoodBridgeRoleNums = computeNeighborhoodBridgeSet(pointsData, bridgeReferenceSet);
+  if (selectedAdditionalHighlightsMode === "neighbors") {
+    const bridgeReferenceSet = selectedBridgeGroup === "right" ? rightRoleNums : leftRoleNums;
+    neighborhoodBridgeRoleNums = computeNeighborhoodBridgeSet(pointsData, bridgeReferenceSet);
+    activeAdditionalHighlightRoleNums = neighborhoodBridgeRoleNums;
+  } else {
+    activeAdditionalHighlightRoleNums = getApproachCompareHighlightSet();
+  }
   renderPoints();
   renderComparisonChart();
   updateBridgePositionList();
@@ -450,7 +496,10 @@ function renderPoints() {
     })
     .classed("is-highlighted", (d) => leftRoleNums.has(d.roleNum))
     .classed("is-right-highlighted", (d) => rightRoleNums.has(d.roleNum))
-    .classed("is-neighborhood-bridge", (d) => showAdditionalHighlights && neighborhoodBridgeRoleNums.has(d.roleNum))
+    .classed(
+      "is-neighborhood-bridge",
+      (d) => showAdditionalHighlights && activeAdditionalHighlightRoleNums.has(d.roleNum)
+    )
     .on("mouseenter", showTooltip)
     .on("mousemove", (event, d) => showTooltip(event, d))
     .on("mouseleave", hideTooltip);
@@ -573,6 +622,21 @@ function setupClassificationControls() {
     });
   }
 
+  if (additionalHighlightsModeSelect) {
+    additionalHighlightsModeSelect.addEventListener("change", () => {
+      selectedAdditionalHighlightsMode = additionalHighlightsModeSelect.value;
+      updateAdditionalHighlightsVisibility();
+      applySelectedClassifications();
+    });
+  }
+
+  if (approachCompareModeSelect) {
+    approachCompareModeSelect.addEventListener("change", () => {
+      selectedApproachCompareMode = approachCompareModeSelect.value;
+      applySelectedClassifications();
+    });
+  }
+
   document.addEventListener("click", () => {
     hideChartPairPopup();
   });
@@ -651,6 +715,9 @@ async function initialize() {
     populateClassificationSelect(leftClassSelect, selectedLeftFile);
     populateClassificationSelect(rightClassSelect, selectedRightFile);
     populateBridgeGroupSelect();
+    if (additionalHighlightsModeSelect) additionalHighlightsModeSelect.value = selectedAdditionalHighlightsMode;
+    if (approachCompareModeSelect) approachCompareModeSelect.value = selectedApproachCompareMode;
+    updateAdditionalHighlightsVisibility();
 
     pointsData = raw
       .map((row, idx) => ({

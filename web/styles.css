@@ -161,6 +161,28 @@ body {
   line-height: 1.2;
 }
 
+.panel-label-inline {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.additional-highlights-row {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-bottom: 0.35rem;
+}
+
+.panel-select-compact {
+  padding: 0.28rem 0.44rem;
+  font-size: 0.79rem;
+}
+
+.additional-highlights-row .panel-select {
+  min-width: 0;
+  flex: 1;
+}
+
 .side-panel .panel-select {
   padding: 0.3rem 0.46rem;
   font-size: 0.8rem;
