@@ -280,11 +280,9 @@ function rankToRelativeHeight(rank, maxRank = 4) {
 
 function getR2Color(value) {
   const safe = Number.isFinite(value) ? value : 0;
-  return d3
-    .scaleLinear()
-    .domain([0, 0.4, 0.8])
-    .range(["#b83f52", "#b87922", "#2e8f62"])
-    .clamp(true)(safe);
+  if (safe < 0.15) return "#b83f52";
+  if (safe <= 0.5) return "#111111";
+  return "#2e8f62";
 }
 
 function normalizeWithWhat(value) {
