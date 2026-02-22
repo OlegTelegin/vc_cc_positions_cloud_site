@@ -271,10 +271,12 @@ function showChartPairPopup(event, context) {
   }, 5000);
 }
 
-function rankToRelativeHeight(rank, maxRank = 4) {
-  const boundedRank = Number.isFinite(rank) ? Math.min(Math.max(rank, 1), maxRank) : maxRank;
-  if (maxRank <= 1) return 1;
-  const step = 0.6 / (maxRank - 1);
+function rankToRelativeHeight(rank, maxRank = null) {
+  const effectiveMaxRank =
+    Number.isFinite(maxRank) && maxRank > 1 ? maxRank : Math.max(2, classificationOptions.length || 4);
+  const boundedRank = Number.isFinite(rank) ? Math.min(Math.max(rank, 1), effectiveMaxRank) : effectiveMaxRank;
+  if (effectiveMaxRank <= 1) return 1;
+  const step = 0.6 / (effectiveMaxRank - 1);
   return 1 - (boundedRank - 1) * step;
 }
 
