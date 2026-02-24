@@ -6,4 +6,4 @@ list_by_type_4,Elastic net using 50-position-level categories (predict with sala
 list_by_type_5,Binary choice - pick from 50-position-level (predict with employment)
 list_by_type_6,Binary choice - pick from 50-position-level (predict with salaries)
 list_by_type_7,Binary choice - pick from 1000-position-level (predict with employment), only within S&M
-list_by_type_8,Binary choice - pick from 50-position-level (predict with salaries), only within S&M
+list_by_type_8,Binary choice - pick from 1000-position-level (predict with salaries), only within S&M
