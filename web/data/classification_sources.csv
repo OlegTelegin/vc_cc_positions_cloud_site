@@ -1,15 +1,17 @@
 file_name,display_title
 list_by_type_3,Amir's classification from S&M words
 list_by_type_1,All positions from 10-positions-level S&M category
+list_by_type_17,All positions from 10-positions-level S&M category + FE
 list_by_type_2,Elastic net using 50-position-level categories (predict with employment)
 list_by_type_4,Elastic net using 50-position-level categories (predict with salaries)
 list_by_type_14,Elastic net using 50-position-level categories (predict with compensations)
 list_by_type_5,Binary choice - pick from 50-position-level (predict with employment)
 list_by_type_6,Binary choice - pick from 50-position-level (predict with salaries)
-list_by_type_7,Binary choice - pick from 1000-position-level only within S&M (predict with employment)
-list_by_type_8,Binary choice - pick from 1000-position-level only within S&M (predict with salaries)
+list_by_type_7,Binary choice - pick from 50-position-level (predict with compensations)
 list_by_type_9,Binary choice - pick from 50-position-level (predict with employment share)
 list_by_type_10,Binary choice - pick from 50-position-level (predict with wage bill share)
-list_by_type_11,All positions positively correlated with S&M (using employment share) - pick from 10-position-level S&M only
-list_by_type_12,All positions positively correlated with S&M (using salary share) - pick from 10-position-level S&M only
-list_by_type_13,All positions positively correlated with S&M (using compensation share) - pick from 10-position-level S&M only
+list_by_type_7,Binary choice - pick from 1000-position-level only within S&M (predict with employment)
+list_by_type_8,Binary choice - pick from 1000-position-level only within S&M (predict with salaries)
+list_by_type_11,All k1000 positions positively correlated with S&M (using employment share) - pick within k10 S&M only
+list_by_type_12,All k1000 positions positively correlated with S&M (using salary share) - pick within k10 S&M only
+list_by_type_13,All k1000 positions positively correlated with S&M (using compensation share) - pick within k10 S&M only
