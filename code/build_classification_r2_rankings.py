@@ -38,7 +38,10 @@ def resolve_regression_file(file_name: str, output_dir: Path) -> Path:
         raise ValueError(f"Unsupported file_name format: {file_name!r}")
 
     type_num = match.group(1)
-    candidates = sorted(output_dir.glob(f"wfd_regressions_by_type_{type_num}*.dta"))
+    # Match only the exact type number. This avoids type 1 matching 10/11/12/13.
+    exact = output_dir.glob(f"wfd_regressions_by_type_{type_num}.dta")
+    with_suffix = output_dir.glob(f"wfd_regressions_by_type_{type_num}_*.dta")
+    candidates = sorted({*exact, *with_suffix})
     if not candidates:
         raise FileNotFoundError(
             f"No regression result file found for {file_name!r} in {output_dir}"

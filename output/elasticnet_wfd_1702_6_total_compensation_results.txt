@@ -1,0 +1,29 @@
+Elastic net run on temp_wfd_1702_6.dta
+Dependent variable: w_xsalesmktrawCIQ
+Predictors: w_total_compensation_k50_1-w_total_compensation_k50_53
+Train/test split seed: 1702
+Specification: nonnegative lasso (alpha=1) with CV + one-SE rule, grid(200, ratio(1e-6))
+CV alpha(min-MSE): 199.2561905
+CV alpha(one-SE): 5205.917124
+
+Selected variables:
+w_total_compensation_k50_5 w_total_compensation_k50_8 w_total_compensation_k50_20 w_total_compensation_k50_25 w_total_compensation_k50_27 w_total_compensation_k50_29 w_total_compensation_k50_39 w_total_compensation_k50_40 w_total_compensation_k50_41 w_total_compensation_k50_43 w_total_compensation_k50_50
+
+Selected variables and weights:
+w_total_compensation_k50_20	177006.97678415
+w_total_compensation_k50_25	277568.32679370
+w_total_compensation_k50_27	188213.08287455
+w_total_compensation_k50_29	27154.94877640
+w_total_compensation_k50_39	111102.80512796
+w_total_compensation_k50_40	157390.86073404
+w_total_compensation_k50_41	116308.86262728
+w_total_compensation_k50_43	94886.29519141
+w_total_compensation_k50_5	37661.32954379
+w_total_compensation_k50_50	301208.49849860
+w_total_compensation_k50_8	140450.54489127
+
+Holdout metrics (split==2):
+N test =        125
+RMSE   =  948743.1918
+MAE    =  710028.9514
+R2     =       0.6526
