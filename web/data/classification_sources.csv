@@ -9,4 +9,5 @@ list_by_type_7,Binary choice - pick from 1000-position-level only within S&M (pr
 list_by_type_8,Binary choice - pick from 1000-position-level only within S&M (predict with salaries)
 list_by_type_9,Binary choice - pick from 50-position-level (predict with employment share)
 list_by_type_10,Binary choice - pick from 50-position-level (predict with wage bill share)
-list_by_type_11,All positions positively correlated with S&M - pick from 10-position-level S&M only
+list_by_type_11,All positions positively correlated with S&M (using employment share) - pick from 10-position-level S&M only
+list_by_type_12,All positions positively correlated with S&M (using salary share) - pick from 10-position-level S&M only
