@@ -5,6 +5,7 @@ list_by_type_17,All positions from 10-positions-level S&M category + FE
 list_by_type_2,Elastic net using 50-position-level categories (predict with employment)
 list_by_type_4,Elastic net using 50-position-level categories (predict with salaries)
 list_by_type_14,Elastic net using 50-position-level categories (predict with compensations)
+list_by_type_19,Elastic net using 50-position-level categories (predict with compensations) + FE
 list_by_type_5,Binary choice - pick from 50-position-level (predict with employment)
 list_by_type_6,Binary choice - pick from 50-position-level (predict with salaries)
 list_by_type_7,Binary choice - pick from 50-position-level (predict with compensations)

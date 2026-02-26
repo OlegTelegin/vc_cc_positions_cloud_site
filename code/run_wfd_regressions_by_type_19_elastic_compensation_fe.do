@@ -3,38 +3,45 @@ set more off
 
 local project_dir "D:/cursor_projects/vc_cc_positions_cloud_site"
 
-local sm_type "selected_vars_peremp_salary_salary_50"
-local rhs_salary_var "w_sal_k10_8_sel_ps50"
-local rhs_weight_var "w_wgt_k10_8_sel_ps50"
-local rhs_total_comp_var "w_tcmp_k10_8_sel_ps50"
-local rhs_per_salary_var "w_psal_k10_8_sel_ps50"
-local rhs_per_weight_var "w_pwgt_k10_8_sel_ps50"
-local rhs_per_total_comp_var "w_ptcmp_k10_8_sel_ps50"
+local sm_type "elastic_compensation_fe"
+local rhs_salary_var "w_sal_k10_8_elcmp_fe"
+local rhs_weight_var "w_wgt_k10_8_elcmp_fe"
+local rhs_total_comp_var "w_tcmp_k10_8_elcmp_fe"
+local rhs_per_salary_var "w_psal_k10_8_elcmp_fe"
+local rhs_per_weight_var "w_pwgt_k10_8_elcmp_fe"
+local rhs_per_total_comp_var "w_ptcmp_k10_8_elcmp_fe"
 
-* Read selected variables list (no weights)
-import delimited "`project_dir'/data/selected_vars_predict_peremp_salary_w_salary_50.csv", clear varnames(1)
+* Read weighted selected variables list
+import delimited "`project_dir'/output/elasticnet_wfd_1702_6_total_compensation_selected_weights_fe.csv", clear varnames(1)
 
-capture confirm variable selected_var
+capture confirm variable variable
 if _rc {
-    di as error "Selected-vars file is missing column: selected_var"
+    di as error "Weights file is missing column: variable"
+    exit 111
+}
+capture confirm variable weight
+if _rc {
+    di as error "Weights file is missing column: weight"
     exit 111
 }
 
-drop if missing(selected_var)
+drop if missing(variable) | missing(weight)
 quietly count
 if r(N) == 0 {
-    di as error "No selected variables found in `project_dir'/data/selected_vars_predict_peremp_salary_w_salary_50.csv"
+    di as error "No weighted variables found in `project_dir'/output/elasticnet_wfd_1702_6_total_compensation_selected_weights_fe.csv"
     exit 2000
 }
 
-levelsof selected_var, local(selected_vars)
+levelsof variable, local(selected_vars)
 local selected_ids ""
 foreach v of local selected_vars {
-    if !regexm("`v'", "^[a-z_]+_k50_([0-9]+)$") {
-        di as error "Unexpected selected_var format: `v' (expected *_k50_#)"
+    if !regexm("`v'", "^w_total_compensation_k50_([0-9]+)$") {
+        di as error "Unexpected variable format: `v' (expected w_total_compensation_k50_#)"
         exit 111
     }
     local id = regexs(1)
+    quietly summarize weight if variable == "`v'", meanonly
+    local wt_`id' = r(mean)
     local selected_ids `selected_ids' `id'
 }
 
@@ -61,23 +68,23 @@ foreach id of local selected_ids {
 
     capture confirm variable `v_salary'
     if _rc {
-        di as error "Variable `v_salary' not found in temp_wfd_1702_5.dta"
+        di as error "Variable `v_salary' not found in temp_wfd_1702_5_w_certainty_quartiles.dta"
         exit 111
     }
     capture confirm variable `v_weight'
     if _rc {
-        di as error "Variable `v_weight' not found in temp_wfd_1702_5.dta"
+        di as error "Variable `v_weight' not found in temp_wfd_1702_5_w_certainty_quartiles.dta"
         exit 111
     }
     capture confirm variable `v_total_comp'
     if _rc {
-        di as error "Variable `v_total_comp' not found in temp_wfd_1702_5.dta"
+        di as error "Variable `v_total_comp' not found in temp_wfd_1702_5_w_certainty_quartiles.dta"
         exit 111
     }
 
-    replace rhs_salary_sum = rhs_salary_sum + `v_salary'
-    replace rhs_weight_sum = rhs_weight_sum + `v_weight'
-    replace rhs_total_comp_sum = rhs_total_comp_sum + `v_total_comp'
+    replace rhs_salary_sum = rhs_salary_sum + (`wt_`id'') * `v_salary'
+    replace rhs_weight_sum = rhs_weight_sum + (`wt_`id'') * `v_weight'
+    replace rhs_total_comp_sum = rhs_total_comp_sum + (`wt_`id'') * `v_total_comp'
 }
 
 gen t = rhs_salary_sum
@@ -351,23 +358,23 @@ foreach id of local selected_ids {
 
     capture confirm variable `v_salary'
     if _rc {
-        di as error "Variable `v_salary' not found in temp_wfd_1702_5.dta"
+        di as error "Variable `v_salary' not found in temp_wfd_1702_5_w_certainty_quartiles.dta"
         exit 111
     }
     capture confirm variable `v_weight'
     if _rc {
-        di as error "Variable `v_weight' not found in temp_wfd_1702_5.dta"
+        di as error "Variable `v_weight' not found in temp_wfd_1702_5_w_certainty_quartiles.dta"
         exit 111
     }
     capture confirm variable `v_total_comp'
     if _rc {
-        di as error "Variable `v_total_comp' not found in temp_wfd_1702_5.dta"
+        di as error "Variable `v_total_comp' not found in temp_wfd_1702_5_w_certainty_quartiles.dta"
         exit 111
     }
 
-    replace rhs_salary_sum = rhs_salary_sum + `v_salary'
-    replace rhs_weight_sum = rhs_weight_sum + `v_weight'
-    replace rhs_total_comp_sum = rhs_total_comp_sum + `v_total_comp'
+    replace rhs_salary_sum = rhs_salary_sum + (`wt_`id'') * `v_salary'
+    replace rhs_weight_sum = rhs_weight_sum + (`wt_`id'') * `v_weight'
+    replace rhs_total_comp_sum = rhs_total_comp_sum + (`wt_`id'') * `v_total_comp'
 }
 
 gen t = rhs_salary_sum
@@ -637,4 +644,4 @@ postclose `posth'
 
 use `results_tmp', clear
 sort regression_number
-save "..\output\wfd_regressions_by_type_18_selected_vars_peremp_salary_50_fe.dta", replace
+save "..\output\wfd_regressions_by_type_19_elastic_compensation_fe.dta", replace
