@@ -1,0 +1,399 @@
+title,manual_bin,manual_score_proxy,manual_bin_id
+Licensing Accountant,low,10,0
+Organ Procurement Technician,low,10,0
+Management Data Analyst,mid,40,1
+Static Equipment Engineer,low,10,0
+Library Research Intern,low,10,0
+Finance Improvement,low,10,0
+Passenger Operator,low,10,0
+Patch Administrator,low,10,0
+Business Administrator,low,10,0
+Freight Operations Management,mid,40,1
+Drilling Analyst,low,10,0
+Bail Clerk,low,10,0
+Production Planner Intern,mid,40,1
+Inventory Specialist,mid,40,1
+Art Therapy Instructor,low,10,0
+Asset Appraiser,mid,40,1
+Transportation Technician,low,10,0
+Stockroom Supervisor,mid,40,1
+Model Validator,low,10,0
+Toy Tester,low,10,0
+Quantitative Data Scientist,low,10,0
+Sports Advisor,mid,40,1
+Order Processing Agent,mid,40,1
+Technology Auditor,low,10,0
+Accessibility Data Analyst,low,10,0
+Sanitary Engineer Intern,low,10,0
+Disability Claims Specialist,low,10,0
+Pipeline Commissioning Engineer,low,10,0
+Volunteer Advocate,low,10,0
+Training Project Manager,mid,40,1
+Supply Chain Process Expert,mid,40,1
+Plastics Supervisor,low,10,0
+Mineral Processing Operator,low,10,0
+Intervention Teacher,low,10,0
+Risk Developer,low,10,0
+Organizational Designer,mid,40,1
+Agile Equipment Driver,low,10,0
+Juvenile Justice Advocate,low,10,0
+Mortgage Intern,mid,40,1
+Aviation Support Technician,low,10,0
+Compliance Trainer,mid,40,1
+Incident Responder,low,10,0
+Attractions Operator,low,10,0
+Environmental Life Cycle Analyst,low,10,0
+Production Support Analyst,low,10,0
+Versatile Photographer,low,10,0
+Sustainability Data Analyst,low,10,0
+Tunnel Project Coordinator,low,10,0
+Logistics Operator,mid,40,1
+Automotive Engineering Leader,low,10,0
+Short-Term Rental Manager,mid,40,1
+Reception Staff,low,10,0
+Refugee Coordinator,low,10,0
+Cloud Recruitment Consultant,mid,40,1
+Healthcare Educator,low,10,0
+Prosthetic Support Assistant,low,10,0
+Utilization Management Leader,low,10,0
+Camp Chef,low,10,0
+Financial Literacy Volunteer,low,10,0
+Aerospace Operator,low,10,0
+Construction Consultant,mid,40,1
+NoSQL Architect,low,10,0
+Global Mobility Consultant,mid,40,1
+Pastry Chef,low,10,0
+Election Worker,low,10,0
+Banking Controller,low,10,0
+Growth Consulting,high,80,2
+Parts Advisor,mid,40,1
+Technology Sales Trainer,high,80,2
+Prospect Research Analyst,mid,40,1
+Sales Trainer,high,80,2
+Retail Pricing Analyst,high,80,2
+Communications Writer,mid,40,1
+Community Engagement Officer,high,80,2
+Consultant,mid,40,1
+Mobile Growth Manager,high,80,2
+Zone Manager,mid,40,1
+Hospitality Event Coordinator,mid,40,1
+Economic Development Project Manager,mid,40,1
+Forecasting Planner,mid,40,1
+Forecasting Analyst,mid,40,1
+Investment Partnerships,high,80,2
+Personal Banker,mid,40,1
+Entrepreneur,high,80,2
+Merchandising Director,high,80,2
+Business Unit Leader,mid,40,1
+Insurance Strategist,high,80,2
+Research Outreach Coordinator,high,80,2
+Insurance Liaison,high,80,2
+Partnership Project Manager,high,80,2
+Real Estate Leadership,high,80,2
+Commercial Engineering Specialist,mid,40,1
+Media Analytics Specialist,high,80,2
+Product Introduction Manager,high,80,2
+Product Project Manager,mid,40,1
+Physician Liaison,high,80,2
+Advancement,high,80,2
+Sports Strategist,high,80,2
+Digital Strategy Project Manager,high,80,2
+Donor Relations Project Manager,high,80,2
+Video Producer,mid,40,1
+Sales Operations,high,80,2
+Membership Analyst,mid,40,1
+Customer Call Advisor,mid,40,1
+Livestream Producer,mid,40,1
+Beneficiary Engagement,high,80,2
+Creative Leadership,mid,40,1
+Proposal Engineer,high,80,2
+Creative Designer,mid,40,1
+Campaign Organizer,mid,40,1
+Latin America Manager,mid,40,1
+Partner Relations,high,80,2
+Media Insights Analyst,high,80,2
+Blockchain Consultant,mid,40,1
+AI Data Strategist,mid,40,1
+Science Communications Specialist,mid,40,1
+Alliance Director,high,80,2
+Web Content Writer,mid,40,1
+Product Rollout Manager,high,80,2
+Media Manager,high,80,2
+Science Writer,low,10,0
+Brand Performance Analyst,high,80,2
+Pawn Associate,mid,40,1
+Marketing Compliance Officer,high,80,2
+Floral Manager,mid,40,1
+Financial Communications,mid,40,1
+Sales Productivity Analyst,high,80,2
+Client Services Analyst,mid,40,1
+Stakeholder Manager,mid,40,1
+Salesforce Development,high,80,2
+Chemical Consultant,low,10,0
+Lending Associate,mid,40,1
+Media Relations Manager,mid,40,1
+Telecom Marketer,high,80,2
+Retail Manager,mid,40,1
+Organic Growth Strategist,high,80,2
+Healthcare Sales Director,high,80,2
+Performance Planner,mid,40,1
+OEM Sales Professional,high,80,2
+Life Sciences Sales,high,80,2
+Route Sales Representative,high,80,2
+Global Account Executive,high,80,2
+Affiliate Growth,high,80,2
+Sales and Marketing Coordinator,high,80,2
+Education Sales,high,80,2
+Mattress Sales Associate,high,80,2
+OEM Sales Representative,high,80,2
+Sales Engagement Manager,high,80,2
+Digital Brand Marketer,high,80,2
+Fluid Systems Sales Engineer,high,80,2
+Asset Leasing,mid,40,1
+Salesperson,high,80,2
+Real Estate Sales,high,80,2
+Product Launch,high,80,2
+Hotel Sales Executive,high,80,2
+Loan Sales Executive,high,80,2
+Media Strategist,high,80,2
+Retail Sales Professional,high,80,2
+Leasing Consultant,mid,40,1
+Solar Sale,high,80,2
+Employee Benefits Sales,high,80,2
+Airline Account Manager,high,80,2
+Guerrilla Marketer,high,80,2
+Convention Sales,high,80,2
+Marketing Event Organizer,high,80,2
+International Growth,high,80,2
+Digital Sales Lead,high,80,2
+Tobacco Sales Associate,high,80,2
+Sales Promoter,high,80,2
+Logistics Sales Representative,high,80,2
+Event Sales Rep,high,80,2
+Cybersecurity Account Executive,high,80,2
+Media Planning,high,80,2
+HVAC Sales Representative,high,80,2
+Fundraising Associate,mid,40,1
+Marketing Innovator,high,80,2
+Legal Marketer,high,80,2
+Sales Outreach Specialist,high,80,2
+Mutual Funds Sales Associate,high,80,2
+Appliance Sales Lead,high,80,2
+Inside Sales Director,high,80,2
+Diabetes Sales Specialist,high,80,2
+Social Media Manager,high,80,2
+Real Estate Leasing Agent,high,80,2
+Sales Solutions Specialist,high,80,2
+Customer Development,high,80,2
+Annuity Sales Agent,high,80,2
+Implant Sales,high,80,2
+Sales Enablement Manager,high,80,2
+Risk Sales,high,80,2
+Healthcare Salesperson,high,80,2
+Sponsorship Marketer,high,80,2
+Outdoor Retail Associate,mid,40,1
+Pharmaceutical Marketing,high,80,2
+Retention Marketer,high,80,2
+Asset Management Sales,high,80,2
+Sports Marketing Manager,high,80,2
+Print Sales Representative,high,80,2
+Specialty Healthcare Sale,high,80,2
+Petroleum Tester,low,10,0
+Water Guide,low,10,0
+Blogger,low,10,0
+Web Development,low,10,0
+Chief Financial Officer,low,10,0
+Confined Space Cleaner,low,10,0
+Private Label Merchandiser,high,80,2
+Event Security Inspector,low,10,0
+ML Operation,low,10,0
+Information Specialist,low,10,0
+Social Work Instructor,low,10,0
+Library Technician,low,10,0
+Machine Technician,low,10,0
+Blind Education Teacher,low,10,0
+Mammography Technologist,low,10,0
+Regulatory Labeling Specialist,mid,40,1
+Veterans Employment Advisor,low,10,0
+Warehouse Operations Coordinator,low,10,0
+Apple Technician,low,10,0
+Tissue Engineering Researcher,low,10,0
+Ductwork Installer,low,10,0
+Geology Intern,low,10,0
+Meat Processing Operator,low,10,0
+General IT Support,low,10,0
+Vehicle Finisher,low,10,0
+Customer Reference Program Manager,high,80,2
+Transplant Coordinator Nurse,low,10,0
+Physical Education Teacher,low,10,0
+Asset Management Product,mid,40,1
+Blending Technician,low,10,0
+Loan Advisor,mid,40,1
+Laboratory Researcher,low,10,0
+Furniture Sales Expert,high,80,2
+Pyrotechnics Technician,low,10,0
+Operations Superintendent,low,10,0
+Key Buyer,mid,40,1
+Candle Production Worker,low,10,0
+Program Administration,low,10,0
+Greenhouse Worker,low,10,0
+Revenue Cycle Professional,low,10,0
+Badminton Coache,low,10,0
+HR Program Manager,low,10,0
+Digital Inclusion Manager,low,10,0
+Sustainability Advisor,low,10,0
+Account Acquisition Specialist,high,80,2
+Product Transformation Specialist,low,10,0
+Silo Operator,low,10,0
+Art and Music Sales,high,80,2
+Oracle Developer,low,10,0
+Asia-Pacific Director,low,10,0
+Engineering Scheduler,low,10,0
+App Store Optimizer,high,80,2
+Experimentation Scientist,mid,40,1
+Bankruptcy Collector,mid,40,1
+Finance Instructor,low,10,0
+Phonics Teacher,low,10,0
+Medicaid Coordinator,low,10,0
+Delivery Support Agent,low,10,0
+Transaction Advisory Analyst,low,10,0
+Order Management,mid,40,1
+Managing Director Assistant,low,10,0
+Accounting Audit Assistant,low,10,0
+Robotics Engineer,low,10,0
+Insurance Branch Director,mid,40,1
+Deviation Manager,low,10,0
+Cabinet Expert,low,10,0
+Motorcycle Mechanic,low,10,0
+Environmental Policy,low,10,0
+Data Entry Technician,low,10,0
+Park Services,low,10,0
+Fine Artist,low,10,0
+Field Safety Engineer,low,10,0
+Tool Technician,low,10,0
+Industry-Specific Assembler,low,10,0
+Project Engineer - Oil and Gas,low,10,0
+General Nurse Practitioner,low,10,0
+Communications Intern,mid,40,1
+Imaging Technologist,low,10,0
+Neighborhood Organizer,low,10,0
+Footwear Merchandiser,high,80,2
+Scrum Coach,low,10,0
+Copyright Attorney,low,10,0
+Recruitment Sales Specialist,high,80,2
+Radioactive Waste Technician,low,10,0
+Aircraft Maintenance Leadership,low,10,0
+Insurance Software Developer,low,10,0
+Open Source Advocate,mid,40,1
+Truck Driver Leader,low,10,0
+Oncology Data Analyst,low,10,0
+Mobile QA Tester,low,10,0
+Medical Lead,low,10,0
+Correctional Librarian,low,10,0
+Agricultural Intern,low,10,0
+Acronym Coordinator,low,10,0
+Filing Clerk,low,10,0
+HCM Reporting,low,10,0
+Security Advisor,low,10,0
+Pharmacy Utilization Expert,low,10,0
+Blood Collection,low,10,0
+People Succes,low,10,0
+Food Production Specialist,low,10,0
+Commercialization Manager,high,80,2
+Industrial Paramedic,low,10,0
+Franchise Data Analyst,mid,40,1
+Cybersecurity Product Manager,mid,40,1
+In Vivo Pharmacologist,low,10,0
+Aviation Business Analyst,low,10,0
+Mobility Trainer,low,10,0
+Health Coordinator,low,10,0
+Localization Specialist,low,10,0
+Passenger Shuttle Driver,low,10,0
+Sign Specialist,low,10,0
+Catastrophe Data Analyst,low,10,0
+Healthcare Executive Manager,low,10,0
+Market Sizing,high,80,2
+Apprenticeship Analyst,low,10,0
+Battery Engineering Intern,low,10,0
+Document Developer,low,10,0
+Vendor Management,mid,40,1
+Welcome Host,low,10,0
+Ocean Scientist,low,10,0
+Credit Evaluator,low,10,0
+Mobility Device Technician,low,10,0
+Sales Pricing Analyst,high,80,2
+Kitchen and Bath Designer,low,10,0
+Motion Capture Artist,low,10,0
+Quality Inspectors by Industry,low,10,0
+Research Specialist,low,10,0
+Client Services Director,mid,40,1
+Immunology Research Fellow,low,10,0
+PWA Developer,low,10,0
+Early Childhood Coordinator,low,10,0
+Security Product Lead,mid,40,1
+Talent Operation,low,10,0
+Agreement Specialist,mid,40,1
+Criminal Investigation Director,low,10,0
+Grain Quality Analyst,low,10,0
+Mobile Security Analyst,low,10,0
+Ghost Kitchen Operator,low,10,0
+Asia Pacific Sales,high,80,2
+Contracts Director,mid,40,1
+Hazardous Materials Technician,low,10,0
+Crisis Mental Health Responder,low,10,0
+Industrial Catering Manager,low,10,0
+Tenant Coordinator,mid,40,1
+Financial Forecaster,low,10,0
+Corporate Planning Manager,low,10,0
+Political Science Teacher,low,10,0
+School Counseling,low,10,0
+Logistics Product Manager,mid,40,1
+Case Manager,low,10,0
+Payment Solutions Sales,high,80,2
+Marketing Intern,high,80,2
+Structural Engineer,low,10,0
+Fashion Store Manager,high,80,2
+Livestock Transport Driver,low,10,0
+Portfolio Underwriter,low,10,0
+Scrap Processor,low,10,0
+Agricultural Technician,low,10,0
+Claims Handler,low,10,0
+Vehicle Component Tester,low,10,0
+Technology Sales Representative,high,80,2
+Inspection Management,low,10,0
+Credit Analyst,low,10,0
+Lunchroom Staff,low,10,0
+RPA Support Engineer,low,10,0
+Franchise Auditor,low,10,0
+Mobile Car Wash Technician,low,10,0
+Fashion Strategist,mid,40,1
+Telecommunications Recruiter,low,10,0
+Healthcare Chef,low,10,0
+Sustainable Supply Chain,low,10,0
+Calibration Technician,low,10,0
+Motion Engineer,low,10,0
+Industrial Fluid Specialist,low,10,0
+Infrastructure Counsel,low,10,0
+Eye Care Provider,low,10,0
+Scheduling Supervisor,low,10,0
+Mining Inspector,low,10,0
+Manual Production Worker,low,10,0
+Storage Engineer,low,10,0
+Aesthetic Sales Representative,high,80,2
+Aerial Photographer,low,10,0
+Middle School Coach,low,10,0
+Network Operations Lead,low,10,0
+Derivatives Operator,low,10,0
+Residential Housing Coordinator,low,10,0
+Sonar Operator,low,10,0
+Language Translator,low,10,0
+Grants Compliance,low,10,0
+Road Maintenance Technician,low,10,0
+Restaurant Inspector,low,10,0
+International Innovation,low,10,0
+Healthcare Revenue Cycle Project Manager,low,10,0
+Livestock Coordinator,low,10,0
+Wealth Management,mid,40,1
+Thermal Engineer,low,10,0
+Healthcare Network Specialist,low,10,0
+Data Architecture,low,10,0

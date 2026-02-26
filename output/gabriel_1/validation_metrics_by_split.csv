@@ -1,0 +1,3 @@
+eval_split,n,spearman,weighted_kappa_quadratic
+holdout,200,0.728255416528606,0.794004830231567
+stratified_qa,198,0.8458752812673623,0.781021897810219

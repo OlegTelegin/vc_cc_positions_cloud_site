@@ -1,0 +1,51 @@
+{
+  "run_timestamp_utc": "2026-02-26T05:53:01.097535+00:00",
+  "input_data_path": "D:\\cursor_projects\\vc_cc_positions_cloud_site\\data\\list_of_17k_positions_renamed_hr.dta",
+  "output_dir": "D:\\cursor_projects\\vc_cc_positions_cloud_site\\output\\gabriel_1",
+  "n_rows_input": 16999,
+  "n_unique_titles_scored": 16999,
+  "prompt_selected": "v2",
+  "pilot_summary": {
+    "pilot_n": 250,
+    "avg_abs_shift_v1_to_v2": 3.216,
+    "large_shift_count_ge_25": 2
+  },
+  "benchmark_pass_rate": 1.0,
+  "validation_overall": {
+    "n": 398,
+    "spearman": 0.8789292030319994,
+    "weighted_kappa_quadratic": 0.8401692972719315
+  },
+  "validation_by_split": [
+    {
+      "eval_split": "holdout",
+      "n": 200,
+      "spearman": 0.728255416528606,
+      "weighted_kappa_quadratic": 0.794004830231567
+    },
+    {
+      "eval_split": "stratified_qa",
+      "n": 198,
+      "spearman": 0.8458752812673623,
+      "weighted_kappa_quadratic": 0.781021897810219
+    }
+  ],
+  "artifacts": [
+    "attribute_spec_v1.json",
+    "prompt_v1.txt",
+    "prompt_v2.txt",
+    "prompt_final.txt",
+    "pilot_scores_v1.csv",
+    "pilot_scores_v2.csv",
+    "pilot_prompt_comparison.csv",
+    "benchmark_sanity_checks.csv",
+    "full_scores_checkpoint.csv",
+    "role_sales_mkt_relatedness_gpt.csv",
+    "manual_qa_labels.csv",
+    "qa_eval_scored.csv",
+    "validation_metrics_by_split.csv",
+    "validation_confusion_cases.csv",
+    "list_of_17k_positions_with_sales_mkt_relatedness_gpt.dta",
+    "list_of_17k_positions_with_sales_mkt_relatedness_gpt.csv"
+  ]
+}

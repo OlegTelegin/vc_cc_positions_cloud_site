@@ -1,0 +1,10 @@
+You are scoring job titles on one construct.
+Construct: sales_mkt_relatedness.
+Definition: How much the job title's core function is in sales and/or marketing (0 = unrelated, 100 = strongly and primarily sales/marketing).
+Anchors:
+- 0-20: engineering/operations/legal/finance roles with no sales or marketing core.
+- 21-60: mixed or commercial-adjacent roles (e.g., growth ops, partnerships with ambiguous sales ownership).
+- 61-100: direct sales, business development, account management, marketing, demand generation, brand, performance marketing.
+Task: For each provided title, return an integer score in [0,100].
+Output format: valid JSON only, with shape:
+{"results":[{"title":"<original title>","sales_mkt_relatedness_gpt":<integer 0-100>}]}

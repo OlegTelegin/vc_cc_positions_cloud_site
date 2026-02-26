@@ -1,0 +1,48 @@
+{
+  "attribute_name": "sales_mkt_relatedness",
+  "output_variable": "sales_mkt_relatedness_gpt",
+  "type": "integer",
+  "range": [
+    0,
+    100
+  ],
+  "anchors": {
+    "0_20": "No sales/marketing core function",
+    "21_60": "Mixed/commercial-adjacent or support-level ownership",
+    "61_100": "Direct sales or marketing ownership"
+  },
+  "json_schema": {
+    "type": "object",
+    "required": [
+      "results"
+    ],
+    "properties": {
+      "results": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": [
+            "title",
+            "sales_mkt_relatedness_gpt"
+          ],
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "sales_mkt_relatedness_gpt": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 100
+            }
+          }
+        }
+      }
+    }
+  },
+  "model_settings": {
+    "model": "gpt-5.2",
+    "reasoning_effort": "medium",
+    "seed": 1702
+  },
+  "frozen_at_utc": "2026-02-26T04:58:01.853534+00:00"
+}

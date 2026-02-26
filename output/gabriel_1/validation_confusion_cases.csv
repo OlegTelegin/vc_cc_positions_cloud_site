@@ -1,0 +1,41 @@
+role_k17000_v3,sales_mkt_relatedness_gpt,prompt_version,model,scored_at_utc,score_bin_id,eval_split,manual_bin,manual_score_proxy,manual_bin_id,gpt_bin_id,gpt_bin,abs_diff_proxy
+Blogger,70,v2,gpt-5.2,2026-02-26T04:49:50.637926+00:00,2,holdout,low,10,0,2,high,60
+Salesforce Development,25,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,stratified_qa,high,80,2,1,mid,55
+Partnership Project Manager,25,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,1,stratified_qa,high,80,2,1,mid,55
+Beneficiary Engagement,30,v2,gpt-5.2,2026-02-26T04:49:00.833555+00:00,1,stratified_qa,high,80,2,1,mid,50
+Research Outreach Coordinator,30,v2,gpt-5.2,2026-02-26T05:34:30.915418+00:00,1,stratified_qa,high,80,2,1,mid,50
+Retail Pricing Analyst,30,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,1,stratified_qa,high,80,2,1,mid,50
+Product Rollout Manager,35,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,stratified_qa,high,80,2,1,mid,45
+Insurance Liaison,35,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,1,stratified_qa,high,80,2,1,mid,45
+Supply Chain Process Expert,0,v2,gpt-5.2,2026-02-26T05:44:46.187695+00:00,0,stratified_qa,mid,40,1,0,low,40
+Experimentation Scientist,0,v2,gpt-5.2,2026-02-26T05:05:11.781159+00:00,0,holdout,mid,40,1,0,low,40
+Compliance Trainer,0,v2,gpt-5.2,2026-02-26T04:54:49.064546+00:00,0,stratified_qa,mid,40,1,0,low,40
+Logistics Operator,0,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,stratified_qa,mid,40,1,0,low,40
+Stockroom Supervisor,0,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,0,stratified_qa,mid,40,1,0,low,40
+Entrepreneur,40,v2,gpt-5.2,2026-02-26T05:03:44.600061+00:00,1,stratified_qa,high,80,2,1,mid,40
+Inventory Specialist,0,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,0,stratified_qa,mid,40,1,0,low,40
+Production Planner Intern,0,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,0,stratified_qa,mid,40,1,0,low,40
+Leasing Consultant,80,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,2,stratified_qa,mid,40,1,2,high,40
+Real Estate Leadership,40,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,1,stratified_qa,high,80,2,1,mid,40
+Customer Reference Program Manager,40,v2,gpt-5.2,2026-02-26T04:57:48.158539+00:00,1,holdout,high,80,2,1,mid,40
+Training Project Manager,0,v2,gpt-5.2,2026-02-26T05:47:04.089037+00:00,0,stratified_qa,mid,40,1,0,low,40
+Merchandising Director,45,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,1,stratified_qa,high,80,2,1,mid,35
+Insurance Strategist,45,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,1,stratified_qa,high,80,2,1,mid,35
+Global Mobility Consultant,5,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,0,stratified_qa,mid,40,1,0,low,35
+Insurance Branch Director,75,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,2,holdout,mid,40,1,2,high,35
+Product Introduction Manager,45,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,stratified_qa,high,80,2,1,mid,35
+Proposal Engineer,45,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,stratified_qa,high,80,2,1,mid,35
+Footwear Merchandiser,45,v2,gpt-5.2,2026-02-26T05:07:48.965058+00:00,1,holdout,high,80,2,1,mid,35
+Organizational Designer,5,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,stratified_qa,mid,40,1,0,low,35
+Performance Planner,75,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,2,stratified_qa,mid,40,1,2,high,35
+Digital Strategy Project Manager,45,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,1,stratified_qa,high,80,2,1,mid,35
+Investment Partnerships,45,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,1,stratified_qa,high,80,2,1,mid,35
+Regulatory Labeling Specialist,5,v2,gpt-5.2,2026-02-26T05:34:30.915418+00:00,0,holdout,mid,40,1,0,low,35
+Market Sizing,45,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,1,holdout,high,80,2,1,mid,35
+Private Label Merchandiser,50,v2,gpt-5.2,2026-02-26T05:29:29.204581+00:00,1,holdout,high,80,2,1,mid,30
+Media Insights Analyst,50,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,1,stratified_qa,high,80,2,1,mid,30
+Asset Appraiser,10,v2,gpt-5.2,2026-02-26T04:47:50.104369+00:00,0,stratified_qa,mid,40,1,0,low,30
+Asset Leasing,70,v2,gpt-5.2,2026-02-26T04:47:50.104369+00:00,2,stratified_qa,mid,40,1,2,high,30
+Tenant Coordinator,10,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,0,holdout,mid,40,1,0,low,30
+Media Analytics Specialist,50,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,1,stratified_qa,high,80,2,1,mid,30
+Vendor Management,10,v2,gpt-5.2,2026-02-26T05:48:18.322036+00:00,0,holdout,mid,40,1,0,low,30

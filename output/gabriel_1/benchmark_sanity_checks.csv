@@ -1,0 +1,7 @@
+title,expected_min,expected_max,score,pass
+Software Engineer,0,20,5,True
+Controller,0,25,5,True
+Sales Operations Manager,35,75,55,True
+Partnerships Manager,25,70,50,True
+Account Executive,65,100,95,True
+Performance Marketing Manager,70,100,90,True

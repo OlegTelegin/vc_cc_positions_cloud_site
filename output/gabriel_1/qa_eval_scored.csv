@@ -1,0 +1,399 @@
+role_k17000_v3,sales_mkt_relatedness_gpt,prompt_version,model,scored_at_utc,score_bin_id,eval_split,manual_bin,manual_score_proxy,manual_bin_id,gpt_bin_id,gpt_bin,abs_diff_proxy
+Licensing Accountant,0,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,stratified_qa,low,10,0,0,low,10
+Organ Procurement Technician,5,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,stratified_qa,low,10,0,0,low,5
+Management Data Analyst,10,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,0,stratified_qa,mid,40,1,0,low,30
+Static Equipment Engineer,0,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,0,stratified_qa,low,10,0,0,low,10
+Library Research Intern,0,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,stratified_qa,low,10,0,0,low,10
+Finance Improvement,0,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,0,stratified_qa,low,10,0,0,low,10
+Passenger Operator,0,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,stratified_qa,low,10,0,0,low,10
+Patch Administrator,0,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,stratified_qa,low,10,0,0,low,10
+Business Administrator,10,v2,gpt-5.2,2026-02-26T04:50:42.353996+00:00,0,stratified_qa,low,10,0,0,low,0
+Freight Operations Management,15,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,0,stratified_qa,mid,40,1,0,low,25
+Drilling Analyst,0,v2,gpt-5.2,2026-02-26T05:02:31.385970+00:00,0,stratified_qa,low,10,0,0,low,10
+Bail Clerk,0,v2,gpt-5.2,2026-02-26T04:48:39.100997+00:00,0,stratified_qa,low,10,0,0,low,10
+Production Planner Intern,0,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,0,stratified_qa,mid,40,1,0,low,40
+Inventory Specialist,0,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,0,stratified_qa,mid,40,1,0,low,40
+Art Therapy Instructor,0,v2,gpt-5.2,2026-02-26T04:47:30.458931+00:00,0,stratified_qa,low,10,0,0,low,10
+Asset Appraiser,10,v2,gpt-5.2,2026-02-26T04:47:50.104369+00:00,0,stratified_qa,mid,40,1,0,low,30
+Transportation Technician,0,v2,gpt-5.2,2026-02-26T05:47:04.089037+00:00,0,stratified_qa,low,10,0,0,low,10
+Stockroom Supervisor,0,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,0,stratified_qa,mid,40,1,0,low,40
+Model Validator,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,stratified_qa,low,10,0,0,low,10
+Toy Tester,0,v2,gpt-5.2,2026-02-26T05:47:04.089037+00:00,0,stratified_qa,low,10,0,0,low,10
+Quantitative Data Scientist,0,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,0,stratified_qa,low,10,0,0,low,10
+Sports Advisor,20,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,0,stratified_qa,mid,40,1,0,low,20
+Order Processing Agent,15,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,stratified_qa,mid,40,1,0,low,25
+Technology Auditor,0,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,0,stratified_qa,low,10,0,0,low,10
+Accessibility Data Analyst,3,v2,gpt-5.2,2026-02-26T04:45:17.660344+00:00,0,stratified_qa,low,10,0,0,low,7
+Sanitary Engineer Intern,0,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,0,stratified_qa,low,10,0,0,low,10
+Disability Claims Specialist,0,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,0,stratified_qa,low,10,0,0,low,10
+Pipeline Commissioning Engineer,0,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,0,stratified_qa,low,10,0,0,low,10
+Volunteer Advocate,0,v2,gpt-5.2,2026-02-26T05:50:13.889773+00:00,0,stratified_qa,low,10,0,0,low,10
+Training Project Manager,0,v2,gpt-5.2,2026-02-26T05:47:04.089037+00:00,0,stratified_qa,mid,40,1,0,low,40
+Supply Chain Process Expert,0,v2,gpt-5.2,2026-02-26T05:44:46.187695+00:00,0,stratified_qa,mid,40,1,0,low,40
+Plastics Supervisor,0,v2,gpt-5.2,2026-02-26T05:29:29.204581+00:00,0,stratified_qa,low,10,0,0,low,10
+Mineral Processing Operator,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,stratified_qa,low,10,0,0,low,10
+Intervention Teacher,0,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,0,stratified_qa,low,10,0,0,low,10
+Risk Developer,0,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,0,stratified_qa,low,10,0,0,low,10
+Organizational Designer,5,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,stratified_qa,mid,40,1,0,low,35
+Agile Equipment Driver,0,v2,gpt-5.2,2026-02-26T04:46:20.825164+00:00,0,stratified_qa,low,10,0,0,low,10
+Juvenile Justice Advocate,0,v2,gpt-5.2,2026-02-26T05:16:34.269103+00:00,0,stratified_qa,low,10,0,0,low,10
+Mortgage Intern,10,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,stratified_qa,mid,40,1,0,low,30
+Aviation Support Technician,0,v2,gpt-5.2,2026-02-26T04:48:39.100997+00:00,0,stratified_qa,low,10,0,0,low,10
+Compliance Trainer,0,v2,gpt-5.2,2026-02-26T04:54:49.064546+00:00,0,stratified_qa,mid,40,1,0,low,40
+Incident Responder,0,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,0,stratified_qa,low,10,0,0,low,10
+Attractions Operator,0,v2,gpt-5.2,2026-02-26T04:47:50.104369+00:00,0,stratified_qa,low,10,0,0,low,10
+Environmental Life Cycle Analyst,0,v2,gpt-5.2,2026-02-26T05:05:11.781159+00:00,0,stratified_qa,low,10,0,0,low,10
+Production Support Analyst,0,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,0,stratified_qa,low,10,0,0,low,10
+Versatile Photographer,10,v2,gpt-5.2,2026-02-26T05:48:18.322036+00:00,0,stratified_qa,low,10,0,0,low,0
+Sustainability Data Analyst,0,v2,gpt-5.2,2026-02-26T05:44:46.187695+00:00,0,stratified_qa,low,10,0,0,low,10
+Tunnel Project Coordinator,0,v2,gpt-5.2,2026-02-26T05:47:04.089037+00:00,0,stratified_qa,low,10,0,0,low,10
+Logistics Operator,0,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,stratified_qa,mid,40,1,0,low,40
+Automotive Engineering Leader,5,v2,gpt-5.2,2026-02-26T04:48:12.372301+00:00,0,stratified_qa,low,10,0,0,low,5
+Short-Term Rental Manager,15,v2,gpt-5.2,2026-02-26T05:40:55.031421+00:00,0,stratified_qa,mid,40,1,0,low,25
+Reception Staff,0,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,0,stratified_qa,low,10,0,0,low,10
+Refugee Coordinator,0,v2,gpt-5.2,2026-02-26T05:34:30.915418+00:00,0,stratified_qa,low,10,0,0,low,10
+Cloud Recruitment Consultant,10,v2,gpt-5.2,2026-02-26T04:54:01.646168+00:00,0,stratified_qa,mid,40,1,0,low,30
+Healthcare Educator,0,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,0,stratified_qa,low,10,0,0,low,10
+Prosthetic Support Assistant,0,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,0,stratified_qa,low,10,0,0,low,10
+Utilization Management Leader,0,v2,gpt-5.2,2026-02-26T05:48:18.322036+00:00,0,stratified_qa,low,10,0,0,low,10
+Camp Chef,0,v2,gpt-5.2,2026-02-26T04:51:36.969972+00:00,0,stratified_qa,low,10,0,0,low,10
+Financial Literacy Volunteer,0,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,0,stratified_qa,low,10,0,0,low,10
+Aerospace Operator,0,v2,gpt-5.2,2026-02-26T04:45:53.042665+00:00,0,stratified_qa,low,10,0,0,low,10
+Construction Consultant,20,v2,gpt-5.2,2026-02-26T04:55:12.263718+00:00,0,stratified_qa,mid,40,1,0,low,20
+NoSQL Architect,0,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,0,stratified_qa,low,10,0,0,low,10
+Global Mobility Consultant,5,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,0,stratified_qa,mid,40,1,0,low,35
+Pastry Chef,0,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,stratified_qa,low,10,0,0,low,10
+Election Worker,0,v2,gpt-5.2,2026-02-26T05:03:44.600061+00:00,0,stratified_qa,low,10,0,0,low,10
+Banking Controller,0,v2,gpt-5.2,2026-02-26T04:48:39.100997+00:00,0,stratified_qa,low,10,0,0,low,10
+Growth Consulting,55,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,1,stratified_qa,high,80,2,1,mid,25
+Parts Advisor,55,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Technology Sales Trainer,60,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,1,stratified_qa,high,80,2,1,mid,20
+Prospect Research Analyst,40,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,stratified_qa,mid,40,1,1,mid,0
+Sales Trainer,60,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,stratified_qa,high,80,2,1,mid,20
+Retail Pricing Analyst,30,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,1,stratified_qa,high,80,2,1,mid,50
+Communications Writer,55,v2,gpt-5.2,2026-02-26T04:54:27.531633+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Community Engagement Officer,50,v2,gpt-5.2,2026-02-26T04:54:27.531633+00:00,1,stratified_qa,high,80,2,1,mid,30
+Consultant,25,v2,gpt-5.2,2026-02-26T04:55:12.263718+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Mobile Growth Manager,55,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,1,stratified_qa,high,80,2,1,mid,25
+Zone Manager,55,v2,gpt-5.2,2026-02-26T05:50:43.239072+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Hospitality Event Coordinator,25,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Economic Development Project Manager,25,v2,gpt-5.2,2026-02-26T05:02:31.385970+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Forecasting Planner,25,v2,gpt-5.2,2026-02-26T05:07:48.965058+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Forecasting Analyst,30,v2,gpt-5.2,2026-02-26T05:07:48.965058+00:00,1,stratified_qa,mid,40,1,1,mid,10
+Investment Partnerships,45,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,1,stratified_qa,high,80,2,1,mid,35
+Personal Banker,60,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,1,stratified_qa,mid,40,1,1,mid,20
+Entrepreneur,40,v2,gpt-5.2,2026-02-26T05:03:44.600061+00:00,1,stratified_qa,high,80,2,1,mid,40
+Merchandising Director,45,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,1,stratified_qa,high,80,2,1,mid,35
+Business Unit Leader,35,v2,gpt-5.2,2026-02-26T04:51:11.182201+00:00,1,stratified_qa,mid,40,1,1,mid,5
+Insurance Strategist,45,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,1,stratified_qa,high,80,2,1,mid,35
+Research Outreach Coordinator,30,v2,gpt-5.2,2026-02-26T05:34:30.915418+00:00,1,stratified_qa,high,80,2,1,mid,50
+Insurance Liaison,35,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,1,stratified_qa,high,80,2,1,mid,45
+Partnership Project Manager,25,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,1,stratified_qa,high,80,2,1,mid,55
+Real Estate Leadership,40,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,1,stratified_qa,high,80,2,1,mid,40
+Commercial Engineering Specialist,40,v2,gpt-5.2,2026-02-26T04:54:27.531633+00:00,1,stratified_qa,mid,40,1,1,mid,0
+Media Analytics Specialist,50,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,1,stratified_qa,high,80,2,1,mid,30
+Product Introduction Manager,45,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,stratified_qa,high,80,2,1,mid,35
+Product Project Manager,25,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Physician Liaison,55,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,1,stratified_qa,high,80,2,1,mid,25
+Advancement,55,v2,gpt-5.2,2026-02-26T04:45:53.042665+00:00,1,stratified_qa,high,80,2,1,mid,25
+Sports Strategist,55,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,1,stratified_qa,high,80,2,1,mid,25
+Digital Strategy Project Manager,45,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,1,stratified_qa,high,80,2,1,mid,35
+Donor Relations Project Manager,55,v2,gpt-5.2,2026-02-26T05:02:31.385970+00:00,1,stratified_qa,high,80,2,1,mid,25
+Video Producer,25,v2,gpt-5.2,2026-02-26T05:48:18.322036+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Sales Operations,60,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,stratified_qa,high,80,2,1,mid,20
+Membership Analyst,30,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,1,stratified_qa,mid,40,1,1,mid,10
+Customer Call Advisor,30,v2,gpt-5.2,2026-02-26T04:57:48.158539+00:00,1,stratified_qa,mid,40,1,1,mid,10
+Livestream Producer,25,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Beneficiary Engagement,30,v2,gpt-5.2,2026-02-26T04:49:00.833555+00:00,1,stratified_qa,high,80,2,1,mid,50
+Creative Leadership,55,v2,gpt-5.2,2026-02-26T04:56:48.709717+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Proposal Engineer,45,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,stratified_qa,high,80,2,1,mid,35
+Creative Designer,55,v2,gpt-5.2,2026-02-26T04:56:48.709717+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Campaign Organizer,60,v2,gpt-5.2,2026-02-26T04:51:36.969972+00:00,1,stratified_qa,mid,40,1,1,mid,20
+Latin America Manager,25,v2,gpt-5.2,2026-02-26T05:16:34.269103+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Partner Relations,60,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,1,stratified_qa,high,80,2,1,mid,20
+Media Insights Analyst,50,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,1,stratified_qa,high,80,2,1,mid,30
+Blockchain Consultant,25,v2,gpt-5.2,2026-02-26T04:49:50.637926+00:00,1,stratified_qa,mid,40,1,1,mid,15
+AI Data Strategist,25,v2,gpt-5.2,2026-02-26T04:44:47.357306+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Science Communications Specialist,40,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,stratified_qa,mid,40,1,1,mid,0
+Alliance Director,55,v2,gpt-5.2,2026-02-26T04:46:46.106966+00:00,1,stratified_qa,high,80,2,1,mid,25
+Web Content Writer,55,v2,gpt-5.2,2026-02-26T05:50:13.889773+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Product Rollout Manager,35,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,stratified_qa,high,80,2,1,mid,45
+Media Manager,55,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,1,stratified_qa,high,80,2,1,mid,25
+Science Writer,30,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,stratified_qa,low,10,0,1,mid,20
+Brand Performance Analyst,60,v2,gpt-5.2,2026-02-26T04:50:16.938750+00:00,1,stratified_qa,high,80,2,1,mid,20
+Pawn Associate,25,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Marketing Compliance Officer,55,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,1,stratified_qa,high,80,2,1,mid,25
+Floral Manager,30,v2,gpt-5.2,2026-02-26T05:07:48.965058+00:00,1,stratified_qa,mid,40,1,1,mid,10
+Financial Communications,30,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,1,stratified_qa,mid,40,1,1,mid,10
+Sales Productivity Analyst,55,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,stratified_qa,high,80,2,1,mid,25
+Client Services Analyst,25,v2,gpt-5.2,2026-02-26T04:53:12.133810+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Stakeholder Manager,25,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Salesforce Development,25,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,stratified_qa,high,80,2,1,mid,55
+Chemical Consultant,25,v2,gpt-5.2,2026-02-26T04:52:25.185277+00:00,1,stratified_qa,low,10,0,1,mid,15
+Lending Associate,25,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,1,stratified_qa,mid,40,1,1,mid,15
+Media Relations Manager,65,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,2,stratified_qa,mid,40,1,2,high,25
+Telecom Marketer,80,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,2,stratified_qa,high,80,2,2,high,0
+Retail Manager,65,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,2,stratified_qa,mid,40,1,2,high,25
+Organic Growth Strategist,75,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,2,stratified_qa,high,80,2,2,high,5
+Healthcare Sales Director,95,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,2,stratified_qa,high,80,2,2,high,15
+Performance Planner,75,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,2,stratified_qa,mid,40,1,2,high,35
+OEM Sales Professional,90,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,2,stratified_qa,high,80,2,2,high,10
+Life Sciences Sales,90,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,2,stratified_qa,high,80,2,2,high,10
+Route Sales Representative,90,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,2,stratified_qa,high,80,2,2,high,10
+Global Account Executive,95,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,2,stratified_qa,high,80,2,2,high,15
+Affiliate Growth,70,v2,gpt-5.2,2026-02-26T04:46:20.825164+00:00,2,stratified_qa,high,80,2,2,high,10
+Sales and Marketing Coordinator,70,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,2,stratified_qa,high,80,2,2,high,10
+Education Sales,90,v2,gpt-5.2,2026-02-26T05:03:44.600061+00:00,2,stratified_qa,high,80,2,2,high,10
+Mattress Sales Associate,85,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,2,stratified_qa,high,80,2,2,high,5
+OEM Sales Representative,90,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,2,stratified_qa,high,80,2,2,high,10
+Sales Engagement Manager,70,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,2,stratified_qa,high,80,2,2,high,10
+Digital Brand Marketer,85,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,2,stratified_qa,high,80,2,2,high,5
+Fluid Systems Sales Engineer,75,v2,gpt-5.2,2026-02-26T05:07:48.965058+00:00,2,stratified_qa,high,80,2,2,high,5
+Asset Leasing,70,v2,gpt-5.2,2026-02-26T04:47:50.104369+00:00,2,stratified_qa,mid,40,1,2,high,30
+Salesperson,90,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,2,stratified_qa,high,80,2,2,high,10
+Real Estate Sales,90,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,2,stratified_qa,high,80,2,2,high,10
+Product Launch,70,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,2,stratified_qa,high,80,2,2,high,10
+Hotel Sales Executive,85,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,2,stratified_qa,high,80,2,2,high,5
+Loan Sales Executive,90,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,2,stratified_qa,high,80,2,2,high,10
+Media Strategist,75,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,2,stratified_qa,high,80,2,2,high,5
+Retail Sales Professional,85,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,2,stratified_qa,high,80,2,2,high,5
+Leasing Consultant,80,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,2,stratified_qa,mid,40,1,2,high,40
+Solar Sale,90,v2,gpt-5.2,2026-02-26T05:40:55.031421+00:00,2,stratified_qa,high,80,2,2,high,10
+Employee Benefits Sales,90,v2,gpt-5.2,2026-02-26T05:03:44.600061+00:00,2,stratified_qa,high,80,2,2,high,10
+Airline Account Manager,75,v2,gpt-5.2,2026-02-26T04:46:46.106966+00:00,2,stratified_qa,high,80,2,2,high,5
+Guerrilla Marketer,80,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,2,stratified_qa,high,80,2,2,high,0
+Convention Sales,90,v2,gpt-5.2,2026-02-26T04:55:55.927371+00:00,2,stratified_qa,high,80,2,2,high,10
+Marketing Event Organizer,70,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,2,stratified_qa,high,80,2,2,high,10
+International Growth,65,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,2,stratified_qa,high,80,2,2,high,15
+Digital Sales Lead,85,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,2,stratified_qa,high,80,2,2,high,5
+Tobacco Sales Associate,70,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,2,stratified_qa,high,80,2,2,high,10
+Sales Promoter,80,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,2,stratified_qa,high,80,2,2,high,0
+Logistics Sales Representative,85,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,2,stratified_qa,high,80,2,2,high,5
+Event Sales Rep,85,v2,gpt-5.2,2026-02-26T05:05:11.781159+00:00,2,stratified_qa,high,80,2,2,high,5
+Cybersecurity Account Executive,90,v2,gpt-5.2,2026-02-26T04:59:19.470093+00:00,2,stratified_qa,high,80,2,2,high,10
+Media Planning,75,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,2,stratified_qa,high,80,2,2,high,5
+HVAC Sales Representative,88,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,2,stratified_qa,high,80,2,2,high,8
+Fundraising Associate,65,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,2,stratified_qa,mid,40,1,2,high,25
+Marketing Innovator,75,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,2,stratified_qa,high,80,2,2,high,5
+Legal Marketer,85,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,2,stratified_qa,high,80,2,2,high,5
+Sales Outreach Specialist,80,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,2,stratified_qa,high,80,2,2,high,0
+Mutual Funds Sales Associate,70,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,2,stratified_qa,high,80,2,2,high,10
+Appliance Sales Lead,90,v2,gpt-5.2,2026-02-26T04:47:06.953122+00:00,2,stratified_qa,high,80,2,2,high,10
+Inside Sales Director,95,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,2,stratified_qa,high,80,2,2,high,15
+Diabetes Sales Specialist,85,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,2,stratified_qa,high,80,2,2,high,5
+Social Media Manager,85,v2,gpt-5.2,2026-02-26T05:40:55.031421+00:00,2,stratified_qa,high,80,2,2,high,5
+Real Estate Leasing Agent,85,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,2,stratified_qa,high,80,2,2,high,5
+Sales Solutions Specialist,80,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,2,stratified_qa,high,80,2,2,high,0
+Customer Development,70,v2,gpt-5.2,2026-02-26T04:57:48.158539+00:00,2,stratified_qa,high,80,2,2,high,10
+Annuity Sales Agent,90,v2,gpt-5.2,2026-02-26T04:47:06.953122+00:00,2,stratified_qa,high,80,2,2,high,10
+Implant Sales,90,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,2,stratified_qa,high,80,2,2,high,10
+Sales Enablement Manager,70,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,2,stratified_qa,high,80,2,2,high,10
+Risk Sales,70,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,2,stratified_qa,high,80,2,2,high,10
+Healthcare Salesperson,90,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,2,stratified_qa,high,80,2,2,high,10
+Sponsorship Marketer,75,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,2,stratified_qa,high,80,2,2,high,5
+Outdoor Retail Associate,70,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,2,stratified_qa,mid,40,1,2,high,30
+Pharmaceutical Marketing,90,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,2,stratified_qa,high,80,2,2,high,10
+Retention Marketer,85,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,2,stratified_qa,high,80,2,2,high,5
+Asset Management Sales,85,v2,gpt-5.2,2026-02-26T04:47:50.104369+00:00,2,stratified_qa,high,80,2,2,high,5
+Sports Marketing Manager,85,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,2,stratified_qa,high,80,2,2,high,5
+Print Sales Representative,90,v2,gpt-5.2,2026-02-26T05:29:29.204581+00:00,2,stratified_qa,high,80,2,2,high,10
+Specialty Healthcare Sale,90,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,2,holdout,high,80,2,2,high,10
+Petroleum Tester,0,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,0,holdout,low,10,0,0,low,10
+Water Guide,0,v2,gpt-5.2,2026-02-26T05:50:13.889773+00:00,0,holdout,low,10,0,0,low,10
+Blogger,70,v2,gpt-5.2,2026-02-26T04:49:50.637926+00:00,2,holdout,low,10,0,2,high,60
+Web Development,0,v2,gpt-5.2,2026-02-26T05:50:13.889773+00:00,0,holdout,low,10,0,0,low,10
+Chief Financial Officer,5,v2,gpt-5.2,2026-02-26T04:52:50.367959+00:00,0,holdout,low,10,0,0,low,5
+Confined Space Cleaner,0,v2,gpt-5.2,2026-02-26T04:55:12.263718+00:00,0,holdout,low,10,0,0,low,10
+Private Label Merchandiser,50,v2,gpt-5.2,2026-02-26T05:29:29.204581+00:00,1,holdout,high,80,2,1,mid,30
+Event Security Inspector,0,v2,gpt-5.2,2026-02-26T05:05:11.781159+00:00,0,holdout,low,10,0,0,low,10
+ML Operation,5,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,0,holdout,low,10,0,0,low,5
+Information Specialist,5,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,0,holdout,low,10,0,0,low,5
+Social Work Instructor,0,v2,gpt-5.2,2026-02-26T05:40:55.031421+00:00,0,holdout,low,10,0,0,low,10
+Library Technician,0,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,holdout,low,10,0,0,low,10
+Machine Technician,0,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,0,holdout,low,10,0,0,low,10
+Blind Education Teacher,0,v2,gpt-5.2,2026-02-26T04:49:50.637926+00:00,0,holdout,low,10,0,0,low,10
+Mammography Technologist,0,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,0,holdout,low,10,0,0,low,10
+Regulatory Labeling Specialist,5,v2,gpt-5.2,2026-02-26T05:34:30.915418+00:00,0,holdout,mid,40,1,0,low,35
+Veterans Employment Advisor,10,v2,gpt-5.2,2026-02-26T05:48:18.322036+00:00,0,holdout,low,10,0,0,low,0
+Warehouse Operations Coordinator,0,v2,gpt-5.2,2026-02-26T05:50:13.889773+00:00,0,holdout,low,10,0,0,low,10
+Apple Technician,0,v2,gpt-5.2,2026-02-26T04:47:06.953122+00:00,0,holdout,low,10,0,0,low,10
+Tissue Engineering Researcher,0,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,0,holdout,low,10,0,0,low,10
+Ductwork Installer,0,v2,gpt-5.2,2026-02-26T05:02:31.385970+00:00,0,holdout,low,10,0,0,low,10
+Geology Intern,0,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,0,holdout,low,10,0,0,low,10
+Meat Processing Operator,0,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,0,holdout,low,10,0,0,low,10
+General IT Support,0,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,0,holdout,low,10,0,0,low,10
+Vehicle Finisher,0,v2,gpt-5.2,2026-02-26T05:48:18.322036+00:00,0,holdout,low,10,0,0,low,10
+Customer Reference Program Manager,40,v2,gpt-5.2,2026-02-26T04:57:48.158539+00:00,1,holdout,high,80,2,1,mid,40
+Transplant Coordinator Nurse,0,v2,gpt-5.2,2026-02-26T05:47:04.089037+00:00,0,holdout,low,10,0,0,low,10
+Physical Education Teacher,0,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,0,holdout,low,10,0,0,low,10
+Asset Management Product,20,v2,gpt-5.2,2026-02-26T04:47:50.104369+00:00,0,holdout,mid,40,1,0,low,20
+Blending Technician,0,v2,gpt-5.2,2026-02-26T04:49:50.637926+00:00,0,holdout,low,10,0,0,low,10
+Loan Advisor,65,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,2,holdout,mid,40,1,2,high,25
+Laboratory Researcher,0,v2,gpt-5.2,2026-02-26T05:16:34.269103+00:00,0,holdout,low,10,0,0,low,10
+Furniture Sales Expert,85,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,2,holdout,high,80,2,2,high,5
+Pyrotechnics Technician,0,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,0,holdout,low,10,0,0,low,10
+Operations Superintendent,0,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,0,holdout,low,10,0,0,low,10
+Key Buyer,20,v2,gpt-5.2,2026-02-26T05:16:34.269103+00:00,0,holdout,mid,40,1,0,low,20
+Candle Production Worker,0,v2,gpt-5.2,2026-02-26T04:51:36.969972+00:00,0,holdout,low,10,0,0,low,10
+Program Administration,0,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,0,holdout,low,10,0,0,low,10
+Greenhouse Worker,0,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,0,holdout,low,10,0,0,low,10
+Revenue Cycle Professional,15,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,0,holdout,low,10,0,0,low,5
+Badminton Coache,0,v2,gpt-5.2,2026-02-26T04:48:39.100997+00:00,0,holdout,low,10,0,0,low,10
+HR Program Manager,0,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,0,holdout,low,10,0,0,low,10
+Digital Inclusion Manager,10,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,0,holdout,low,10,0,0,low,0
+Sustainability Advisor,10,v2,gpt-5.2,2026-02-26T05:44:46.187695+00:00,0,holdout,low,10,0,0,low,0
+Account Acquisition Specialist,80,v2,gpt-5.2,2026-02-26T04:45:17.660344+00:00,2,holdout,high,80,2,2,high,0
+Product Transformation Specialist,25,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,1,holdout,low,10,0,1,mid,15
+Silo Operator,0,v2,gpt-5.2,2026-02-26T05:40:55.031421+00:00,0,holdout,low,10,0,0,low,10
+Art and Music Sales,85,v2,gpt-5.2,2026-02-26T04:47:30.458931+00:00,2,holdout,high,80,2,2,high,5
+Oracle Developer,0,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,holdout,low,10,0,0,low,10
+Asia-Pacific Director,40,v2,gpt-5.2,2026-02-26T04:47:30.458931+00:00,1,holdout,low,10,0,1,mid,30
+Engineering Scheduler,0,v2,gpt-5.2,2026-02-26T05:03:44.600061+00:00,0,holdout,low,10,0,0,low,10
+App Store Optimizer,80,v2,gpt-5.2,2026-02-26T04:47:06.953122+00:00,2,holdout,high,80,2,2,high,0
+Experimentation Scientist,0,v2,gpt-5.2,2026-02-26T05:05:11.781159+00:00,0,holdout,mid,40,1,0,low,40
+Bankruptcy Collector,15,v2,gpt-5.2,2026-02-26T04:49:00.833555+00:00,0,holdout,mid,40,1,0,low,25
+Finance Instructor,0,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,0,holdout,low,10,0,0,low,10
+Phonics Teacher,0,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,0,holdout,low,10,0,0,low,10
+Medicaid Coordinator,0,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,0,holdout,low,10,0,0,low,10
+Delivery Support Agent,0,v2,gpt-5.2,2026-02-26T04:59:19.470093+00:00,0,holdout,low,10,0,0,low,10
+Transaction Advisory Analyst,0,v2,gpt-5.2,2026-02-26T05:47:04.089037+00:00,0,holdout,low,10,0,0,low,10
+Order Management,20,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,holdout,mid,40,1,0,low,20
+Managing Director Assistant,0,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,0,holdout,low,10,0,0,low,10
+Accounting Audit Assistant,0,v2,gpt-5.2,2026-02-26T04:45:17.660344+00:00,0,holdout,low,10,0,0,low,10
+Robotics Engineer,0,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,0,holdout,low,10,0,0,low,10
+Insurance Branch Director,75,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,2,holdout,mid,40,1,2,high,35
+Deviation Manager,0,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,0,holdout,low,10,0,0,low,10
+Cabinet Expert,10,v2,gpt-5.2,2026-02-26T04:51:11.182201+00:00,0,holdout,low,10,0,0,low,0
+Motorcycle Mechanic,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Environmental Policy,0,v2,gpt-5.2,2026-02-26T05:05:11.781159+00:00,0,holdout,low,10,0,0,low,10
+Data Entry Technician,0,v2,gpt-5.2,2026-02-26T04:59:19.470093+00:00,0,holdout,low,10,0,0,low,10
+Park Services,0,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,holdout,low,10,0,0,low,10
+Fine Artist,0,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,0,holdout,low,10,0,0,low,10
+Field Safety Engineer,0,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,0,holdout,low,10,0,0,low,10
+Tool Technician,0,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,0,holdout,low,10,0,0,low,10
+Industry-Specific Assembler,0,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,0,holdout,low,10,0,0,low,10
+Project Engineer - Oil and Gas,0,v2,gpt-5.2,2026-02-26T05:30:56.988273+00:00,0,holdout,low,10,0,0,low,10
+General Nurse Practitioner,0,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,0,holdout,low,10,0,0,low,10
+Communications Intern,40,v2,gpt-5.2,2026-02-26T04:54:27.531633+00:00,1,holdout,mid,40,1,1,mid,0
+Imaging Technologist,0,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,0,holdout,low,10,0,0,low,10
+Neighborhood Organizer,10,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,0,holdout,low,10,0,0,low,0
+Footwear Merchandiser,45,v2,gpt-5.2,2026-02-26T05:07:48.965058+00:00,1,holdout,high,80,2,1,mid,35
+Scrum Coach,0,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,0,holdout,low,10,0,0,low,10
+Copyright Attorney,0,v2,gpt-5.2,2026-02-26T04:55:55.927371+00:00,0,holdout,low,10,0,0,low,10
+Recruitment Sales Specialist,75,v2,gpt-5.2,2026-02-26T05:34:30.915418+00:00,2,holdout,high,80,2,2,high,5
+Radioactive Waste Technician,0,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,0,holdout,low,10,0,0,low,10
+Aircraft Maintenance Leadership,1,v2,gpt-5.2,2026-02-26T04:46:46.106966+00:00,0,holdout,low,10,0,0,low,9
+Insurance Software Developer,0,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,0,holdout,low,10,0,0,low,10
+Open Source Advocate,20,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,0,holdout,mid,40,1,0,low,20
+Truck Driver Leader,0,v2,gpt-5.2,2026-02-26T05:47:04.089037+00:00,0,holdout,low,10,0,0,low,10
+Oncology Data Analyst,10,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,0,holdout,low,10,0,0,low,0
+Mobile QA Tester,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Medical Lead,10,v2,gpt-5.2,2026-02-26T05:21:03.563443+00:00,0,holdout,low,10,0,0,low,0
+Correctional Librarian,0,v2,gpt-5.2,2026-02-26T04:56:26.161920+00:00,0,holdout,low,10,0,0,low,10
+Agricultural Intern,0,v2,gpt-5.2,2026-02-26T04:46:20.825164+00:00,0,holdout,low,10,0,0,low,10
+Acronym Coordinator,0,v2,gpt-5.2,2026-02-26T04:45:17.660344+00:00,0,holdout,low,10,0,0,low,10
+Filing Clerk,0,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,0,holdout,low,10,0,0,low,10
+HCM Reporting,0,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,0,holdout,low,10,0,0,low,10
+Security Advisor,10,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,0,holdout,low,10,0,0,low,0
+Pharmacy Utilization Expert,0,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,0,holdout,low,10,0,0,low,10
+Blood Collection,0,v2,gpt-5.2,2026-02-26T04:49:50.637926+00:00,0,holdout,low,10,0,0,low,10
+People Succes,0,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,0,holdout,low,10,0,0,low,10
+Food Production Specialist,0,v2,gpt-5.2,2026-02-26T05:07:48.965058+00:00,0,holdout,low,10,0,0,low,10
+Commercialization Manager,60,v2,gpt-5.2,2026-02-26T04:54:27.531633+00:00,1,holdout,high,80,2,1,mid,20
+Industrial Paramedic,0,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,0,holdout,low,10,0,0,low,10
+Franchise Data Analyst,25,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,1,holdout,mid,40,1,1,mid,15
+Cybersecurity Product Manager,25,v2,gpt-5.2,2026-02-26T04:59:19.470093+00:00,1,holdout,mid,40,1,1,mid,15
+In Vivo Pharmacologist,0,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,0,holdout,low,10,0,0,low,10
+Aviation Business Analyst,20,v2,gpt-5.2,2026-02-26T04:48:12.372301+00:00,0,holdout,low,10,0,0,low,10
+Mobility Trainer,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Health Coordinator,10,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,0,holdout,low,10,0,0,low,0
+Localization Specialist,0,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,holdout,low,10,0,0,low,10
+Passenger Shuttle Driver,0,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,holdout,low,10,0,0,low,10
+Sign Specialist,5,v2,gpt-5.2,2026-02-26T05:40:55.031421+00:00,0,holdout,low,10,0,0,low,5
+Catastrophe Data Analyst,10,v2,gpt-5.2,2026-02-26T04:52:00.194885+00:00,0,holdout,low,10,0,0,low,0
+Healthcare Executive Manager,20,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,0,holdout,low,10,0,0,low,10
+Market Sizing,45,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,1,holdout,high,80,2,1,mid,35
+Apprenticeship Analyst,0,v2,gpt-5.2,2026-02-26T04:47:06.953122+00:00,0,holdout,low,10,0,0,low,10
+Battery Engineering Intern,0,v2,gpt-5.2,2026-02-26T04:49:00.833555+00:00,0,holdout,low,10,0,0,low,10
+Document Developer,0,v2,gpt-5.2,2026-02-26T05:02:31.385970+00:00,0,holdout,low,10,0,0,low,10
+Vendor Management,10,v2,gpt-5.2,2026-02-26T05:48:18.322036+00:00,0,holdout,mid,40,1,0,low,30
+Welcome Host,15,v2,gpt-5.2,2026-02-26T05:50:13.889773+00:00,0,holdout,low,10,0,0,low,5
+Ocean Scientist,0,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,0,holdout,low,10,0,0,low,10
+Credit Evaluator,5,v2,gpt-5.2,2026-02-26T04:56:48.709717+00:00,0,holdout,low,10,0,0,low,5
+Mobility Device Technician,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Sales Pricing Analyst,55,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,holdout,high,80,2,1,mid,25
+Kitchen and Bath Designer,25,v2,gpt-5.2,2026-02-26T05:16:34.269103+00:00,1,holdout,low,10,0,1,mid,15
+Motion Capture Artist,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Quality Inspectors by Industry,0,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,0,holdout,low,10,0,0,low,10
+Research Specialist,0,v2,gpt-5.2,2026-02-26T05:34:30.915418+00:00,0,holdout,low,10,0,0,low,10
+Client Services Director,55,v2,gpt-5.2,2026-02-26T04:53:12.133810+00:00,1,holdout,mid,40,1,1,mid,15
+Immunology Research Fellow,0,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,0,holdout,low,10,0,0,low,10
+PWA Developer,0,v2,gpt-5.2,2026-02-26T05:25:34.645630+00:00,0,holdout,low,10,0,0,low,10
+Early Childhood Coordinator,0,v2,gpt-5.2,2026-02-26T05:02:31.385970+00:00,0,holdout,low,10,0,0,low,10
+Security Product Lead,35,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,1,holdout,mid,40,1,1,mid,5
+Talent Operation,0,v2,gpt-5.2,2026-02-26T05:44:46.187695+00:00,0,holdout,low,10,0,0,low,10
+Agreement Specialist,15,v2,gpt-5.2,2026-02-26T04:46:20.825164+00:00,0,holdout,mid,40,1,0,low,25
+Criminal Investigation Director,0,v2,gpt-5.2,2026-02-26T04:56:48.709717+00:00,0,holdout,low,10,0,0,low,10
+Grain Quality Analyst,0,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,0,holdout,low,10,0,0,low,10
+Mobile Security Analyst,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Ghost Kitchen Operator,10,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,0,holdout,low,10,0,0,low,0
+Asia Pacific Sales,90,v2,gpt-5.2,2026-02-26T04:47:30.458931+00:00,2,holdout,high,80,2,2,high,10
+Contracts Director,10,v2,gpt-5.2,2026-02-26T04:55:55.927371+00:00,0,holdout,mid,40,1,0,low,30
+Hazardous Materials Technician,0,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,0,holdout,low,10,0,0,low,10
+Crisis Mental Health Responder,0,v2,gpt-5.2,2026-02-26T04:56:48.709717+00:00,0,holdout,low,10,0,0,low,10
+Industrial Catering Manager,5,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,0,holdout,low,10,0,0,low,5
+Tenant Coordinator,10,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,0,holdout,mid,40,1,0,low,30
+Financial Forecaster,0,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,0,holdout,low,10,0,0,low,10
+Corporate Planning Manager,25,v2,gpt-5.2,2026-02-26T04:56:26.161920+00:00,1,holdout,low,10,0,1,mid,15
+Political Science Teacher,0,v2,gpt-5.2,2026-02-26T05:29:29.204581+00:00,0,holdout,low,10,0,0,low,10
+School Counseling,0,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,0,holdout,low,10,0,0,low,10
+Logistics Product Manager,15,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,holdout,mid,40,1,0,low,25
+Case Manager,5,v2,gpt-5.2,2026-02-26T04:52:00.194885+00:00,0,holdout,low,10,0,0,low,5
+Payment Solutions Sales,90,v2,gpt-5.2,2026-02-26T05:27:50.242175+00:00,2,holdout,high,80,2,2,high,10
+Marketing Intern,55,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,1,holdout,high,80,2,1,mid,25
+Structural Engineer,0,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,0,holdout,low,10,0,0,low,10
+Fashion Store Manager,65,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,2,holdout,high,80,2,2,high,15
+Livestock Transport Driver,0,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,holdout,low,10,0,0,low,10
+Portfolio Underwriter,10,v2,gpt-5.2,2026-02-26T05:29:29.204581+00:00,0,holdout,low,10,0,0,low,0
+Scrap Processor,0,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,0,holdout,low,10,0,0,low,10
+Agricultural Technician,0,v2,gpt-5.2,2026-02-26T04:46:20.825164+00:00,0,holdout,low,10,0,0,low,10
+Claims Handler,5,v2,gpt-5.2,2026-02-26T04:53:12.133810+00:00,0,holdout,low,10,0,0,low,5
+Vehicle Component Tester,0,v2,gpt-5.2,2026-02-26T05:48:18.322036+00:00,0,holdout,low,10,0,0,low,10
+Technology Sales Representative,90,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,2,holdout,high,80,2,2,high,10
+Inspection Management,0,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,0,holdout,low,10,0,0,low,10
+Credit Analyst,5,v2,gpt-5.2,2026-02-26T04:56:48.709717+00:00,0,holdout,low,10,0,0,low,5
+Lunchroom Staff,0,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,holdout,low,10,0,0,low,10
+RPA Support Engineer,0,v2,gpt-5.2,2026-02-26T05:32:36.502029+00:00,0,holdout,low,10,0,0,low,10
+Franchise Auditor,5,v2,gpt-5.2,2026-02-26T05:09:02.450514+00:00,0,holdout,low,10,0,0,low,5
+Mobile Car Wash Technician,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Fashion Strategist,55,v2,gpt-5.2,2026-02-26T05:06:30.692236+00:00,1,holdout,mid,40,1,1,mid,15
+Telecommunications Recruiter,0,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,0,holdout,low,10,0,0,low,10
+Healthcare Chef,0,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,0,holdout,low,10,0,0,low,10
+Sustainable Supply Chain,0,v2,gpt-5.2,2026-02-26T05:44:46.187695+00:00,0,holdout,low,10,0,0,low,10
+Calibration Technician,0,v2,gpt-5.2,2026-02-26T04:51:11.182201+00:00,0,holdout,low,10,0,0,low,10
+Motion Engineer,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Industrial Fluid Specialist,0,v2,gpt-5.2,2026-02-26T05:13:56.822021+00:00,0,holdout,low,10,0,0,low,10
+Infrastructure Counsel,0,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,0,holdout,low,10,0,0,low,10
+Eye Care Provider,0,v2,gpt-5.2,2026-02-26T05:05:11.781159+00:00,0,holdout,low,10,0,0,low,10
+Scheduling Supervisor,5,v2,gpt-5.2,2026-02-26T05:38:49.053544+00:00,0,holdout,low,10,0,0,low,5
+Mining Inspector,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Manual Production Worker,0,v2,gpt-5.2,2026-02-26T05:19:46.299997+00:00,0,holdout,low,10,0,0,low,10
+Storage Engineer,0,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,0,holdout,low,10,0,0,low,10
+Aesthetic Sales Representative,90,v2,gpt-5.2,2026-02-26T04:46:20.825164+00:00,2,holdout,high,80,2,2,high,10
+Aerial Photographer,0,v2,gpt-5.2,2026-02-26T04:45:53.042665+00:00,0,holdout,low,10,0,0,low,10
+Middle School Coach,0,v2,gpt-5.2,2026-02-26T05:22:47.118287+00:00,0,holdout,low,10,0,0,low,10
+Network Operations Lead,0,v2,gpt-5.2,2026-02-26T05:24:06.343451+00:00,0,holdout,low,10,0,0,low,10
+Derivatives Operator,10,v2,gpt-5.2,2026-02-26T05:01:13.042880+00:00,0,holdout,low,10,0,0,low,0
+Residential Housing Coordinator,5,v2,gpt-5.2,2026-02-26T05:34:30.915418+00:00,0,holdout,low,10,0,0,low,5
+Sonar Operator,0,v2,gpt-5.2,2026-02-26T05:42:59.693899+00:00,0,holdout,low,10,0,0,low,10
+Language Translator,0,v2,gpt-5.2,2026-02-26T05:16:34.269103+00:00,0,holdout,low,10,0,0,low,10
+Grants Compliance,0,v2,gpt-5.2,2026-02-26T05:10:21.167683+00:00,0,holdout,low,10,0,0,low,10
+Road Maintenance Technician,0,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,0,holdout,low,10,0,0,low,10
+Restaurant Inspector,0,v2,gpt-5.2,2026-02-26T05:36:08.122258+00:00,0,holdout,low,10,0,0,low,10
+International Innovation,10,v2,gpt-5.2,2026-02-26T05:15:10.047533+00:00,0,holdout,low,10,0,0,low,0
+Healthcare Revenue Cycle Project Manager,10,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,0,holdout,low,10,0,0,low,0
+Livestock Coordinator,10,v2,gpt-5.2,2026-02-26T05:17:56.276323+00:00,0,holdout,low,10,0,0,low,0
+Wealth Management,55,v2,gpt-5.2,2026-02-26T05:50:13.889773+00:00,1,holdout,mid,40,1,1,mid,15
+Thermal Engineer,0,v2,gpt-5.2,2026-02-26T05:45:51.810189+00:00,0,holdout,low,10,0,0,low,10
+Healthcare Network Specialist,15,v2,gpt-5.2,2026-02-26T05:12:21.251849+00:00,0,holdout,low,10,0,0,low,5
+Data Architecture,0,v2,gpt-5.2,2026-02-26T04:59:19.470093+00:00,0,holdout,low,10,0,0,low,10
