@@ -20,3 +20,4 @@ list_by_type_12,All k1000 positions positively correlated with S&M (using salary
 list_by_type_13,All k1000 positions positively correlated with S&M (using compensation share) - pick within k10 S&M only
 list_by_type_20,Binary choice - pick from 1000-position-level (predict with compensations)
 list_by_type_22,Binary choice - pick from 1000-position-level Gabriel output (predict with salaries) + FE
+list_by_type_23,Binary choice - pick from 1000-position-level Gabriel output (predict with wage bill share) + FE

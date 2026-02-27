@@ -539,7 +539,7 @@ gen byte samp1 = e(sample)
 predict double xb1 if samp1, xb
 
 * 3) Keep only the bucket16 contribution (NOT the constant, NOT salary)
-gen double bucket_fix = xb1 - _b[_cons] - _b[`rhs_per_total_comp_var']*`rhs_per_total_comp_var' if samp1
+gen double bucket_fix = xb1 - _b[_cons] - _b[`rhs_per_salary_var']*`rhs_per_salary_var' if samp1
 
 * 4) Second regression, with bucket contribution fixed at coefficient 1
 constraint drop _all
