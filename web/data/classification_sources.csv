@@ -21,4 +21,5 @@ list_by_type_13,All k1000 positions positively correlated with S&M (using compen
 list_by_type_20,Binary choice - pick from 1000-position-level (predict with compensations)
 list_by_type_22,Binary choice - pick from 1000-position-level Gabriel output (predict with salaries) + FE
 list_by_type_23,Binary choice - pick from 1000-position-level Gabriel output (predict with wage bill share) + FE
+list_by_type_23,Binary choice - pick from 1000-position-level Gabriel output (predict with compensation share) + FE
 list_by_type_24,Elastic net using 1000-position-level Gabriel output (predict with compensations) + FE

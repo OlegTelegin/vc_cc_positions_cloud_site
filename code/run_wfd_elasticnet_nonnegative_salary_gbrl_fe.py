@@ -244,7 +244,7 @@ def main() -> None:
     # =========================
 
     # Main data file
-    data_path = project_dir / "data" / "temp_wfd_1702_6_w_certainty_quartiles_for_elastic.dta"
+    data_path = project_dir / "data" / "temp_wfd_1702_6_w_certainty_quartiles_for_elastic_salary.dta"
 
     # Second .dta file containing the allowed variable numbers (e.g. 38, 39, 40, ...)
     subset_path = "D:/cursor_projects/vc_cc_positions_cloud_site/output/list_of_sm_related_k1000_gbrl.dta"
@@ -262,8 +262,8 @@ def main() -> None:
     fevar = "bucket16"
 
     # Predictor family
-    # x_prefix = "w_salary_k1000_"
-    x_prefix = "w_total_compensation_k1000_"
+    x_prefix = "w_salary_k1000_"
+    # x_prefix = "w_total_compensation_k1000_"
     x_min = 1
     x_max = 1004
 
@@ -365,7 +365,7 @@ def main() -> None:
     selected_df = pd.DataFrame({"variable": selected_vars, "weight": selected_weights})
     selected_df = selected_df.sort_values("variable").reset_index(drop=True)
 
-    selected_path = output_dir / "elasticnet_wfd_1702_6_compensation_selected_weights_gbrl_fe.csv"
+    selected_path = output_dir / "elasticnet_wfd_1702_6_salary_selected_weights_gbrl_fe.csv"
     selected_df.to_csv(selected_path, index=False)
 
     # =========================
@@ -382,7 +382,7 @@ def main() -> None:
     pred_df["abs_err"] = pred_df["err"].abs()
     pred_df["sq_err"] = pred_df["err"] ** 2
 
-    pred_path = output_dir / "elasticnet_wfd_1702_6_compensation_test_predictions_gbrl_fe.csv"
+    pred_path = output_dir / "elasticnet_wfd_1702_6_salary_test_predictions_gbrl_fe.csv"
     pred_df.to_csv(pred_path, index=False)
 
     n_test = len(pred_df)
@@ -398,7 +398,7 @@ def main() -> None:
     # TEXT SUMMARY
     # =========================
 
-    results_path = output_dir / "elasticnet_wfd_1702_6_compensation_results_gbrl_fe.txt"
+    results_path = output_dir / "elasticnet_wfd_1702_6_salary_results_gbrl_fe.txt"
     with results_path.open("w", encoding="utf-8") as fout:
         fout.write("Restricted nonnegative lasso run on temp_wfd_1702_6_w_certainty_quartiles.dta\n")
         fout.write(f"Dependent variable: {yvar}\n")
