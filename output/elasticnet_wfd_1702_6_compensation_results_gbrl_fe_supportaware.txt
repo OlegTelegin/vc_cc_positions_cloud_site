@@ -15,7 +15,7 @@ N_ALPHAS           = 400
 ALPHA_GRID_RATIO   = 1e-10
 ALPHA_SELECTION    = scaled_min
 ALPHA_SCALE        = 0.01
-MIN_NONZERO_COEFS  = 60
+MIN_NONZERO_COEFS  = 50
 Train/test split seed = 1702
 CV splits             = 10
 
@@ -23,7 +23,7 @@ Alpha choices:
 CV alpha(min-MSE)     = 0.1149435091
 CV alpha(one-SE)      = 1.731527182
 Base alpha            = 0.001149435091
-Final alpha used      = 1.224766711
+Final alpha used      = 0.5784140552
 
 Support path summary:
 Max full-train support = 236
@@ -33,74 +33,65 @@ Allowed suffixes:
 21 89 93 95 98 100 112 118 121 143 145 146 152 153 154 157 159 160 163 164 171 173 193 196 201 206 208 209 211 212 213 215 219 220 221 227 251 266 286 309 312 313 314 323 325 343 353 368 372 374 377 380 383 388 390 391 392 393 417 448 478 479 482 483 489 492 493 494 505 511 527 536 543 544 545 546 548 555 556 576 577 582 584 585 589 600 633 634 635 636 637 638 639 641 642 643 644 645 646 647 648 649 651 652 653 654 655 657 658 659 660 661 662 663 664 665 666 667 668 670 671 672 673 674 675 676 677 678 679 680 681 682 683 684 685 686 687 688 689 691 693 695 696 697 698 700 701 702 703 704 705 706 707 708 709 710 711 712 713 714 715 716 717 719 720 721 722 723 724 725 726 727 728 729 730 731 732 733 734 735 736 737 738 739 740 741 742 743 744 745 746 747 750 751 752 753 757 758 765 766 775 779 790 791 795 802 803 804 805 806 807 808 809 810 811 812 813 814 815 816 817 818 829 830 831 835 836 846 853 864 875 879 897 911 915 936 976 997 1003
 
 Selected variables:
-w_total_compensation_k1000_89 w_total_compensation_k1000_118 w_total_compensation_k1000_208 w_total_compensation_k1000_227 w_total_compensation_k1000_251 w_total_compensation_k1000_343 w_total_compensation_k1000_353 w_total_compensation_k1000_368 w_total_compensation_k1000_380 w_total_compensation_k1000_390 w_total_compensation_k1000_392 w_total_compensation_k1000_393 w_total_compensation_k1000_492 w_total_compensation_k1000_548 w_total_compensation_k1000_633 w_total_compensation_k1000_638 w_total_compensation_k1000_644 w_total_compensation_k1000_647 w_total_compensation_k1000_648 w_total_compensation_k1000_649 w_total_compensation_k1000_652 w_total_compensation_k1000_653 w_total_compensation_k1000_655 w_total_compensation_k1000_657 w_total_compensation_k1000_659 w_total_compensation_k1000_661 w_total_compensation_k1000_663 w_total_compensation_k1000_666 w_total_compensation_k1000_668 w_total_compensation_k1000_671 w_total_compensation_k1000_672 w_total_compensation_k1000_674 w_total_compensation_k1000_675 w_total_compensation_k1000_678 w_total_compensation_k1000_682 w_total_compensation_k1000_683 w_total_compensation_k1000_685 w_total_compensation_k1000_686 w_total_compensation_k1000_687 w_total_compensation_k1000_695 w_total_compensation_k1000_703 w_total_compensation_k1000_707 w_total_compensation_k1000_708 w_total_compensation_k1000_709 w_total_compensation_k1000_710 w_total_compensation_k1000_716 w_total_compensation_k1000_719 w_total_compensation_k1000_724 w_total_compensation_k1000_726 w_total_compensation_k1000_736 w_total_compensation_k1000_740 w_total_compensation_k1000_744 w_total_compensation_k1000_803 w_total_compensation_k1000_804 w_total_compensation_k1000_811 w_total_compensation_k1000_812 w_total_compensation_k1000_814 w_total_compensation_k1000_829 w_total_compensation_k1000_915 w_total_compensation_k1000_976
+w_total_compensation_k1000_89 w_total_compensation_k1000_118 w_total_compensation_k1000_208 w_total_compensation_k1000_215 w_total_compensation_k1000_251 w_total_compensation_k1000_343 w_total_compensation_k1000_353 w_total_compensation_k1000_368 w_total_compensation_k1000_380 w_total_compensation_k1000_390 w_total_compensation_k1000_392 w_total_compensation_k1000_492 w_total_compensation_k1000_548 w_total_compensation_k1000_633 w_total_compensation_k1000_638 w_total_compensation_k1000_647 w_total_compensation_k1000_648 w_total_compensation_k1000_649 w_total_compensation_k1000_652 w_total_compensation_k1000_653 w_total_compensation_k1000_655 w_total_compensation_k1000_657 w_total_compensation_k1000_659 w_total_compensation_k1000_661 w_total_compensation_k1000_666 w_total_compensation_k1000_671 w_total_compensation_k1000_672 w_total_compensation_k1000_674 w_total_compensation_k1000_675 w_total_compensation_k1000_682 w_total_compensation_k1000_686 w_total_compensation_k1000_687 w_total_compensation_k1000_695 w_total_compensation_k1000_703 w_total_compensation_k1000_707 w_total_compensation_k1000_709 w_total_compensation_k1000_710 w_total_compensation_k1000_719 w_total_compensation_k1000_724 w_total_compensation_k1000_726 w_total_compensation_k1000_736 w_total_compensation_k1000_740 w_total_compensation_k1000_744 w_total_compensation_k1000_803 w_total_compensation_k1000_804 w_total_compensation_k1000_811 w_total_compensation_k1000_812 w_total_compensation_k1000_814 w_total_compensation_k1000_829 w_total_compensation_k1000_915 w_total_compensation_k1000_976
 
-Selected variable count = 60
+Selected variable count = 51
 
 Selected variables and weights (original X scale):
-w_total_compensation_k1000_118	13.99302676
-w_total_compensation_k1000_208	50.76419552
-w_total_compensation_k1000_227	0.00211687
-w_total_compensation_k1000_251	0.89913321
-w_total_compensation_k1000_343	11.24538165
-w_total_compensation_k1000_353	8.57631921
-w_total_compensation_k1000_368	20.11604348
-w_total_compensation_k1000_380	1.46697876
-w_total_compensation_k1000_390	1.21676707
-w_total_compensation_k1000_392	4.62344191
-w_total_compensation_k1000_393	0.36137203
-w_total_compensation_k1000_492	25.97538059
-w_total_compensation_k1000_548	550.50648249
-w_total_compensation_k1000_633	9.43503975
-w_total_compensation_k1000_638	1.82101763
-w_total_compensation_k1000_644	0.57044044
-w_total_compensation_k1000_647	43.03546082
-w_total_compensation_k1000_648	1.95318216
-w_total_compensation_k1000_649	27.20502178
-w_total_compensation_k1000_652	4.93214624
-w_total_compensation_k1000_653	2.47817946
-w_total_compensation_k1000_655	0.22085649
-w_total_compensation_k1000_657	5.25705451
-w_total_compensation_k1000_659	1.22109375
-w_total_compensation_k1000_661	0.84004188
-w_total_compensation_k1000_663	2.29472750
-w_total_compensation_k1000_666	19.12197885
-w_total_compensation_k1000_668	2.45228176
-w_total_compensation_k1000_671	649.87760402
-w_total_compensation_k1000_672	36.25525126
-w_total_compensation_k1000_674	28.35949937
-w_total_compensation_k1000_675	4.52353686
-w_total_compensation_k1000_678	1.17426688
-w_total_compensation_k1000_682	20.01058622
-w_total_compensation_k1000_683	2.61144740
-w_total_compensation_k1000_685	0.29826324
-w_total_compensation_k1000_686	1.56843034
-w_total_compensation_k1000_687	21.78449255
-w_total_compensation_k1000_695	10.20013038
-w_total_compensation_k1000_703	20.39042767
-w_total_compensation_k1000_707	1.11283618
-w_total_compensation_k1000_708	0.22472042
-w_total_compensation_k1000_709	0.36959265
-w_total_compensation_k1000_710	6.24583450
-w_total_compensation_k1000_716	0.79292382
-w_total_compensation_k1000_719	5.64065299
-w_total_compensation_k1000_724	23.98583042
-w_total_compensation_k1000_726	0.46346933
-w_total_compensation_k1000_736	12.85141675
-w_total_compensation_k1000_740	27.81000847
-w_total_compensation_k1000_744	41.90058038
-w_total_compensation_k1000_803	1.63641200
-w_total_compensation_k1000_804	7.74928600
-w_total_compensation_k1000_811	1046.70198472
-w_total_compensation_k1000_812	912.64134722
-w_total_compensation_k1000_814	1.26239655
-w_total_compensation_k1000_829	73.74898407
-w_total_compensation_k1000_89	92.05349666
-w_total_compensation_k1000_915	0.29345938
-w_total_compensation_k1000_976	10.35953717
+w_total_compensation_k1000_118	14.30123107
+w_total_compensation_k1000_208	60.80163001
+w_total_compensation_k1000_215	0.08548650
+w_total_compensation_k1000_251	0.32944139
+w_total_compensation_k1000_343	12.69415543
+w_total_compensation_k1000_353	2.76958921
+w_total_compensation_k1000_368	8.46302705
+w_total_compensation_k1000_380	0.30744163
+w_total_compensation_k1000_390	2.02088581
+w_total_compensation_k1000_392	3.98076756
+w_total_compensation_k1000_492	25.30713741
+w_total_compensation_k1000_548	558.64887750
+w_total_compensation_k1000_633	9.85815486
+w_total_compensation_k1000_638	0.27885672
+w_total_compensation_k1000_647	55.13672111
+w_total_compensation_k1000_648	2.33031529
+w_total_compensation_k1000_649	31.16713576
+w_total_compensation_k1000_652	5.98239147
+w_total_compensation_k1000_653	2.80694984
+w_total_compensation_k1000_655	0.32511129
+w_total_compensation_k1000_657	5.20863286
+w_total_compensation_k1000_659	0.09534232
+w_total_compensation_k1000_661	0.74095687
+w_total_compensation_k1000_666	11.12038623
+w_total_compensation_k1000_671	711.30645752
+w_total_compensation_k1000_672	42.99268459
+w_total_compensation_k1000_674	31.64722478
+w_total_compensation_k1000_675	5.13958980
+w_total_compensation_k1000_682	23.39065688
+w_total_compensation_k1000_686	1.99984175
+w_total_compensation_k1000_687	12.90224485
+w_total_compensation_k1000_695	5.63994300
+w_total_compensation_k1000_703	22.75263233
+w_total_compensation_k1000_707	0.79431697
+w_total_compensation_k1000_709	0.22924102
+w_total_compensation_k1000_710	0.19351429
+w_total_compensation_k1000_719	8.42034351
+w_total_compensation_k1000_724	29.43589698
+w_total_compensation_k1000_726	0.55820699
+w_total_compensation_k1000_736	16.06222542
+w_total_compensation_k1000_740	23.59388998
+w_total_compensation_k1000_744	44.25345674
+w_total_compensation_k1000_803	1.90967107
+w_total_compensation_k1000_804	8.22774098
+w_total_compensation_k1000_811	872.50923379
+w_total_compensation_k1000_812	1004.97759372
+w_total_compensation_k1000_814	1.68186463
+w_total_compensation_k1000_829	91.39329326
+w_total_compensation_k1000_89	102.41518820
+w_total_compensation_k1000_915	0.18865422
+w_total_compensation_k1000_976	2.84951354
 
 Holdout metrics (split==2):
 N test =       1706
-RMSE   =  293716.1075
-MAE    =  131362.8153
-R2     =       0.8425
+RMSE   =  289912.8236
+MAE    =  131021.7316
+R2     =       0.8461
