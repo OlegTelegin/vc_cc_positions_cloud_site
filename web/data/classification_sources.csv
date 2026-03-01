@@ -23,3 +23,4 @@ list_by_type_22,Binary choice - pick from 1000-position-level Gabriel output (pr
 list_by_type_23,Binary choice - pick from 1000-position-level Gabriel output (predict with wage bill share) + FE
 list_by_type_25,Binary choice - pick from 1000-position-level Gabriel output (predict with compensation share) + FE
 list_by_type_24,Elastic net using 1000-position-level Gabriel output (predict with compensations) + FE
+list_by_type_26,Elastic net using 1000-position-level Gabriel output (predict with compensations)
