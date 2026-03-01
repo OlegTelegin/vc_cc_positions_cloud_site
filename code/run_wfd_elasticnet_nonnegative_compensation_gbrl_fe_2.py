@@ -591,11 +591,11 @@ def main() -> None:
     ALPHA_SCALE = 0.01               # used only when ALPHA_SELECTION == "scaled_min"
 
     # This now works over the FULL alpha grid, not just by pushing alpha downward.
-    MIN_NONZERO_COEFS = 70           # set None to disable support floor
+    MIN_NONZERO_COEFS = 60           # set None to disable support floor
 
     NONZERO_TOL = 1e-12
 
-    CV_SPLITS = 2
+    CV_SPLITS = 10
     RANDOM_SEED = 1702
 
     # =========================
