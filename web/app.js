@@ -2,6 +2,8 @@ const DATA_PATH = "./data/1000_positions_jobbert_v2_2d_coords_umap.csv";
 const CLASSIFICATION_SOURCES_PATH = "./data/classification_sources.csv";
 const RANKINGS_PATH = "./data/classification_r2_rankings.csv";
 const REGRESSION_STRUCTURE_PATH = "./data/regression_structure.csv";
+const DEFAULT_LEFT_CLASSIFICATION_FILE = "list_ny_type_1";
+const DEFAULT_RIGHT_CLASSIFICATION_FILE = "list_by_type_25";
 const MIN_ZOOM = 0.7;
 const MAX_ZOOM = 20;
 const MARGIN = 28;
@@ -737,8 +739,12 @@ async function initialize() {
       }))
       .filter((row) => Number.isFinite(row.regression_number));
 
-    selectedLeftFile = classificationOptions[0].fileName;
-    selectedRightFile = classificationOptions[Math.min(1, classificationOptions.length - 1)].fileName;
+    selectedLeftFile =
+      classificationOptions.find((option) => option.fileName === DEFAULT_LEFT_CLASSIFICATION_FILE)
+        ?.fileName || classificationOptions[0].fileName;
+    selectedRightFile =
+      classificationOptions.find((option) => option.fileName === DEFAULT_RIGHT_CLASSIFICATION_FILE)
+        ?.fileName || classificationOptions[Math.min(1, classificationOptions.length - 1)].fileName;
     ensureDistinctSelections("right");
     populateClassificationSelect(leftClassSelect, selectedLeftFile);
     populateClassificationSelect(rightClassSelect, selectedRightFile);
